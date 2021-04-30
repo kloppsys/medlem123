@@ -159,7 +159,7 @@ sup {
 }
 
 a {
-  color: #1abc9c;
+  color: #ac6a9e;
   text-decoration: none;
   background-color: transparent;
 }
@@ -4863,7 +4863,7 @@ a.badge-dark:focus, a.badge-dark.focus {
   border-top-color: #b1dfbb;
 }
 .alert-success .alert-link {
-  color: #0b2e13;
+  color: #ac6a9e;
 }
 
 .alert-info {
@@ -4875,7 +4875,7 @@ a.badge-dark:focus, a.badge-dark.focus {
   border-top-color: #abdde5;
 }
 .alert-info .alert-link {
-  color: #062c33;
+  color: #AC6A9E;
 }
 
 .alert-warning {
