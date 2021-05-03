@@ -5042,8 +5042,8 @@ a.badge-dark:focus, a.badge-dark.focus {
 .list-group-item.active {
   z-index: 2;
   color: #fff;
-  background-color: #1abc9c;
-  border-color: #1abc9c;
+  background-color: #2C3E50;
+  border-color: #1A252F;
 }
 .list-group-item + .list-group-item {
   border-top-width: 0;
@@ -5254,7 +5254,7 @@ a.badge-dark:focus, a.badge-dark.focus {
 
 .list-group-item-danger {
   color: #fff;
-  background-color: #BB70A9;
+  background-color: #2C3E50;
 }
 .list-group-item-danger.list-group-item-action:hover, .list-group-item-danger.list-group-item-action:focus {
   color: #721c24;
