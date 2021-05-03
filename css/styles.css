@@ -2438,13 +2438,13 @@ fieldset:disabled a.btn {
 
 .btn-primary {
   color: #fff;
-  background-color: #1abc9c;
-  border-color: #1abc9c;
+  background-color: #AC6A9E;
+  border-color: #dacbd6;
 }
 .btn-primary:hover {
   color: #fff;
-  background-color: #159a80;
-  border-color: #148f77;
+  background-color: #3D2B4F;
+  border-color: #dacbd6;
 }
 .btn-primary:focus, .btn-primary.focus {
   color: #fff;
@@ -4867,8 +4867,8 @@ a.badge-dark:focus, a.badge-dark.focus {
 }
 
 .alert-info {
-  color: #0c5460;
-  background-color: #d1ecf1;
+  color: #fff;
+  background-color: #2C3E50;
   border-color: #bee5eb;
 }
 .alert-info hr {
