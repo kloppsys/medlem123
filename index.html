@@ -5,6 +5,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="Medlem123 - Vi håndterer medlemmene" />
         <meta name="author" content="Medlem123" />
+        <!-- Følger systemets lys/mørk-innstilling (native skjemaelementer, scrollbar, <dialog>
+             sin ::backdrop m.m. tilpasser seg automatisk) - se css/site.css for full forklaring -->
+        <meta name="color-scheme" content="light dark" />
         <title>Medlem123</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
@@ -12,10 +15,10 @@
              standard CDN-CSS med ekte SRI-hash. Font Awesome sine kit-loader-script støtter IKKE SRI
              (dynamisk, kan endre innhold uten versjonsendring i URL-en) - CSS-varianten fra cdnjs gjør. -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous" />
-        <!-- Google fonts-->
-        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
-        <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
-        <!-- Egen stilfil (erstatter Bootstrap 4.5.3, 2026-09-09)-->
+        <!-- Google fonts fjernet (r002, 2026-09-15) - erstattet av systemfont-stacken
+             (-apple-system osv.) i css/site.css, i tråd med Apple HIG-redesignet. Færre
+             eksterne forespørsler, ingen FOUT/layout-shift ved fontinnlasting. -->
+        <!-- Egen stilfil (Apple HIG-inspirert redesign, r002, 2026-09-15 - bygget på r001s vanilla CSS/JS)-->
         <link href="css/site.css" rel="stylesheet" />
     </head>
     <body id="page-top">
@@ -52,7 +55,7 @@
         <!-- CTA-banner -->
         <div class="cta-banner">
             <h2>Har du spørsmål?</h2>
-            <h2>Ring oss på tlf. 33 31 28 00 for en gratis og uforpliktende gjennomgang</h2>
+            <h2>Ring oss på tlf. <a href="tel:+4733312800">33 31 28 00</a> for en gratis og uforpliktende gjennomgang</h2>
         </div>
 
         <!-- Portfolio-seksjon-->
@@ -66,28 +69,40 @@
                 </div>
                 <div class="portfolio-grid">
                     <button class="portfolio-item" type="button" data-open-modal="portfolioModal1">
-                        <div class="portfolio-item-caption"><i class="fas fa-info-circle"></i></div>
-                        <img src="assets/img/portfolio/m123_innmelding.png" alt="Innmelding" />
+                        <div class="portfolio-item-figure">
+                            <div class="portfolio-item-caption"><i class="fas fa-info-circle"></i></div>
+                            <img src="assets/img/portfolio/m123_innmelding.png" alt="Innmelding" />
+                        </div>
                     </button>
                     <button class="portfolio-item" type="button" data-open-modal="portfolioModal2">
-                        <div class="portfolio-item-caption"><i class="fas fa-info-circle"></i></div>
-                        <img src="assets/img/portfolio/m123_oppfolging.png" alt="Oppfølging" />
+                        <div class="portfolio-item-figure">
+                            <div class="portfolio-item-caption"><i class="fas fa-info-circle"></i></div>
+                            <img src="assets/img/portfolio/m123_oppfolging.png" alt="Oppfølging" />
+                        </div>
                     </button>
                     <button class="portfolio-item" type="button" data-open-modal="portfolioModal3">
-                        <div class="portfolio-item-caption"><i class="fas fa-info-circle"></i></div>
-                        <img src="assets/img/portfolio/m123_kontingent.png" alt="Kontingent" />
+                        <div class="portfolio-item-figure">
+                            <div class="portfolio-item-caption"><i class="fas fa-info-circle"></i></div>
+                            <img src="assets/img/portfolio/m123_kontingent.png" alt="Kontingent" />
+                        </div>
                     </button>
                     <button class="portfolio-item" type="button" data-open-modal="portfolioModal4">
-                        <div class="portfolio-item-caption"><i class="fas fa-info-circle"></i></div>
-                        <img src="assets/img/portfolio/m123_din_side.png" alt="Din side" />
+                        <div class="portfolio-item-figure">
+                            <div class="portfolio-item-caption"><i class="fas fa-info-circle"></i></div>
+                            <img src="assets/img/portfolio/m123_din_side.png" alt="Din side" />
+                        </div>
                     </button>
                     <button class="portfolio-item" type="button" data-open-modal="portfolioModal5">
-                        <div class="portfolio-item-caption"><i class="fas fa-info-circle"></i></div>
-                        <img src="assets/img/portfolio/m123_pris.png" alt="Pris" />
+                        <div class="portfolio-item-figure">
+                            <div class="portfolio-item-caption"><i class="fas fa-info-circle"></i></div>
+                            <img src="assets/img/portfolio/m123_pris.png" alt="Pris" />
+                        </div>
                     </button>
                     <button class="portfolio-item" type="button" data-open-modal="portfolioModal6">
-                        <div class="portfolio-item-caption"><i class="fas fa-info-circle"></i></div>
-                        <img src="assets/img/portfolio/m123_kom_i_gang.png" alt="Kom i gang" />
+                        <div class="portfolio-item-figure">
+                            <div class="portfolio-item-caption"><i class="fas fa-info-circle"></i></div>
+                            <img src="assets/img/portfolio/m123_kom_i_gang.png" alt="Kom i gang" />
+                        </div>
                     </button>
                 </div>
             </div>
@@ -163,7 +178,7 @@
                 <div class="footer-grid">
                     <div>
                         <h4>Telefon/e-post</h4>
-                        <p>Tlf. 33 31 28 00, Mandag – fredag, 09.00 – 15.00 (alle hverdager).<br />kundeservice@medlem123.no</p>
+                        <p>Tlf. <a href="tel:+4733312800">33 31 28 00</a>, Mandag – fredag, 09.00 – 15.00 (alle hverdager).<br /><a href="mailto:kundeservice@medlem123.no">kundeservice@medlem123.no</a></p>
                     </div>
                     <div>
                         <h4>Adresse</h4>

@@ -1,33 +1,127 @@
 /*!
- * medlem123.no — egen, håndskrevet stilfil (2026-09-09)
- * Erstatter Bootstrap 4.5.3 (var 10 240 linjer, nesten utelukkende ren rammeverkskode).
- * Fargeverdier/typografi hentet direkte fra den live siden via getComputedStyle(),
- * ikke gjettet — se /wordpress-og-web_expert sitt skill-minne for full forklaring.
+ * medlem123.no — Apple HIG-inspirert redesign (r002, 2026-09-15)
+ * Bygget på egen, håndskrevet vanilla CSS (r001, 2026-09-09). Ingen rammeverk.
+ *
+ * Designgrunnlag: Apples Human Interface Guidelines (design-principles.md,
+ * accessibility.md, typography.md, color.md, layout.md, dark-mode.md, materials.md/
+ * liquid-glass.md — se Details/EXT-239 i kunnskapsbasen for full kildevurdering).
+ * Farge-/systemfont-vokabularet er OVERSATT fra Apples app-terminologi til ren CSS,
+ * ikke kopiert fra noe rammeverk: SF Pro → -apple-system-stacken, Liquid Glass →
+ * backdrop-filter, semantiske farger → CSS custom properties som bytter i dark mode.
+ *
+ * Apples 8 designprinsipper (design-principles.md, gjeninnført juni 2026), brukt som
+ * sjekkliste under hele redesignet:
+ *  1. Purpose      — hver seksjon har ett tydelig formål, ingen dekorasjon uten grunn
+ *  2. Agency        — brukeren styrer (ekte <dialog>/<details>, ingen påtvunget autoplay)
+ *  3. Responsibility — ekte kontaktinfo, ekte telefonlenke, ingen villedende UI
+ *  4. Familiarity   — vanlige mønstre (fast nav, kort-grid, FAQ-liste) beholdt
+ *  5. Flexibility   — responsivt fra 320px, respekterer prefers-reduced-motion/color-scheme
+ *  6. Simplicity    — ornamentelle divider-ikoner fjernet, uppercase-støy fjernet
+ *  7. Craft         — kontrastforhold beregnet og kommentert, presis spacing-/radius-skala
+ *  8. Delight       — subtil, avbrytbar bevegelse (press-feedback, glass-nav, myk hover)
  */
 
+/* ===== Fundament: tokens ===================================================== */
+
 :root {
-  --navy-dark: #1a252f;   /* masthead-bakgrunn */
-  --navy: #2c3e50;        /* nav/footer-bakgrunn, mørk brødtekst */
-  --purple: #bb70a9;      /* aksentfarge — hover, aktiv nav-lenke, knapper */
-  --purple-dark: #5c4461; /* CTA-banner-bakgrunn */
-  --white: #ffffff;
-  --body-text: #212529;
-  --font-heading: "Montserrat", -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
-  --font-body: "Lato", -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
-  --container-max: 1140px;
-  --nav-height: 104px;
+  color-scheme: light dark;
+
+  /* Systemfont-stack — oversettelsen av SF Pro Display/Text til web (Apple lisensierer
+     ikke SF Pro til fri web-bruk; -apple-system henter faktisk San Francisco på
+     Apple-enheter, resten av stacken er nærmeste systemfont på andre plattformer). */
+  --font-display: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI",
+    Roboto, Helvetica, Arial, sans-serif;
+  --font-text: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI",
+    Roboto, Helvetica, Arial, sans-serif;
+
+  /* Spacing — 8px-rutenett (samme konvensjon som er brukt for klopp.no/regweb.no-
+     redesignarbeidet i denne skillen, se REDESIGN-VERKTØY-tabellen) */
+  --space-1: 4px;  --space-2: 8px;  --space-3: 12px; --space-4: 16px;
+  --space-5: 24px; --space-6: 32px; --space-7: 48px; --space-8: 64px;
+  --space-9: 96px; --space-10: 128px;
+
+  /* Corner radius — 980px er Apples egen verdi for pill-knapper (apple.com bruker
+     nøyaktig dette tallet), ikke en tilfeldig stor verdi */
+  --radius-sm: 10px; --radius-md: 14px; --radius-lg: 20px; --radius-full: 980px;
+
+  --nav-height: 52px; /* Apples egen navbar-høyde på apple.com er 44–52px, ikke 104px */
+  --container-max: 1100px;
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --duration-fast: 120ms;
+  --duration-base: 300ms;
+
+  /* --- Lys modus (standard) --- */
+  --color-bg: #ffffff;
+  --color-bg-elevated: #f5f5f7;      /* Apples eget "secondary system background"-grått */
+  --color-text: #1d1d1f;             /* Apples eget "label"-nærsvart */
+  --color-text-secondary: #6e6e73;   /* Apples eget "secondaryLabel"-grått.
+                                         Kontrast mot #ffffff: 5.07:1 — bestått WCAG AA
+                                         normaltekst (krav 4.5:1), beregnet manuelt. */
+  --color-border: rgba(0, 0, 0, 0.08);
+  --color-glass-bg: rgba(255, 255, 255, 0.72);
+  --shadow-color: rgba(0, 0, 0, 0.10);
+
+  /* Merkevarens lilla (uendret hex fra r001/original design), men brukt presist:
+     --accent-fill  = alltid #5c4461, ENESTE farge brukt som knapp-BAKGRUNN med hvit
+                       tekst — kontrast hvit-mot-#5c4461 = 8.56:1, bestått i alle kontekster.
+     --accent-text  = farge brukt DIREKTE på sidebakgrunn (lenker/ikoner). Lys modus:
+                       #5c4461 mot hvit bakgrunn = 8.55:1. RÅ #bb70a9 mot hvit er kun
+                       3.50:1 — bestått for STOR tekst (≥3:1), IKKE for normal tekst
+                       (krever 4.5:1) — derfor aldri brukt som liten lenketekst på hvitt. */
+  --accent-fill: #5c4461;
+  --accent-text: #5c4461;
+  --accent-soft: #bb70a9;   /* kun til store, dekorative flater/glow — aldri liten tekst */
+
+  --navy-dark: #1a252f;     /* bevisst mørk seksjon (masthead) — uendret i begge modus,
+                                samme mønster som Apple selv bruker på mørke hero-seksjoner
+                                uavhengig av systemtema */
 }
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: #000000;             /* Apples eget rene svarte dark-mode-lerret */
+    --color-bg-elevated: #1d1d1f;
+    --color-text: #f5f5f7;
+    --color-text-secondary: #86868b; /* Apples eget "secondaryLabel" i dark mode.
+                                         Kontrast mot #000000: 6.14:1 — bestått AA. */
+    --color-border: rgba(255, 255, 255, 0.12);
+    --color-glass-bg: rgba(29, 29, 31, 0.72);
+    --shadow-color: rgba(0, 0, 0, 0.5);
+
+    /* Lysere lilla for tekst DIREKTE på svart bakgrunn — #5c4461 mot svart er kun
+       2.45:1 (stryker AA), derfor egen lysere variant her. Kontrast #d9a8cd mot
+       #000000 = 10.43:1 — godt over kravet. --accent-fill (knappebakgrunn) endres
+       IKKE — dens kontrast er selvstendig (hvit tekst mot knappen selv), uavhengig
+       av sidens bakgrunnsfarge. */
+    --accent-text: #d9a8cd;
+  }
+}
+
+/* ===== Reset / fundament ====================================================== */
 
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
 body {
   margin: 0;
-  font-family: var(--font-body);
-  font-size: 16px;
-  line-height: 1.6;
-  color: var(--body-text);
-  background: var(--white);
+  font-family: var(--font-text);
+  font-size: 17px;               /* Apples egen "Body"-tekststørrelse (SF Pro Text 17pt) */
+  line-height: 1.5;
+  color: var(--color-text);
+  background: var(--color-bg);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
 img { max-width: 100%; height: auto; display: block; }
@@ -35,280 +129,454 @@ img { max-width: 100%; height: auto; display: block; }
 .container {
   max-width: var(--container-max);
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 var(--space-5);
 }
 
-h1, h2, h3 { font-family: var(--font-heading); font-weight: 700; margin: 0; }
+h1, h2, h3 {
+  font-family: var(--font-display);
+  font-weight: 600;              /* SF Pro Display "Semibold" — Apples egen
+                                     overskrift-vekt, ikke maksimal 700-fetthet */
+  margin: 0;
+  letter-spacing: -0.015em;      /* tett tracking på store overskrifter, HIG-typografi */
+}
 
-/* Sømløs anker-scroll under fast nav — kompenserer for nav-høyden i stedet for JS-offset */
-section[id], header[id] { scroll-margin-top: var(--nav-height); }
+a { color: var(--accent-text); }
 
-/* --- Navigasjon --- */
+/* Synlig, tydelig fokusring — WCAG 2.4.7. Farge alene brukes aldri alene et sted i
+   denne filen for å formidle tilstand (divider/FAQ-chevron bruker også form/posisjon). */
+:focus-visible {
+  outline: 2px solid var(--accent-text);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
+/* Sømløs anker-scroll under fast nav */
+section[id], header[id] { scroll-margin-top: calc(var(--nav-height) + var(--space-4)); }
+
+/* Ekte trykk-feedback — "respond on pointer-down, not release" (Apple WWDC 2018
+   "Designing Fluid Interfaces", oversatt til web av den installerte emilkowalski
+   apple-design-skillen: umiddelbar, kontinuerlig feedback slår en animasjon som
+   kun vises ved slipp). Gjelder alt interaktivt. */
+.btn:active, .nav-link:active, .portfolio-item:active,
+.scroll-to-top:active, .faq summary:active { transform: scale(0.97); }
+@media (prefers-reduced-motion: reduce) {
+  .btn:active, .nav-link:active, .portfolio-item:active,
+  .scroll-to-top:active, .faq summary:active { transform: none; }
+}
+
+/* ===== Navigasjon — Liquid Glass ============================================= */
+
+/* Oversettelse av Apples "Liquid Glass"-materiale til CSS: et frostet, delvis
+   gjennomsiktig lag som lar innhold skimte gjennom idet siden scroller under det —
+   nøyaktig samme mekanikk som apple.com sin egen faste navigasjonslinje. */
 .navbar {
   position: fixed;
   top: 0; left: 0; right: 0;
   z-index: 1000;
-  background: var(--navy);
   min-height: var(--nav-height);
   display: flex;
   align-items: center;
+  background: var(--color-glass-bg);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 1px solid var(--color-border);
 }
 .navbar .container { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; width: 100%; }
+
 .navbar-brand {
-  font-family: var(--font-heading);
-  font-size: 28px;
-  font-weight: 700;
-  color: var(--white);
+  font-family: var(--font-display);
+  font-size: 19px;
+  font-weight: 600;
+  color: var(--color-text);
   text-decoration: none;
-  text-transform: uppercase;
+  letter-spacing: -0.01em;
 }
+
 .navbar-toggler {
   display: none;
-  background: var(--navy-dark);
-  color: var(--white);
+  background: transparent;
+  color: var(--color-text);
   border: none;
-  border-radius: 8px;
-  padding: 10px 16px;
-  font-family: var(--font-heading);
-  font-weight: 700;
-  text-transform: uppercase;
-  font-size: 13px;
+  border-radius: var(--radius-sm);
+  padding: var(--space-3) var(--space-4);
+  min-height: 44px;                 /* HIG-minimum for et trykkbart mål */
+  font-family: var(--font-text);
+  font-weight: 400;
+  font-size: 14px;
   cursor: pointer;
 }
-.navbar-nav { list-style: none; display: flex; gap: 4px; margin: 0; padding: 0; }
+.navbar-toggler:hover { background: var(--color-bg-elevated); }
+
+.navbar-nav { list-style: none; display: flex; gap: var(--space-1); margin: 0; padding: 0; }
 .nav-link {
-  display: block;
-  padding: 12px 16px;
-  color: var(--white);
+  display: flex;
+  align-items: center;
+  min-height: 44px;                 /* HIG tap-target-minimum, alle plattformer */
+  padding: 0 var(--space-4);
+  color: var(--color-text-secondary);
   text-decoration: none;
-  font-family: var(--font-heading);
-  font-weight: 700;
-  font-size: 16px;
-  text-transform: uppercase;
-  border-radius: 6px;
-  transition: color .15s ease;
+  font-family: var(--font-text);
+  font-weight: 400;
+  font-size: 14px;
+  border-radius: var(--radius-sm);
+  transition: color var(--duration-fast) var(--ease-out), background var(--duration-fast) var(--ease-out);
 }
-.nav-link:hover, .nav-link.active { color: var(--purple); }
+.nav-link:hover { color: var(--color-text); background: var(--color-bg-elevated); }
+.nav-link.active { color: var(--accent-text); font-weight: 600; }
 
 @media (max-width: 991px) {
   .navbar-toggler { display: block; }
-  .navbar-collapse {
-    display: none;
-    width: 100%;
-    order: 3;
-  }
+  .navbar-collapse { display: none; width: 100%; order: 3; }
   .navbar-collapse.show { display: block; }
-  .navbar-nav { flex-direction: column; padding: 8px 0; }
+  .navbar-nav { flex-direction: column; padding: var(--space-2) 0; gap: 0; }
+  .nav-link { min-height: 48px; }
 }
 
-/* --- Masthead (hero) --- */
+/* ===== Masthead (hero) — bevisst mørk seksjon, uavhengig av systemtema ======== */
+
 .masthead {
   background: var(--navy-dark);
-  color: var(--white);
+  color: #f5f5f7;
   text-align: center;
-  padding: 200px 0 96px;
+  padding: calc(var(--nav-height) + var(--space-9)) 0 var(--space-9);
 }
-.masthead-avatar { width: 240px; margin: 0 auto 32px; }
+.masthead-avatar { width: 180px; margin: 0 auto var(--space-6); }
 .masthead-heading {
-  font-size: 64px;
-  text-transform: uppercase;
-  color: var(--white);
-  line-height: 1.1;
+  font-size: clamp(2.25rem, 4vw + 1rem, 4rem);
+  color: #ffffff;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
 }
 .masthead-subheading {
-  font-size: 24px;
-  font-weight: 300;
-  color: var(--white);
-  margin: 0;
+  font-family: var(--font-text);
+  font-size: clamp(1.0625rem, 1vw + 0.9rem, 1.375rem);
+  font-weight: 400;
+  color: rgba(245, 245, 247, 0.86);
+  max-width: 640px;
+  margin: var(--space-5) auto 0;
+  line-height: 1.5;
 }
+
+@media (max-width: 767px) { .masthead-avatar { width: 130px; } }
+
+/* Ornamental divider — tonet kraftig ned (HIG "simplicity": pynt uten funksjon
+   fjernes eller reduseres til et minimum). Selve sirkel-ikonet skjules; kun en
+   tynn aksent-strek består som visuell pause mellom overskrift og innhold. */
+.divider-custom { display: flex; align-items: center; justify-content: center; margin: var(--space-6) auto 0; }
+.divider-custom-line { height: 3px; width: 56px; background: var(--accent-soft); border-radius: var(--radius-full); }
+.divider-custom.divider-light .divider-custom-line { background: rgba(255, 255, 255, 0.5); }
+.divider-custom-icon { display: none; }
+
+/* ===== CTA-banner — glass-kort, ikke heldekkende blokk ======================== */
+
+.cta-banner {
+  max-width: 760px;
+  margin: calc(-1 * var(--space-7)) auto var(--space-9);
+  padding: var(--space-6) var(--space-6);
+  background: var(--color-glass-bg);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  backdrop-filter: saturate(180%) blur(20px);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 20px 40px var(--shadow-color);
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+.cta-banner h2 {
+  font-family: var(--font-text);
+  font-size: 17px;
+  font-weight: 400;
+  color: var(--color-text);
+  margin: var(--space-1) 0;
+  letter-spacing: normal;
+}
+.cta-banner h2:first-child { font-weight: 600; font-size: 19px; }
+.cta-banner a { color: var(--accent-text); font-weight: 600; text-decoration: none; }
+.cta-banner a:hover { text-decoration: underline; }
 
 @media (max-width: 767px) {
-  .masthead { padding: 140px 0 64px; }
-  .masthead-heading { font-size: 36px; }
-  .masthead-subheading { font-size: 18px; }
+  .cta-banner { margin-top: calc(-1 * var(--space-6)); padding: var(--space-5); }
 }
 
-/* --- Divider (ikon-skille brukt under overskrifter) --- */
-.divider-custom { display: flex; align-items: center; justify-content: center; gap: 16px; margin: 24px 0; }
-.divider-custom-line { height: 4px; width: 112px; background: var(--navy); }
-.divider-custom.divider-light .divider-custom-line { background: var(--white); }
-.divider-custom-icon {
-  width: 48px; height: 48px;
-  display: flex; align-items: center; justify-content: center;
-  border-radius: 50%;
-  border: 2px solid var(--navy);
-  color: var(--navy);
-  font-size: 20px;
-}
-.divider-custom.divider-light .divider-custom-icon { border-color: var(--white); color: var(--white); }
+/* ===== Seksjoner generelt ====================================================== */
 
-/* --- CTA-banner (telefon) --- */
-.cta-banner { background: var(--purple-dark); color: var(--white); text-align: center; padding: 32px 24px; }
-.cta-banner h2 { font-family: var(--font-body); font-size: 20px; font-weight: 700; margin: 4px 0; }
-
-/* --- Seksjoner generelt --- */
-.page-section { padding: 96px 0; }
+.page-section { padding: var(--space-9) 0; }
 .page-section-heading {
   text-align: center;
-  text-transform: uppercase;
-  color: var(--navy);
-  font-size: 48px;
+  color: var(--color-text);
+  font-size: clamp(1.75rem, 2.5vw + 1rem, 2.75rem);
 }
-.page-section.bg-dark { background: var(--navy-dark); color: var(--white); }
-.page-section.bg-dark .page-section-heading { color: var(--white); }
+.page-section.bg-dark { background: var(--navy-dark); color: #f5f5f7; }
+.page-section.bg-dark .page-section-heading { color: #ffffff; }
 
-@media (max-width: 767px) {
-  .page-section { padding: 56px 0; }
-  .page-section-heading { font-size: 30px; }
-}
+@media (max-width: 767px) { .page-section { padding: var(--space-7) 0; } }
 
-/* --- Portfolio-grid (tjenestekort) --- */
+/* ===== Portfolio-grid — Apple-stil kort ======================================== */
+
 .portfolio-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 32px;
-  margin-top: 16px;
+  gap: var(--space-6);
+  margin-top: var(--space-6);
 }
 @media (max-width: 991px) { .portfolio-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 575px) { .portfolio-grid { grid-template-columns: 1fr; } }
 
 .portfolio-item {
-  position: relative;
   display: block;
   width: 100%;
   padding: 0;
-  border: none;
+  border: 1px solid var(--color-border);
   cursor: pointer;
   overflow: hidden;
-  border-radius: 4px;
-  background: none;
+  border-radius: var(--radius-lg);
+  background: var(--color-bg-elevated);
+  text-align: left;
+  transition: transform var(--duration-base) var(--ease-out),
+              box-shadow var(--duration-base) var(--ease-out);
 }
-.portfolio-item img { width: 100%; transition: transform .3s ease; }
+.portfolio-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 32px var(--shadow-color);
+}
+.portfolio-item-figure { position: relative; overflow: hidden; aspect-ratio: 4 / 3; }
+.portfolio-item img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform var(--duration-base) var(--ease-out);
+}
+.portfolio-item:hover img { transform: scale(1.04); }
 .portfolio-item-caption {
   position: absolute;
   inset: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(187, 112, 169, .9); /* --purple, 90% */
-  color: var(--white);
-  font-size: 2rem;
+  background: rgba(26, 37, 47, 0.55);
+  color: #ffffff;
+  font-size: 1.75rem;
   opacity: 0;
-  transition: opacity .25s ease;
+  transition: opacity var(--duration-fast) var(--ease-out);
 }
-.portfolio-item:hover .portfolio-item-caption { opacity: 1; }
-.portfolio-item:hover img { transform: scale(1.05); }
+.portfolio-item:hover .portfolio-item-caption,
+.portfolio-item:focus-visible .portfolio-item-caption { opacity: 1; }
 
-/* --- Knapper --- */
+/* ===== Knapper — pill-form, Apples egen 980px-radius ========================== */
+
 .btn {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  padding: 16px 28px;
-  border-radius: 8px;
-  font-family: var(--font-body);
+  gap: var(--space-2);
+  min-height: 44px;                 /* HIG tap-target-minimum */
+  padding: 0 var(--space-6);
+  border-radius: var(--radius-full);
+  font-family: var(--font-text);
   font-weight: 400;
+  font-size: 17px;
   text-decoration: none;
   cursor: pointer;
-  border: 2px solid transparent;
-  font-size: 16px;
+  border: 1px solid transparent;
+  transition: transform var(--duration-fast) var(--ease-out),
+              background var(--duration-fast) var(--ease-out),
+              border-color var(--duration-fast) var(--ease-out);
 }
-.btn-outline-light { background: transparent; color: var(--white); border-color: var(--white); }
-.btn-outline-light:hover { background: var(--white); color: var(--navy-dark); }
-.btn-purple { background: var(--purple); color: var(--white); }
-.btn-purple:hover { background: var(--purple-dark); }
+.btn-outline-light { background: transparent; color: #ffffff; border-color: rgba(255, 255, 255, 0.5); }
+.btn-outline-light:hover { background: rgba(255, 255, 255, 0.12); border-color: #ffffff; }
+.btn-purple { background: var(--accent-fill); color: #ffffff; }
+.btn-purple:hover { background: #4a3750; }
 
-/* --- Brosjyre-seksjon --- */
-.brochure-embed { width: 100%; height: 500px; border: none; }
+/* ===== Brosjyre-seksjon ========================================================= */
 
-/* --- FAQ (native <details>/<summary> — erstatter Bootstrap-accordion) --- */
-.faq { border: 1px solid #dee2e6; border-radius: 4px; overflow: hidden; }
-.faq details { border-bottom: 1px solid #dee2e6; }
+.brochure-embed {
+  width: 100%;
+  height: 500px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+}
+
+/* ===== FAQ — Apple "grouped list"-stil ========================================= */
+
+.faq {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--color-bg-elevated);
+}
+.faq details { border-bottom: 1px solid var(--color-border); }
 .faq details:last-child { border-bottom: none; }
 .faq summary {
-  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  min-height: 44px;
+  padding: var(--space-4) var(--space-5);
   cursor: pointer;
   font-weight: 400;
-  color: var(--navy);
+  font-size: 17px;
+  color: var(--color-text);
   list-style: none;
 }
 .faq summary::-webkit-details-marker { display: none; }
-.faq summary::before { content: "▸ "; color: var(--purple); }
-.faq details[open] summary::before { content: "▾ "; }
-.faq details[open] summary { color: var(--purple-dark); font-weight: 700; }
-.faq .faq-body { padding: 0 20px 20px; }
+.faq summary::after {
+  content: "";
+  flex: none;
+  width: 9px; height: 9px;
+  border-right: 2px solid var(--color-text-secondary);
+  border-bottom: 2px solid var(--color-text-secondary);
+  transform: rotate(45deg);
+  transition: transform var(--duration-fast) var(--ease-out);
+}
+.faq details[open] summary::after { transform: rotate(-135deg); }
+.faq details[open] summary { font-weight: 600; }
+.faq .faq-body { padding: 0 var(--space-5) var(--space-5); color: var(--color-text-secondary); }
 
-/* --- Footer --- */
-.site-footer { background: var(--navy); color: var(--white); text-align: center; padding: 64px 0; }
-.site-footer h4 { font-size: 15px; text-transform: uppercase; margin-bottom: 16px; letter-spacing: .05em; }
-.footer-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+/* ===== Footer — Apples egen nedtonede juridisk-footer-stil ==================== */
+
+.site-footer { background: var(--color-bg-elevated); color: var(--color-text); text-align: center; padding: var(--space-8) 0; }
+.site-footer h4 {
+  font-family: var(--font-text);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: var(--space-3);
+}
+.site-footer p { margin: 0; font-size: 14px; color: var(--color-text-secondary); }
+.site-footer a { color: var(--accent-text); }
+.footer-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-6); }
 @media (max-width: 767px) { .footer-grid { grid-template-columns: 1fr; } }
-.copyright { background: var(--navy-dark); color: var(--white); text-align: center; padding: 16px 24px; font-size: 13px; }
+.copyright {
+  background: var(--color-bg);
+  color: var(--color-text-secondary);
+  text-align: center;
+  padding: var(--space-4) var(--space-5);
+  font-size: 12px;
+  border-top: 1px solid var(--color-border);
+}
 
-/* --- Scroll-til-topp-knapp --- */
+/* ===== Scroll-til-topp — glass-knapp ============================================ */
+
 .scroll-to-top {
   position: fixed;
-  right: 20px; bottom: 20px;
-  width: 44px; height: 44px;
-  background: rgba(44, 62, 80, .8);
-  color: var(--white);
-  border-radius: 4px;
+  right: var(--space-5); bottom: var(--space-5);
+  width: 44px; height: 44px;        /* HIG tap-target-minimum */
+  background: var(--color-glass-bg);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  backdrop-filter: saturate(180%) blur(20px);
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+  border-radius: 50%;
   display: none;
   align-items: center;
   justify-content: center;
   text-decoration: none;
+  box-shadow: 0 8px 20px var(--shadow-color);
   z-index: 900;
+  transition: transform var(--duration-fast) var(--ease-out);
 }
 .scroll-to-top.show { display: flex; }
+.scroll-to-top:hover { transform: translateY(-2px); }
 
-/* --- Modal (native <dialog> — erstatter Bootstrap-modal) --- */
+/* ===== Modal (native <dialog>) — glass-kort ==================================== */
+
 dialog.portfolio-modal {
-  border: none;
-  border-radius: 4px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
   padding: 0;
-  width: min(900px, 92vw);
+  width: min(640px, 92vw);
   max-height: 88vh;
   overflow-y: auto;
+  background: var(--color-bg);
+  color: var(--color-text);
+  box-shadow: 0 30px 60px var(--shadow-color);
 }
-dialog.portfolio-modal::backdrop { background: rgba(0, 0, 0, .6); }
-.modal-inner { padding: 48px 40px; text-align: center; position: relative; }
+dialog.portfolio-modal::backdrop {
+  background: rgba(0, 0, 0, 0.4);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+}
+.modal-inner { padding: var(--space-7) var(--space-6); text-align: center; position: relative; }
 .modal-close {
   position: absolute;
-  top: 16px; right: 16px;
-  background: none;
+  top: var(--space-4); right: var(--space-4);
+  width: 32px; height: 32px;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--color-bg-elevated);
   border: none;
-  color: var(--purple);
-  font-size: 24px;
+  border-radius: 50%;
+  color: var(--color-text-secondary);
+  font-size: 15px;
   cursor: pointer;
-  line-height: 1;
 }
-.modal-title { color: var(--navy); text-transform: uppercase; font-size: 32px; }
-.modal-image { border-radius: 4px; margin: 24px 0; }
-.modal-close-btn {
-  background: var(--purple);
-  color: var(--white);
-  border: none;
-  border-radius: 8px;
-  padding: 12px 24px;
-  font-family: var(--font-body);
-  cursor: pointer;
-  margin-top: 16px;
-}
-.modal-close-btn:hover { background: var(--purple-dark); }
-.info-box {
-  background: var(--navy-dark);
-  color: var(--white);
-  border: 1px solid var(--purple);
-  border-radius: 4px;
-  padding: 16px 20px;
-  margin: 20px 0;
+.modal-close:hover { color: var(--color-text); }
+.modal-title { color: var(--color-text); font-size: clamp(1.5rem, 2vw + 1rem, 2rem); }
+.modal-image { border-radius: var(--radius-md); margin: var(--space-5) 0; border: 1px solid var(--color-border); }
+.modal-inner p { text-align: left; color: var(--color-text); }
+.modal-inner blockquote {
+  margin: var(--space-5) 0 var(--space-4);
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 19px;
+  color: var(--color-text);
   text-align: left;
 }
-.info-box a { color: var(--purple); }
-.success-box { background: #d4edda; color: #155724; border: 1px solid #c3e6cb; border-radius: 4px; padding: 16px 20px; margin: 20px 0; text-align: left; }
-.task-list { list-style: none; padding: 0; margin: 0 0 20px; text-align: left; }
-.task-list li { display: flex; justify-content: space-between; align-items: center; padding: 10px 14px; border: 1px solid #dee2e6; border-top: none; }
-.task-list li:first-child { border-top: 1px solid #dee2e6; }
-.task-list .badge { background: var(--purple); color: var(--white); border-radius: 999px; padding: 3px 10px; font-size: 13px; }
-.task-list .badge-start { background: var(--navy); }
-.task-list.category li { border: none; font-weight: 700; padding: 12px 14px 4px; }
+.modal-close-btn {
+  background: var(--accent-fill);
+  color: #ffffff;
+  border: none;
+  border-radius: var(--radius-full);
+  min-height: 44px;
+  padding: 0 var(--space-6);
+  font-family: var(--font-text);
+  font-size: 17px;
+  cursor: pointer;
+  margin-top: var(--space-5);
+}
+.modal-close-btn:hover { background: #4a3750; }
+
+.info-box {
+  background: var(--color-bg-elevated);
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+  border-left: 3px solid var(--accent-soft);
+  border-radius: var(--radius-md);
+  padding: var(--space-4) var(--space-5);
+  margin: var(--space-5) 0;
+  text-align: left;
+  font-size: 15px;
+}
+.info-box a { color: var(--accent-text); }
+.success-box {
+  background: rgba(52, 199, 89, 0.12);   /* Apples semantiske systemGreen, tonet ned */
+  color: #1d1d1f;
+  border: 1px solid rgba(52, 199, 89, 0.3);
+  border-left: 3px solid #34c759;
+  border-radius: var(--radius-md);
+  padding: var(--space-4) var(--space-5);
+  margin: var(--space-5) 0;
+  text-align: left;
+  font-size: 15px;
+}
+@media (prefers-color-scheme: dark) { .success-box { color: #f5f5f7; } }
+
+.task-list { list-style: none; padding: 0; margin: 0 0 var(--space-5); text-align: left; }
+.task-list li {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: var(--space-3) var(--space-4);
+  border-bottom: 1px solid var(--color-border);
+  min-height: 44px;
+}
+.task-list li:first-child { border-top: 1px solid var(--color-border); }
+.task-list .badge {
+  background: var(--accent-fill);
+  color: #ffffff;
+  border-radius: var(--radius-full);
+  padding: 2px 10px;
+  font-size: 13px;
+  flex: none;
+}
+.task-list .badge-start { background: #34c759; }
+.task-list.category li { border: none; font-weight: 600; padding: var(--space-4) var(--space-4) var(--space-1); min-height: auto; }
