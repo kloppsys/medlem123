@@ -262,7 +262,12 @@ section[id], header[id] { scroll-margin-top: calc(var(--nav-height) + var(--spac
 .nav-link:hover { color: var(--color-text); background: var(--color-bg-elevated); }
 .nav-link.active { color: var(--accent-text); font-weight: 600; }
 
-@media (max-width: 991px) {
+/* 639px, ikke 991px (r001s opprinnelige Bootstrap-arvede grense): de 3 nav-lenkene +
+   merke trenger kun ~435px totalt (målt), så et nettbrett i BÅDE portrett og liggende
+   (768–1024px) har rikelig plass til å vise dem direkte — en unødvendig hamburger-meny
+   på et nettbrett med god plass er nettopp den typen unødvendig UI-pynt Apples HIG
+   "simplicity"-prinsipp advarer mot. Kun ekte telefon-portrettbredder (<640px) kollapser. */
+@media (max-width: 639px) {
   .navbar-toggler { display: block; }
   .navbar-collapse { display: none; width: 100%; order: 3; }
   .navbar-collapse.show { display: block; }
