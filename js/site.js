@@ -6,6 +6,54 @@
 (function () {
   "use strict";
 
+  // Lys/mørk-bryter (r003, 2026-09-15). Det innledende, blokkerende scriptet i
+  // <head> har allerede satt data-theme FØR denne filen laster (unngår FOUC) -
+  // her håndteres kun selve klikket + lagring + ikon/aria-oppdatering.
+  var THEME_KEY = "medlem123-theme";
+  var themeToggle = document.getElementById("themeToggle");
+  if (themeToggle) {
+    var icon = themeToggle.querySelector("i");
+    var prefersDark = window.matchMedia("(prefers-color-scheme: dark)");
+
+    function effectiveTheme() {
+      var manual = document.documentElement.getAttribute("data-theme");
+      if (manual === "light" || manual === "dark") return manual;
+      return prefersDark.matches ? "dark" : "light";
+    }
+
+    function syncButton() {
+      var current = effectiveTheme();
+      var isDark = current === "dark";
+      icon.className = isDark ? "fas fa-sun" : "fas fa-moon";
+      themeToggle.setAttribute("aria-pressed", String(isDark));
+      themeToggle.setAttribute(
+        "aria-label",
+        isDark ? "Bytt til lyst utseende" : "Bytt til mørkt utseende"
+      );
+    }
+
+    themeToggle.addEventListener("click", function () {
+      var next = effectiveTheme() === "dark" ? "light" : "dark";
+      document.documentElement.setAttribute("data-theme", next);
+      try {
+        localStorage.setItem(THEME_KEY, next);
+      } catch (e) {
+        // Privat nettlesing/blokkert storage: valget virker fortsatt for denne
+        // sideinnlastingen, bare ikke husket til neste besøk. Ikke kritisk.
+      }
+      syncButton();
+    });
+
+    // Hvis brukeren ALDRI har trykket bryteren (intet lagret valg), skal siden
+    // fortsette å følge systemet live - f.eks. hvis de bytter macOS mellom lys/
+    // mørk mens siden står åpen i en fane.
+    prefersDark.addEventListener("change", function () {
+      if (!document.documentElement.hasAttribute("data-theme")) syncButton();
+    });
+
+    syncButton();
+  }
+
   // Responsiv nav: åpne/lukk
   var toggler = document.querySelector(".navbar-toggler");
   var collapse = document.getElementById("navbarResponsive");

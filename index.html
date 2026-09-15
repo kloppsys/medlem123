@@ -8,6 +8,18 @@
         <!-- Følger systemets lys/mørk-innstilling (native skjemaelementer, scrollbar, <dialog>
              sin ::backdrop m.m. tilpasser seg automatisk) - se css/site.css for full forklaring -->
         <meta name="color-scheme" content="light dark" />
+        <!-- Setter et evt. lagret manuelt lys/mørk-valg FØR CSS-en males (r003, 2026-09-15)
+             - unngår et synlig "blink" til feil tema ved sideinnlasting. Selve
+             bryterknappen og klikk-logikken ligger i js/site.js, lastet nederst som vanlig -
+             denne ene linjen MÅ kjøre tidlig/blokkerende i <head>, derfor egen liten inline-script. -->
+        <script>
+            (function () {
+                var saved = localStorage.getItem("medlem123-theme");
+                if (saved === "light" || saved === "dark") {
+                    document.documentElement.setAttribute("data-theme", saved);
+                }
+            })();
+        </script>
         <title>Medlem123</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
@@ -26,15 +38,20 @@
         <nav class="navbar" id="mainNav">
             <div class="container">
                 <a class="navbar-brand" href="#page-top">Medlem123</a>
-                <button class="navbar-toggler" type="button" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                    Menu <i class="fas fa-bars"></i>
-                </button>
-                <div class="navbar-collapse" id="navbarResponsive">
-                    <ul class="navbar-nav">
-                        <li><a class="nav-link" href="#portfolio">Vi utfører</a></li>
-                        <li><a class="nav-link" href="#brochure">Brosjyre</a></li>
-                        <li><a class="nav-link" href="#contact">Spørsmål?</a></li>
-                    </ul>
+                <div class="navbar-right">
+                    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Bytt mellom lyst og mørkt utseende" aria-pressed="false">
+                        <i class="fas fa-moon" aria-hidden="true"></i>
+                    </button>
+                    <button class="navbar-toggler" type="button" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                        Menu <i class="fas fa-bars"></i>
+                    </button>
+                    <div class="navbar-collapse" id="navbarResponsive">
+                        <ul class="navbar-nav">
+                            <li><a class="nav-link" href="#portfolio">Vi utfører</a></li>
+                            <li><a class="nav-link" href="#brochure">Brosjyre</a></li>
+                            <li><a class="nav-link" href="#contact">Spørsmål?</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </nav>

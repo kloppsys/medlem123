@@ -116,13 +116,34 @@
                                 uavhengig av systemtema */
 }
 
+/* Manuell lys/mørk-bryter (r003, 2026-09-15) — tre lag, i prioritert rekkefølge:
+   1. `:root` over = lys modus, alltid utgangspunktet.
+   2. `@media (prefers-color-scheme: dark)` — automatisk mørk NÅR systemet ber om det
+      OG brukeren ikke har valgt noe manuelt (`:not([data-theme="light"])`-vakten).
+   3. `:root[data-theme="dark"]` — brukerens EKSPLISITTE valg (bryter-knappen, lagret i
+      `localStorage`), vinner uansett systeminnstilling. `data-theme="light"` går motsatt
+      vei: blokkerer punkt 2 og faller tilbake til de vanlige `:root`-verdiene over.
+   Samme mønster brukt av bl.a. Apples egne nettsider og standard for enhver side som
+   både følger systemet OG tilbyr en egen bryter. De to mørke tokene-blokkene under må
+   holdes i synk manuelt — begge er identiske med vilje, kun selektoren skiller dem. */
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme="light"]) {
     --color-bg: #000000;             /* Apples eget rene svarte dark-mode-lerret */
     --color-bg-elevated: #1d1d1f;
     --color-text: #f5f5f7;
     --color-text-secondary: #86868b; /* Apples eget "secondaryLabel" i dark mode.
                                          Kontrast mot #000000: 6.14:1 — bestått AA. */
+    --color-border: rgba(255, 255, 255, 0.12);
+    --color-glass-bg: rgba(29, 29, 31, 0.72);
+    --shadow-color: rgba(0, 0, 0, 0.5);
+    --accent-text: #d9a8cd;
+  }
+}
+:root[data-theme="dark"] {
+    --color-bg: #000000;
+    --color-bg-elevated: #1d1d1f;
+    --color-text: #f5f5f7;
+    --color-text-secondary: #86868b;
     --color-border: rgba(255, 255, 255, 0.12);
     --color-glass-bg: rgba(29, 29, 31, 0.72);
     --shadow-color: rgba(0, 0, 0, 0.5);
@@ -133,7 +154,6 @@
        IKKE — dens kontrast er selvstendig (hvit tekst mot knappen selv), uavhengig
        av sidens bakgrunnsfarge. */
     --accent-text: #d9a8cd;
-  }
 }
 
 /* ===== Reset / fundament ====================================================== */
@@ -196,10 +216,10 @@ section[id], header[id] { scroll-margin-top: calc(var(--nav-height) + var(--spac
    apple-design-skillen: umiddelbar, kontinuerlig feedback slår en animasjon som
    kun vises ved slipp). Gjelder alt interaktivt. */
 .btn:active, .nav-link:active, .portfolio-item:active,
-.scroll-to-top:active, .faq summary:active { transform: scale(0.97); }
+.scroll-to-top:active, .faq summary:active, .theme-toggle:active { transform: scale(0.97); }
 @media (prefers-reduced-motion: reduce) {
   .btn:active, .nav-link:active, .portfolio-item:active,
-  .scroll-to-top:active, .faq summary:active { transform: none; }
+  .scroll-to-top:active, .faq summary:active, .theme-toggle:active { transform: none; }
 }
 
 /* ===== Navigasjon — Liquid Glass ============================================= */
@@ -229,6 +249,28 @@ section[id], header[id] { scroll-margin-top: calc(var(--nav-height) + var(--spac
   text-decoration: none;
   letter-spacing: -0.01em;
 }
+
+/* Grupperer bryter-knapp + hamburger-knapp + selve nav-lenkene i én høyrejustert
+   blokk (r003, 2026-09-15) — holder dem visuelt "ved siden av menyen" i alle
+   bredder: på desktop står bryteren rett til venstre for lenkene; på mobil står
+   den ved siden av "Menu"-knappen, mens selve lenke-dropdownen (.navbar-collapse,
+   order:3 under) fortsatt slippes ned som en egen full-bredde rad ved behov. */
+.navbar-right { display: flex; align-items: center; flex-wrap: wrap; gap: var(--space-2); }
+
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px; height: 44px;        /* HIG tap-target-minimum */
+  background: transparent;
+  color: var(--color-text);
+  border: none;
+  border-radius: 50%;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background var(--duration-fast) var(--ease-out);
+}
+.theme-toggle:hover { background: var(--color-bg-elevated); }
 
 .navbar-toggler {
   display: none;
