@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="no">
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -8,712 +8,295 @@
         <title>Medlem123</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
-        <!-- Font Awesome icons (free version)-->
-        <script src="https://use.fontawesome.com/releases/v5.15.1/js/all.js" crossorigin="anonymous"></script>
+        <!-- Font Awesome icons - byttet fra use.fontawesome.com sitt "kit"-JS-script (2026-09-09) til
+             standard CDN-CSS med ekte SRI-hash. Font Awesome sine kit-loader-script støtter IKKE SRI
+             (dynamisk, kan endre innhold uten versjonsendring i URL-en) - CSS-varianten fra cdnjs gjør. -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous" />
         <!-- Google fonts-->
         <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
         <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
-        <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="css/styles.css" rel="stylesheet" />
+        <!-- Egen stilfil (erstatter Bootstrap 4.5.3, 2026-09-09)-->
+        <link href="css/site.css" rel="stylesheet" />
     </head>
     <body id="page-top">
-        <!-- Navigation-->
-        <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
+        <!-- Navigasjon-->
+        <nav class="navbar" id="mainNav">
             <div class="container">
-                <a class="navbar-brand js-scroll-trigger" href="#page-top">Medlem123</a>
-                <button class="navbar-toggler navbar-toggler-right text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                    Menu
-                    <i class="fas fa-bars"></i>
+                <a class="navbar-brand" href="#page-top">Medlem123</a>
+                <button class="navbar-toggler" type="button" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu <i class="fas fa-bars"></i>
                 </button>
-                <div class="collapse navbar-collapse" id="navbarResponsive">
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#portfolio">Vi utfører</a></li>
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#brochure">Brosjyre</a></li>
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#contact">Spørsmål?</a></li>
-                        
-                        
+                <div class="navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav">
+                        <li><a class="nav-link" href="#portfolio">Vi utfører</a></li>
+                        <li><a class="nav-link" href="#brochure">Brosjyre</a></li>
+                        <li><a class="nav-link" href="#contact">Spørsmål?</a></li>
                     </ul>
                 </div>
             </div>
         </nav>
         <!-- Masthead-->
-        <header class="masthead bg-primary text-white text-center">
-            <div class="container d-flex align-items-center flex-column">
-                <!-- Masthead Avatar Image-->
-                <img class="masthead-avatar mb-5" src="assets/img/logo_medlem123_800px.png" alt="" />
-                <!-- Masthead Heading-->
-                <h1 class="masthead-heading text-uppercase mb-0">Vi håndterer medlemmene</h1>
-                <!-- Icon Divider-->
+        <header class="masthead" id="page-top">
+            <div class="container">
+                <img class="masthead-avatar" src="assets/img/logo_medlem123_800px.png" alt="Medlem123" />
+                <h1 class="masthead-heading">Vi håndterer medlemmene</h1>
                 <div class="divider-custom divider-light">
                     <div class="divider-custom-line"></div>
                     <div class="divider-custom-icon"><i class="fas fa-chevron-circle-down"></i></div>
                     <div class="divider-custom-line"></div>
                 </div>
-                <!-- Masthead Subheading-->
-                <p class="masthead-subheading font-weight-light mb-0">Vi tar det daglige arbeidet med kontingentinnkreving og medlemsservice</p>
-
+                <p class="masthead-subheading">Vi tar det daglige arbeidet med kontingentinnkreving og medlemsservice</p>
             </div>
         </header>
 
-<!-- Card -->
-<div
-  class=""
-  style="background-color:#5c4461;"
->
-  <div class="card-body text-white text-center">
-    <h5 class="card-title">Har du spørsmål?</h5>
-    <h5 class="card-title">Ring oss på tlf. 33 31 28 00 for en gratis og uforpliktende gjennomgang</h5>
-  </div>
-</div>
-<!-- Card -->
+        <!-- CTA-banner -->
+        <div class="cta-banner">
+            <h2>Har du spørsmål?</h2>
+            <h2>Ring oss på tlf. 33 31 28 00 for en gratis og uforpliktende gjennomgang</h2>
+        </div>
 
-        <!-- Portfolio Section-->
-        <section class="page-section portfolio" id="portfolio">
+        <!-- Portfolio-seksjon-->
+        <section class="page-section" id="portfolio">
             <div class="container">
-                <!-- Portfolio Section Heading-->
-                <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Tjenester og info</h2>
-                <!-- Icon Divider-->
+                <h2 class="page-section-heading">Tjenester og info</h2>
                 <div class="divider-custom">
                     <div class="divider-custom-line"></div>
                     <div class="divider-custom-icon"><i class="fas fa-chevron-circle-down"></i></div>
                     <div class="divider-custom-line"></div>
                 </div>
-                <!-- Portfolio Grid Items-->
-                <div class="row justify-content-center">
-                    <!-- Portfolio Item 1-->
-                    <div class="col-md-6 col-lg-4 mb-5">
-                        <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal1">
-                            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                                <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-info-circle fa-3x"></i></div>
-                            </div>
-                            <img class="img-fluid" src="assets/img/portfolio/m123_innmelding.png" alt="" />
-                        </div>
-                    </div>
-                    <!-- Portfolio Item 2-->
-                    <div class="col-md-6 col-lg-4 mb-5">
-                        <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal2">
-                            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                                <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-info-circle fa-3x"></i></div>
-                            </div>
-                            <img class="img-fluid" src="assets/img/portfolio/m123_oppfolging.png" alt="" />
-                        </div>
-                    </div>
-                    <!-- Portfolio Item 3-->
-                    <div class="col-md-6 col-lg-4 mb-5">
-                        <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal3">
-                            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                                <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-info-circle fa-3x"></i></div>
-                            </div>
-                            <img class="img-fluid" src="assets/img/portfolio/m123_kontingent.png" alt="" />
-                        </div>
-                    </div>
-                    <!-- Portfolio Item 4-->
-                    <div class="col-md-6 col-lg-4 mb-5 mb-lg-0">
-                        <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal4">
-                            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                                <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-info-circle fa-3x"></i></div>
-                            </div>
-                            <img class="img-fluid" src="assets/img/portfolio/m123_din_side.png" alt="" />
-                        </div>
-                    </div>
-                    <!-- Portfolio Item 5-->
-                    <div class="col-md-6 col-lg-4 mb-5 mb-md-0">
-                        <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal5">
-                            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                                <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-info-circle fa-3x"></i></div>
-                            </div>
-                            <img class="img-fluid" src="assets/img/portfolio/m123_pris.png" alt="" />
-                        </div>
-                    </div>
-                    <!-- Portfolio Item 6-->
-                    <div class="col-md-6 col-lg-4">
-                        <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal6">
-                            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                                <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-info-circle fa-3x"></i></div>
-                            </div>
-                            <img class="img-fluid" src="assets/img/portfolio/m123_kom_i_gang.png" alt="" />
-                        </div>
-                    </div>
+                <div class="portfolio-grid">
+                    <button class="portfolio-item" type="button" data-open-modal="portfolioModal1">
+                        <div class="portfolio-item-caption"><i class="fas fa-info-circle"></i></div>
+                        <img src="assets/img/portfolio/m123_innmelding.png" alt="Innmelding" />
+                    </button>
+                    <button class="portfolio-item" type="button" data-open-modal="portfolioModal2">
+                        <div class="portfolio-item-caption"><i class="fas fa-info-circle"></i></div>
+                        <img src="assets/img/portfolio/m123_oppfolging.png" alt="Oppfølging" />
+                    </button>
+                    <button class="portfolio-item" type="button" data-open-modal="portfolioModal3">
+                        <div class="portfolio-item-caption"><i class="fas fa-info-circle"></i></div>
+                        <img src="assets/img/portfolio/m123_kontingent.png" alt="Kontingent" />
+                    </button>
+                    <button class="portfolio-item" type="button" data-open-modal="portfolioModal4">
+                        <div class="portfolio-item-caption"><i class="fas fa-info-circle"></i></div>
+                        <img src="assets/img/portfolio/m123_din_side.png" alt="Din side" />
+                    </button>
+                    <button class="portfolio-item" type="button" data-open-modal="portfolioModal5">
+                        <div class="portfolio-item-caption"><i class="fas fa-info-circle"></i></div>
+                        <img src="assets/img/portfolio/m123_pris.png" alt="Pris" />
+                    </button>
+                    <button class="portfolio-item" type="button" data-open-modal="portfolioModal6">
+                        <div class="portfolio-item-caption"><i class="fas fa-info-circle"></i></div>
+                        <img src="assets/img/portfolio/m123_kom_i_gang.png" alt="Kom i gang" />
+                    </button>
                 </div>
             </div>
         </section>
 
-        <!-- Brochure Section-->
-        <section class="page-section bg-primary text-white mb-0" id="brochure">
-          <div class="container">
-              <!-- About Section Heading-->
-              <h2 class="page-section-heading text-center text-uppercase text-white">Brosjyre</h2>
-              <!-- Icon Divider-->
-              <div class="divider-custom divider-light">
-                  <div class="divider-custom-line"></div>
-                  <div class="divider-custom-icon"><i class="fas fa-chevron-circle-down"></i></div>
-                  <div class="divider-custom-line"></div>
-              </div>
-              <!-- Brochure Section Content-->
-              <div class="row">
-
-
-                  <div class="container">
-                    
-                    <iframe class="responsive-iframe" style='width:100%;height:500px' src='https://online.pubhtml5.com/ztui/myoo/'  seamless='seamless' scrolling='no' frameborder='0' allowtransparency='true' allowfullscreen='true' ></iframe>
-
-                  </div>
+        <!-- Brosjyre-seksjon-->
+        <section class="page-section bg-dark" id="brochure">
+            <div class="container">
+                <h2 class="page-section-heading">Brosjyre</h2>
+                <div class="divider-custom divider-light">
+                    <div class="divider-custom-line"></div>
+                    <div class="divider-custom-icon"><i class="fas fa-chevron-circle-down"></i></div>
+                    <div class="divider-custom-line"></div>
                 </div>
+                <iframe class="brochure-embed" src="https://online.pubhtml5.com/ztui/myoo/" seamless="seamless" scrolling="no" frameborder="0" allowtransparency="true" allowfullscreen="true" title="Medlem123-brosjyre"></iframe>
+                <div style="text-align:center; margin-top: 32px;">
+                    <a class="btn btn-outline-light" href="https://medlem123.no/brochure/Medlem123_Introduksjon_Rev.1.2_web.pdf">
+                        <i class="fas fa-external-link-alt"></i> Last ned brosjyre
+                    </a>
+                </div>
+            </div>
+        </section>
 
-
-              <!-- About Section Button-->
-              <div class="text-center mt-4">
-                  <a class="btn btn-xl btn-outline-light" href="https://medlem123.no/brochure/Medlem123_Introduksjon_Rev.1.2_web.pdf">
-                      <i class="fas fa-external-link-alt mr-2"></i>
-                      Last ned brosjyre
-                  </a>
-              </div>
-          </div>
-      </section>
-       
-        <!-- Contact Section-->
+        <!-- Spørsmål/FAQ-seksjon-->
         <section class="page-section" id="contact">
             <div class="container">
-                <!-- Contact Section Heading-->
-                <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Vanlige spørsmål</h2>
-                <!-- Icon Divider-->
+                <h2 class="page-section-heading">Vanlige spørsmål</h2>
                 <div class="divider-custom">
                     <div class="divider-custom-line"></div>
                     <div class="divider-custom-icon"><i class="fas fa-chevron-circle-down"></i></div>
                     <div class="divider-custom-line"></div>
                 </div>
-                <!-- Contact Section Form-->
-                <div class="accordion" id="accordionExample">
-
-                    <div class="card">
-                      <div class="card-header" id="headingOne">
-                        <h2 class="mb-0">
-                          <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                            Trenger vi et medlemssystem?
-                          </button>
-                        </h2>
-                      </div>
-                  
-                      <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-                        <div class="card-body">
-                          <strong>Nei, dere trenger ikke å ha et medlemssystem.</strong> Vi vil sette opp et profesjonelt medlemssystem for dere (Regweb), som vi behandler. Hvis dere senere ønsker å behandle medlemmene selv, kan dere kjøpe <strong>Regweb medlemssystem</strong>, til en redusert pris. Alle medlemsdata eies av foreningen.
-                        </div>
-                      </div>
-                    </div>
-                    <div class="card">
-                      <div class="card-header" id="headingTwo">
-                        <h2 class="mb-0">
-                          <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                            Hva hvis vi alt har et medlemssystem?
-                          </button>
-                        </h2>
-                      </div>
-                      <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-                        <div class="card-body">
-                          Hvis dere alt har et medlemssystem kan vi håndtere dette, men primært ønsker vi å bruke <strong>Regweb medlemssystem</strong>, som vi kjenner svært godt.
-                        </div>
-                      </div>
-                    </div>
-                    <div class="card">
-                      <div class="card-header" id="headingThree">
-                        <h2 class="mb-0">
-                          <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                            Hvordan får vi betalingsstatus, og oversikt over inn/-og utmeldinger?
-                          </button>
-                        </h2>
-                      </div>
-                      <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-                        <div class="card-body">
-                          Rapporter kan leveres på forespørsel, men det sendes full oversikt i slutten av hver måned. Vi leverer også en komplett hendelseslogg samtidig.
-                        </div>
-                      </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-header" id="headingFour">
-                            <h2 class="mb-0">
-                              <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                              Hva trenger organisasjonen å gjøre?
-                              </button>
-                            </h2>
-                          </div>
-                          <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
-                          <div class="card-body">
-                            Organisasjonen håndterer alle henvendelser vedrørende organisasjonen - vi håndterer kun medlemmene. Det bør settes opp en <code>medlemsservice@foreningen.no</code> e-post, som vi bruker mot medlemmene. 
-                          </div>
-                        </div>
-                      </div>
-  
-                    <div class="card">
-                        <div class="card-header" id="headingFive">
-                            <h2 class="mb-0">
-                              <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-                              Hvordan settes medlemmene til betalt?
-                              </button>
-                            </h2>
-                          </div>
-                          <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionExample">
-                          <div class="card-body">
-                            Medlemmene kan settes til betalt enten manuelt eller via OCR-giro filer. <strong>Vi anbefaler at foreningen setter opp en OCR-giro avtale med banken</strong>, og gir oss tilgang til filene. Vi vil innlese disse filene periodisk. KID-oppsett leverer vi.
-                          </div>
-                        </div>
-                      </div>
-                      
-                      <div class="card">
-                        <div class="card-header" id="headingSix">
-                            <h2 class="mb-0">
-                              <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
-                              Hvordan vil medlemmene oppleve vår kundeservice?
-                              </button>
-                            </h2>
-                          </div>
-                          <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordionExample">
-                          <div class="card-body">
-                            Medlemmene er den viktigste delen i alle organisasjoner og bør derfor behandles best mulig. De kan forvente å få raske svar vedrørende sitt medlemsforhold, og at de blir fulgt opp på en ryddig og skikkelig måte - primært via e-post.
-                          </div>
-                        </div>
-                      </div>
-
-                      <div class="card">
-                        <div class="card-header" id="headingSeven">
-                            <h2 class="mb-0">
-                              <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
-                              Håndterer dere medlemmer som skal ha brevfaktura (Print & Porto)?
-                              </button>
-                            </h2>
-                          </div>
-                          <div id="collapseSeven" class="collapse" aria-labelledby="headingSeven" data-parent="#accordionExample">
-                          <div class="card-body">
-                          Absolutt! Primært sender vi ut kontingent pr. e-post, men til de medlemmen som ikke har e-post skriver ut faktua og sender med porto. 
-                          </div>
-                        </div>
-                      </div>
-
-                      <div class="card">
-                        <div class="card-header" id="headingEight">
-                            <h2 class="mb-0">
-                              <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
-                                Svarer dere på henvendelser fra medlemmer via telefon?
-                              </button>
-                            </h2>
-                          </div>
-                          <div id="collapseEight" class="collapse" aria-labelledby="headingEight" data-parent="#accordionExample">
-                          <div class="card-body">
-                          Generelt ikke. Dette håndteres av en en kontaktperson i foreningen. Spørsmål vedrørende medlemsskap og personalia, besvares via e-post av oss.
-                          </div>
-                        </div>
-                      </div>
-
-                  </div>
-
-
+                <div class="faq">
+                    <details open>
+                        <summary>Trenger vi et medlemssystem?</summary>
+                        <div class="faq-body"><strong>Nei, dere trenger ikke å ha et medlemssystem.</strong> Vi vil sette opp et profesjonelt medlemssystem for dere (Regweb), som vi behandler. Hvis dere senere ønsker å behandle medlemmene selv, kan dere kjøpe <strong>Regweb medlemssystem</strong>, til en redusert pris. Alle medlemsdata eies av foreningen.</div>
+                    </details>
+                    <details>
+                        <summary>Hva hvis vi alt har et medlemssystem?</summary>
+                        <div class="faq-body">Hvis dere alt har et medlemssystem kan vi håndtere dette, men primært ønsker vi å bruke <strong>Regweb medlemssystem</strong>, som vi kjenner svært godt.</div>
+                    </details>
+                    <details>
+                        <summary>Hvordan får vi betalingsstatus, og oversikt over inn/-og utmeldinger?</summary>
+                        <div class="faq-body">Rapporter kan leveres på forespørsel, men det sendes full oversikt i slutten av hver måned. Vi leverer også en komplett hendelseslogg samtidig.</div>
+                    </details>
+                    <details>
+                        <summary>Hva trenger organisasjonen å gjøre?</summary>
+                        <div class="faq-body">Organisasjonen håndterer alle henvendelser vedrørende organisasjonen - vi håndterer kun medlemmene. Det bør settes opp en <code>medlemsservice@foreningen.no</code> e-post, som vi bruker mot medlemmene.</div>
+                    </details>
+                    <details>
+                        <summary>Hvordan settes medlemmene til betalt?</summary>
+                        <div class="faq-body">Medlemmene kan settes til betalt enten manuelt eller via OCR-giro filer. <strong>Vi anbefaler at foreningen setter opp en OCR-giro avtale med banken</strong>, og gir oss tilgang til filene. Vi vil innlese disse filene periodisk. KID-oppsett leverer vi.</div>
+                    </details>
+                    <details>
+                        <summary>Hvordan vil medlemmene oppleve vår kundeservice?</summary>
+                        <div class="faq-body">Medlemmene er den viktigste delen i alle organisasjoner og bør derfor behandles best mulig. De kan forvente å få raske svar vedrørende sitt medlemsforhold, og at de blir fulgt opp på en ryddig og skikkelig måte - primært via e-post.</div>
+                    </details>
+                    <details>
+                        <summary>Håndterer dere medlemmer som skal ha brevfaktura (Print &amp; Porto)?</summary>
+                        <div class="faq-body">Absolutt! Primært sender vi ut kontingent pr. e-post, men til de medlemmen som ikke har e-post skriver ut faktua og sender med porto.</div>
+                    </details>
+                    <details>
+                        <summary>Svarer dere på henvendelser fra medlemmer via telefon?</summary>
+                        <div class="faq-body">Generelt ikke. Dette håndteres av en en kontaktperson i foreningen. Spørsmål vedrørende medlemsskap og personalia, besvares via e-post av oss.</div>
+                    </details>
+                </div>
             </div>
         </section>
+
         <!-- Footer-->
-        <footer class="footer text-center">
+        <footer class="site-footer">
             <div class="container">
-                <div class="row">
-                    <!-- Footer Location-->
-                    <div class="col-lg-4 mb-5 mb-lg-0">
-                        <h4 class="text-uppercase mb-4">TELEFON/E-POST</h4>
-                        
-                        <p class="lead mb-0">
-                          Tlf. 33 31 28 00, Mandag – fredag, 09.00 – 15.00 (alle hverdager).
-                          kundeservice@medlem123.no
-                        </p>
-                        
+                <div class="footer-grid">
+                    <div>
+                        <h4>Telefon/e-post</h4>
+                        <p>Tlf. 33 31 28 00, Mandag – fredag, 09.00 – 15.00 (alle hverdager).<br />kundeservice@medlem123.no</p>
                     </div>
-                    <!-- Footer Social Icons-->
-                    <div class="col-lg-4 mb-5 mb-lg-0">
-                        <h4 class="text-uppercase mb-4">ADRESSE</h4>
-                       
-                        <p class="lead mb-0">
-                            Klopp AS (996 385 272 MVA), Farmannsveien 48, 3125 Tønsberg
-                        </p>
+                    <div>
+                        <h4>Adresse</h4>
+                        <p>Klopp AS (996 385 272 MVA), Farmannsveien 48, 3125 Tønsberg</p>
                     </div>
-                    <!-- Footer About Text-->
-                    <div class="col-lg-4">
-                        <h4 class="text-uppercase mb-4">Klopp AS</h4>
-                        <p class="lead mb-0">
-                          <a class="navbar-brand" href="#"><img src="assets/img/Klopp_logo_ink_R_w200.png" alt="Logo" style="width:200px;"></a>
-                        </p>
+                    <div>
+                        <h4>Klopp AS</h4>
+                        <a href="#"><img src="assets/img/Klopp_logo_ink_R_w200.png" alt="Klopp AS logo" style="width:200px; margin: 0 auto;" /></a>
                     </div>
                 </div>
             </div>
         </footer>
-        <!-- Copyright Section-->
-        <div class="copyright py-4 text-center text-white">
-            <div class="container"><small>Alle rettigheter forbeholdes Klopp AS » Web & Software Engineering. Regweb er et registrert varemerke ® i varemerkeregisteret. Dette nettsted har original tekst, beskyttet av åndsverkloven og markedsføringsloven. Kopiering og ettergjøring er derfor forbudt. Forbehold om skrivefeil.</small></div>
+        <div class="copyright">
+            Alle rettigheter forbeholdes Klopp AS » Web &amp; Software Engineering. Regweb er et registrert varemerke ® i varemerkeregisteret. Dette nettsted har original tekst, beskyttet av åndsverkloven og markedsføringsloven. Kopiering og ettergjøring er derfor forbudt. Forbehold om skrivefeil.
         </div>
-        <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes)-->
-        <div class="scroll-to-top d-lg-none position-fixed">
-            <a class="js-scroll-trigger d-block text-center text-white rounded" href="#page-top"><i class="fa fa-chevron-up"></i></a>
-        </div>
-        <!-- Portfolio Modals-->
-        <!-- Portfolio Modal 1-->
-        <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-labelledby="portfolioModal1Label" aria-hidden="true">
-            <div class="modal-dialog modal-xl" role="document">
-                <div class="modal-content">
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true"><i class="fas fa-times"></i></span>
-                    </button>
-                    <div class="modal-body text-center">
-                        <div class="container">
-                            <div class="row justify-content-center">
-                                <div class="col-lg-8">
-                                    <!-- Portfolio Modal - Title-->
-                                    <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0" id="portfolioModal1Label">Innmelding</h2>
-                                    <!-- Icon Divider-->
-                                    <div class="divider-custom">
-                                        <div class="divider-custom-line"></div>
-                                        <div class="divider-custom-icon"><i class="fas fa-info-circle"></i></div>
-                                        <div class="divider-custom-line"></div>
-                                    </div>
-                                    <!-- Portfolio Modal - Image-->
-                                    <img class="img-fluid rounded mb-5" src="assets/img/portfolio/m123_innmelding.png" alt="" />
-                                    <!-- Portfolio Modal - Text-->
-                                    <p class="mb-5">Vi designer en innmeldingsform som legges inn på foreningens nettside. Når et nytt medlem melder seg inn, vil vi sende ut kontingentfaktura og en hyggelig velkomstepost fra foreningen. Innmeldingsskjemaet vil være direkte koblet mot medlemssystemet.</p>
-                                    
-                                    
-                                    <div class="alert alert-info" role="alert">
-                                        Eksempel på <a target=”_blank” href="https://xreg.no/innmelding/ntf" class="alert-link">innmeldingsform (klikk her)</a>
-                                      </div>
-                                    
-                                    
-                                    <button class="btn btn-primary" data-dismiss="modal">
-                                        <i class="fas fa-times fa-fw"></i>
-                                        Lukk vindu
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
+        <!-- Scroll til topp-knapp -->
+        <a class="scroll-to-top" href="#page-top" aria-label="Scroll til toppen"><i class="fa fa-chevron-up"></i></a>
+
+        <!-- Portfolio-modaler (native <dialog>) -->
+        <dialog class="portfolio-modal" id="portfolioModal1">
+            <div class="modal-inner">
+                <button class="modal-close" type="button" data-close-modal aria-label="Lukk"><i class="fas fa-times"></i></button>
+                <h2 class="modal-title">Innmelding</h2>
+                <div class="divider-custom"><div class="divider-custom-line"></div><div class="divider-custom-icon"><i class="fas fa-info-circle"></i></div><div class="divider-custom-line"></div></div>
+                <img class="modal-image" src="assets/img/portfolio/m123_innmelding.png" alt="" />
+                <p>Vi designer en innmeldingsform som legges inn på foreningens nettside. Når et nytt medlem melder seg inn, vil vi sende ut kontingentfaktura og en hyggelig velkomstepost fra foreningen. Innmeldingsskjemaet vil være direkte koblet mot medlemssystemet.</p>
+                <div class="info-box">Eksempel på <a target="_blank" rel="noopener" href="https://xreg.no/innmelding/ntf">innmeldingsform (klikk her)</a></div>
+                <button class="modal-close-btn" type="button" data-close-modal><i class="fas fa-times"></i> Lukk vindu</button>
             </div>
-        </div>
-        <!-- Portfolio Modal 2-->
-        <div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" role="dialog" aria-labelledby="portfolioModal2Label" aria-hidden="true">
-            <div class="modal-dialog modal-xl" role="document">
-                <div class="modal-content">
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true"><i class="fas fa-times"></i></span>
-                    </button>
-                    <div class="modal-body text-center">
-                        <div class="container">
-                            <div class="row justify-content-center">
-                                <div class="col-lg-8">
-                                    <!-- Portfolio Modal - Title-->
-                                    <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0" id="portfolioModal2Label">Oppfølging</h2>
-                                    <!-- Icon Divider-->
-                                    <div class="divider-custom">
-                                        <div class="divider-custom-line"></div>
-                                        <div class="divider-custom-icon"><i class="fas fa-info-circle"></i></div>
-                                        <div class="divider-custom-line"></div>
-                                    </div>
-                                    <!-- Portfolio Modal - Image-->
-                                    <img class="img-fluid rounded mb-5" src="assets/img/portfolio/m123_oppfolging.png" alt="" />
-                                    <!-- Portfolio Modal - Text-->
-                                    <p class="mb-5">Vanlige rutiner vil være inn/og utmelding, utsendelse av kontingentfaktura (pr. epost) og korrigeringen i medlemssystemet.</p>
-                                    
-                                
-                                    <p class="mb-5">
-                                        <ul class="list-group">
-                                            <li class="list-group-item list-group-item-danger"><strong>Daglige oppgaver</strong></li>
-                                            <li class="list-group-item list-group-item-light">Inn og utmeldinger</li>
-                                            <li class="list-group-item list-group-item-light">Fakturering, betaling og oppfølging</li>
-                                            <li class="list-group-item list-group-item-light">Korrigering av medlemsinfo</li>
-                                            <li class="list-group-item list-group-item-light">E-posthenveldelser</li>
-                                            <li class="list-group-item list-group-item-light">Daglig backup</li>
-                                            
-                                            <li class="list-group-item list-group-item-danger"><strong>Periodiske oppgaver</strong></li>
-                                            <li class="list-group-item list-group-item-light">Innlesning av OCR-giro filer</li>
-                                            <li class="list-group-item list-group-item-light">Masseutsending av kontingent</li>
-                                            <li class="list-group-item list-group-item-light">Masseutsending av påminnelser</li>
-                                            <li class="list-group-item list-group-item-light">Levere medlemslist til styret</li>
-                                            <li class="list-group-item list-group-item-light">Levere revisorliste til regnskapsfører</li>
+        </dialog>
 
-                                        </ul>
-                                        </p>
-                                
-                                
-                                
-                                    <button class="btn btn-primary" data-dismiss="modal">
-                                        <i class="fas fa-times fa-fw"></i>
-                                        Lukk vindu
-                                    </button>
-                                
-                                
-                                
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        <dialog class="portfolio-modal" id="portfolioModal2">
+            <div class="modal-inner">
+                <button class="modal-close" type="button" data-close-modal aria-label="Lukk"><i class="fas fa-times"></i></button>
+                <h2 class="modal-title">Oppfølging</h2>
+                <div class="divider-custom"><div class="divider-custom-line"></div><div class="divider-custom-icon"><i class="fas fa-info-circle"></i></div><div class="divider-custom-line"></div></div>
+                <img class="modal-image" src="assets/img/portfolio/m123_oppfolging.png" alt="" />
+                <p>Vanlige rutiner vil være inn/og utmelding, utsendelse av kontingentfaktura (pr. epost) og korrigeringen i medlemssystemet.</p>
+                <ul class="task-list">
+                    <li class="category">Daglige oppgaver</li>
+                    <li>Inn og utmeldinger</li>
+                    <li>Fakturering, betaling og oppfølging</li>
+                    <li>Korrigering av medlemsinfo</li>
+                    <li>E-posthenveldelser</li>
+                    <li>Daglig backup</li>
+                    <li class="category">Periodiske oppgaver</li>
+                    <li>Innlesning av OCR-giro filer</li>
+                    <li>Masseutsending av kontingent</li>
+                    <li>Masseutsending av påminnelser</li>
+                    <li>Levere medlemslist til styret</li>
+                    <li>Levere revisorliste til regnskapsfører</li>
+                </ul>
+                <button class="modal-close-btn" type="button" data-close-modal><i class="fas fa-times"></i> Lukk vindu</button>
             </div>
-        </div>
-        <!-- Portfolio Modal 3-->
-        <div class="portfolio-modal modal fade" id="portfolioModal3" tabindex="-1" role="dialog" aria-labelledby="portfolioModal3Label" aria-hidden="true">
-            <div class="modal-dialog modal-xl" role="document">
-                <div class="modal-content">
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true"><i class="fas fa-times"></i></span>
-                    </button>
-                    <div class="modal-body text-center">
-                        <div class="container">
-                            <div class="row justify-content-center">
-                                <div class="col-lg-8">
-                                    <!-- Portfolio Modal - Title-->
-                                    <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0" id="portfolioModal3Label">Kontingent</h2>
-                                    <!-- Icon Divider-->
-                                    <div class="divider-custom">
-                                        <div class="divider-custom-line"></div>
-                                        <div class="divider-custom-icon"><i class="fas fa-info-circle"></i></div>
-                                        <div class="divider-custom-line"></div>
-                                    </div>
-                                    <!-- Portfolio Modal - Image-->
-                                    <img class="img-fluid rounded mb-5" src="assets/img/portfolio/m123_kontingent.png" alt="" />
-                                    <!-- Portfolio Modal - Text-->
-                                    <p class="mb-5">De fleste foreninger har masseutsending av kontingent en gang i året, og påfølgende påminnelser, og krediteringer (for de som melder seg ut). Gjennom året sendes nye kontingentfaktura fortløpende, ettersom medlemmer melder seg inn.</p>
-                                    
-                                    <div class="alert alert-info">
-                                      <strong>Medlemstyper!</strong> Bestemmes av foreningen.
-                                    </div>
+        </dialog>
 
-                                    <p class="mb-5">
-                                         
-                                    <button class="btn btn-primary" data-dismiss="modal">
-                                        <i class="fas fa-times fa-fw"></i>
-                                        Lukk vindu
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        <dialog class="portfolio-modal" id="portfolioModal3">
+            <div class="modal-inner">
+                <button class="modal-close" type="button" data-close-modal aria-label="Lukk"><i class="fas fa-times"></i></button>
+                <h2 class="modal-title">Kontingent</h2>
+                <div class="divider-custom"><div class="divider-custom-line"></div><div class="divider-custom-icon"><i class="fas fa-info-circle"></i></div><div class="divider-custom-line"></div></div>
+                <img class="modal-image" src="assets/img/portfolio/m123_kontingent.png" alt="" />
+                <p>De fleste foreninger har masseutsending av kontingent en gang i året, og påfølgende påminnelser, og krediteringer (for de som melder seg ut). Gjennom året sendes nye kontingentfaktura fortløpende, ettersom medlemmer melder seg inn.</p>
+                <div class="info-box"><strong>Medlemstyper!</strong> Bestemmes av foreningen.</div>
+                <button class="modal-close-btn" type="button" data-close-modal><i class="fas fa-times"></i> Lukk vindu</button>
             </div>
-        </div>
-        <!-- Portfolio Modal 4-->
-        <div class="portfolio-modal modal fade" id="portfolioModal4" tabindex="-1" role="dialog" aria-labelledby="portfolioModal4Label" aria-hidden="true">
-            <div class="modal-dialog modal-xl" role="document">
-                <div class="modal-content">
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true"><i class="fas fa-times"></i></span>
-                    </button>
-                    <div class="modal-body text-center">
-                        <div class="container">
-                            <div class="row justify-content-center">
-                                <div class="col-lg-8">
-                                    <!-- Portfolio Modal - Title-->
-                                    <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0" id="portfolioModal4Label">Din side</h2>
-                                    <!-- Icon Divider-->
-                                    <div class="divider-custom">
-                                        <div class="divider-custom-line"></div>
-                                        <div class="divider-custom-icon"><i class="fas fa-info-circle"></i></div>
-                                        <div class="divider-custom-line"></div>
-                                    </div>
-                                    <!-- Portfolio Modal - Image-->
-                                    <img class="img-fluid rounded mb-5" src="assets/img/portfolio/m123_din_side.png" alt="" />
-                                    <!-- Portfolio Modal - Text-->
-                                    <p class="mb-5">Vi kan levere en spesialtilpasset <strong>Din side-løsning</strong>, som legges inn på foreningens nettside. Der kan medlemmer selv oppdatere egen medlemsinfo. Din side løsningen kan bestilles med flere moduler, f. eks. bladmodul og dokumentmodul (Årsberetning, regnskap, referater, osv.).</p>
-                                    
-                                    <blockquote class="blockquote">
-                                        <p class="mb-0">Din side-løsningen tilpasses foreningen</p>
-                                      </blockquote>
+        </dialog>
 
-                                    <p class="mb-5"></p>
-                                    <img src="assets/img/din_side_eksempel1.png" class="img-fluid" alt="Responsive image">
-                                    <div class="container"><small>Alle data behandles i henhold til GDPR (EUs personvernforordning).</small></div>
-                                    </p>
-                                    
-                                    <button class="btn btn-primary" data-dismiss="modal">
-                                        <i class="fas fa-times fa-fw"></i>
-                                        Lukk vindu
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        <dialog class="portfolio-modal" id="portfolioModal4">
+            <div class="modal-inner">
+                <button class="modal-close" type="button" data-close-modal aria-label="Lukk"><i class="fas fa-times"></i></button>
+                <h2 class="modal-title">Din side</h2>
+                <div class="divider-custom"><div class="divider-custom-line"></div><div class="divider-custom-icon"><i class="fas fa-info-circle"></i></div><div class="divider-custom-line"></div></div>
+                <img class="modal-image" src="assets/img/portfolio/m123_din_side.png" alt="" />
+                <p>Vi kan levere en spesialtilpasset <strong>Din side-løsning</strong>, som legges inn på foreningens nettside. Der kan medlemmer selv oppdatere egen medlemsinfo. Din side løsningen kan bestilles med flere moduler, f. eks. bladmodul og dokumentmodul (Årsberetning, regnskap, referater, osv.).</p>
+                <blockquote>Din side-løsningen tilpasses foreningen</blockquote>
+                <img src="assets/img/din_side_eksempel1.png" class="modal-image" alt="Eksempel på Din side" />
+                <p><small>Alle data behandles i henhold til GDPR (EUs personvernforordning).</small></p>
+                <button class="modal-close-btn" type="button" data-close-modal><i class="fas fa-times"></i> Lukk vindu</button>
             </div>
-        </div>
-        <!-- Portfolio Modal 5-->
-        <div class="portfolio-modal modal fade" id="portfolioModal5" tabindex="-1" role="dialog" aria-labelledby="portfolioModal5Label" aria-hidden="true">
-            <div class="modal-dialog modal-xl" role="document">
-                <div class="modal-content">
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true"><i class="fas fa-times"></i></span>
-                    </button>
-                    <div class="modal-body text-center">
-                        <div class="container">
-                            <div class="row justify-content-center">
-                                <div class="col-lg-8">
-                                    <!-- Portfolio Modal - Title-->
-                                    <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0" id="portfolioModal5Label">Pris</h2>
-                                    <!-- Icon Divider-->
-                                    <div class="divider-custom">
-                                        <div class="divider-custom-line"></div>
-                                        <div class="divider-custom-icon"><i class="fas fa-info-circle"></i></div>
-                                        <div class="divider-custom-line"></div>
-                                    </div>
-                                    <!-- Portfolio Modal - Image-->
-                                    <img class="img-fluid rounded mb-5" src="assets/img/portfolio/m123_pris.png" alt="" />
-                                    <!-- Portfolio Modal - Text-->
-                                    <p class="mb-5">Arbeidet kan utføres pr. time eller med fastpris (fastsettes for hver organisasjon). Hvis arbeidet utføres pr. time leveres en detaljert rapport i slutten av hver måned, med alle hendelser som har blitt utført.</p>
-                                    
-                                    
-                                    <p class="mb-5">
-                                        <blockquote class="blockquote">
-                                            <p class="mb-0">Prisoversikt</p>
-                                          </blockquote>
+        </dialog>
 
-                                        <div class="accordion" id="accordionExample">
-                                            <div class="card">
-                                              <div class="card-header" id="headingOne">
-                                                <h2 class="mb-0">
-                                                  <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                                    Oppstartskostnader
-                                                  </button>
-                                                </h2>
-                                              </div>
-                                          
-                                              <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-                                                <div class="card-body">
-                                                    Kr. 10.000. Inkluderer oppsett av medlemssystem.
-                                                    <div class="container"><small>Merk! Eksisterende Regweb-kunder betaler kr. 0 i oppstart!</small></div>
-                                                </div>
-                                              </div>
-                                            </div>
-                                            <div class="card">
-                                              <div class="card-header" id="headingTwo">
-                                                <h2 class="mb-0">
-                                                  <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                                    Løpende kostnader
-                                                  </button>
-                                                </h2>
-                                              </div>
-                                              <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-                                                <div class="card-body">
-                                                  Foreningen blir belastet pr. henvendelse fra medlemmer med 15 minutter, til fastsatt timesats. Hvis antall timer overstiger <strong>20 timer</strong> pr. måned, gir vi <strong>20% rabatt på alle timene</strong>. Ta kontakt for detaljer.
-                                                </div>
-                                              </div>
-                                            </div>
-                                            <div class="card">
-                                              <div class="card-header" id="headingThree">
-                                                <h2 class="mb-0">
-                                                  <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                                    Andre kostnader
-                                                  </button>
-                                                </h2>
-                                              </div>
-                                              <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-                                                <div class="card-body">
-                                                    Ønsker dere <strong>nettinnmelding</strong> og <strong>Din side,</strong> koster disse kr. 199/mnd. pr. modul.
-                                                </div>
-                                              </div>
-                                            </div>
-                                          </div>
-                                          
-                                            <div class="container"><small>Det leveres alltid en skriftlig oppdragsavtale. Alle priser er eks. mva.</small></div>
-
-                                            <p class="mb-5">
-                                                <div class="alert alert-success" role="alert">
-                                                    Vi leverer alltid en detaljert rapport over alle henvendelser i slutten av hver måned.
-                                                  </div>
-                                            </p>
-
-                                        </p>
-                                    <button class="btn btn-primary" data-dismiss="modal">
-                                        <i class="fas fa-times fa-fw"></i>
-                                        Lukk vindu
-                                    </button>
-                                </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+        <dialog class="portfolio-modal" id="portfolioModal5">
+            <div class="modal-inner">
+                <button class="modal-close" type="button" data-close-modal aria-label="Lukk"><i class="fas fa-times"></i></button>
+                <h2 class="modal-title">Pris</h2>
+                <div class="divider-custom"><div class="divider-custom-line"></div><div class="divider-custom-icon"><i class="fas fa-info-circle"></i></div><div class="divider-custom-line"></div></div>
+                <img class="modal-image" src="assets/img/portfolio/m123_pris.png" alt="" />
+                <p>Arbeidet kan utføres pr. time eller med fastpris (fastsettes for hver organisasjon). Hvis arbeidet utføres pr. time leveres en detaljert rapport i slutten av hver måned, med alle hendelser som har blitt utført.</p>
+                <blockquote>Prisoversikt</blockquote>
+                <div class="faq">
+                    <details open>
+                        <summary>Oppstartskostnader</summary>
+                        <div class="faq-body">Kr. 10.000. Inkluderer oppsett av medlemssystem.<br /><small>Merk! Eksisterende Regweb-kunder betaler kr. 0 i oppstart!</small></div>
+                    </details>
+                    <details>
+                        <summary>Løpende kostnader</summary>
+                        <div class="faq-body">Foreningen blir belastet pr. henvendelse fra medlemmer med 15 minutter, til fastsatt timesats. Hvis antall timer overstiger <strong>20 timer</strong> pr. måned, gir vi <strong>20&nbsp;% rabatt på alle timene</strong>. Ta kontakt for detaljer.</div>
+                    </details>
+                    <details>
+                        <summary>Andre kostnader</summary>
+                        <div class="faq-body">Ønsker dere <strong>nettinnmelding</strong> og <strong>Din side,</strong> koster disse kr. 199/mnd. pr. modul.</div>
+                    </details>
                 </div>
+                <p style="margin-top:16px;"><small>Det leveres alltid en skriftlig oppdragsavtale. Alle priser er eks. mva.</small></p>
+                <div class="success-box">Vi leverer alltid en detaljert rapport over alle henvendelser i slutten av hver måned.</div>
+                <button class="modal-close-btn" type="button" data-close-modal><i class="fas fa-times"></i> Lukk vindu</button>
             </div>
-        </div>
-        <!-- Portfolio Modal 6-->
-        <div class="portfolio-modal modal fade" id="portfolioModal6" tabindex="-1" role="dialog" aria-labelledby="portfolioModal6Label" aria-hidden="true">
-            <div class="modal-dialog modal-xl" role="document">
-                <div class="modal-content">
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true"><i class="fas fa-times"></i></span>
-                    </button>
-                    <div class="modal-body text-center">
-                        <div class="container">
-                            <div class="row justify-content-center">
-                                <div class="col-lg-8">
-                                    <!-- Portfolio Modal - Title-->
-                                    <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0" id="portfolioModal6Label">Kom i gang</h2>
-                                    <!-- Icon Divider-->
-                                    <div class="divider-custom">
-                                        <div class="divider-custom-line"></div>
-                                        <div class="divider-custom-icon"><i class="fas fa-info-circle"></i></div>
-                                        <div class="divider-custom-line"></div>
-                                    </div>
-                                    <!-- Portfolio Modal - Image-->
-                                    <img class="img-fluid rounded mb-5" src="assets/img/portfolio/m123_kom_i_gang.png" alt="" />
-                                    <!-- Portfolio Modal - Text-->
-                                    <p class="mb-5">
-                                        <blockquote class="blockquote">
-                                            <p class="mb-0">Slik kommer du/dere i gang:</p>
-                                          </blockquote>
+        </dialog>
 
-                                        <ul class="list-group">
-                                            <li class="list-group-item d-flex justify-content-between align-items-center">
-                                              Oppsett og tilpasning av medlemssystem 
-                                              <span class="badge badge-primary badge-pill">1</span>
-                                            </li>
-                                            <li  class="list-group-item d-flex justify-content-between align-items-center">
-                                              Oppsett av e-post som deles med medlem123
-                                              <span class="badge badge-primary badge-pill">2</span>
-                                            </li>
-                                            <li class="list-group-item d-flex justify-content-between align-items-center">
-                                              Oppsett av OCR-giro avtale 
-                                                <span class="badge badge-primary badge-pill">3</span>
-                                              </li>
-                                              <li class="list-group-item d-flex justify-content-between align-items-center">
-                                                Oppsett av nettinnmeldingsform
-                                                <span class="badge badge-primary badge-pill">4</span>
-                                              </li>
-                                              <li class="list-group-item d-flex justify-content-between align-items-center">
-                                                Oppsett av Din side (valgfritt!)
-                                                <span class="badge badge-primary badge-pill">5</span>
-                                              </li>
-                                            <li class="list-group-item d-flex justify-content-between align-items-center">
-                                                Vi kan begynne!
-                                              <span class="badge badge-pill badge-info">Start</span>
-                                            </li>
-                                          </ul>
-                                          <div class="container"><small>Fri support på telefon og e-post</small></div>
-                                    </p>
-                                    
-                                    
-
-                                    <div class="alert alert-info" role="alert">
-                                        Dere kan når som helst avslutte vårt oppdrag, og vil da få utlevert komplett medlemsliste over alle medlemmene i Excel format.
-                                      </div>                                      
-                                    <button class="btn btn-primary" data-dismiss="modal">
-                                        <i class="fas fa-times fa-fw"></i>
-                                        Lukk vindu
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        <dialog class="portfolio-modal" id="portfolioModal6">
+            <div class="modal-inner">
+                <button class="modal-close" type="button" data-close-modal aria-label="Lukk"><i class="fas fa-times"></i></button>
+                <h2 class="modal-title">Kom i gang</h2>
+                <div class="divider-custom"><div class="divider-custom-line"></div><div class="divider-custom-icon"><i class="fas fa-info-circle"></i></div><div class="divider-custom-line"></div></div>
+                <img class="modal-image" src="assets/img/portfolio/m123_kom_i_gang.png" alt="" />
+                <blockquote>Slik kommer du/dere i gang:</blockquote>
+                <ul class="task-list">
+                    <li>Oppsett og tilpasning av medlemssystem <span class="badge">1</span></li>
+                    <li>Oppsett av e-post som deles med medlem123 <span class="badge">2</span></li>
+                    <li>Oppsett av OCR-giro avtale <span class="badge">3</span></li>
+                    <li>Oppsett av nettinnmeldingsform <span class="badge">4</span></li>
+                    <li>Oppsett av Din side (valgfritt!) <span class="badge">5</span></li>
+                    <li>Vi kan begynne! <span class="badge badge-start">Start</span></li>
+                </ul>
+                <p><small>Fri support på telefon og e-post</small></p>
+                <div class="info-box">Dere kan når som helst avslutte vårt oppdrag, og vil da få utlevert komplett medlemsliste over alle medlemmene i Excel format.</div>
+                <button class="modal-close-btn" type="button" data-close-modal><i class="fas fa-times"></i> Lukk vindu</button>
             </div>
-        </div>
-        <!-- Bootstrap core JS-->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- Third party plugin JS-->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
-        <!-- Contact form JS-->
-        <script src="assets/mail/jqBootstrapValidation.js"></script>
-        <script src="assets/mail/contact_me.js"></script>
-        <!-- Core theme JS-->
-        <script src="js/scripts.js"></script>
+        </dialog>
+
+        <!-- Egen JS (erstatter jQuery/Bootstrap-JS/jqBootstrapValidation, 2026-09-09) -->
+        <script src="js/site.js"></script>
     </body>
 </html>

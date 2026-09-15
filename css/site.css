@@ -1,0 +1,314 @@
+/*!
+ * medlem123.no — egen, håndskrevet stilfil (2026-09-09)
+ * Erstatter Bootstrap 4.5.3 (var 10 240 linjer, nesten utelukkende ren rammeverkskode).
+ * Fargeverdier/typografi hentet direkte fra den live siden via getComputedStyle(),
+ * ikke gjettet — se /wordpress-og-web_expert sitt skill-minne for full forklaring.
+ */
+
+:root {
+  --navy-dark: #1a252f;   /* masthead-bakgrunn */
+  --navy: #2c3e50;        /* nav/footer-bakgrunn, mørk brødtekst */
+  --purple: #bb70a9;      /* aksentfarge — hover, aktiv nav-lenke, knapper */
+  --purple-dark: #5c4461; /* CTA-banner-bakgrunn */
+  --white: #ffffff;
+  --body-text: #212529;
+  --font-heading: "Montserrat", -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  --font-body: "Lato", -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  --container-max: 1140px;
+  --nav-height: 104px;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--body-text);
+  background: var(--white);
+}
+
+img { max-width: 100%; height: auto; display: block; }
+
+.container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+h1, h2, h3 { font-family: var(--font-heading); font-weight: 700; margin: 0; }
+
+/* Sømløs anker-scroll under fast nav — kompenserer for nav-høyden i stedet for JS-offset */
+section[id], header[id] { scroll-margin-top: var(--nav-height); }
+
+/* --- Navigasjon --- */
+.navbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  background: var(--navy);
+  min-height: var(--nav-height);
+  display: flex;
+  align-items: center;
+}
+.navbar .container { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; width: 100%; }
+.navbar-brand {
+  font-family: var(--font-heading);
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--white);
+  text-decoration: none;
+  text-transform: uppercase;
+}
+.navbar-toggler {
+  display: none;
+  background: var(--navy-dark);
+  color: var(--white);
+  border: none;
+  border-radius: 8px;
+  padding: 10px 16px;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 13px;
+  cursor: pointer;
+}
+.navbar-nav { list-style: none; display: flex; gap: 4px; margin: 0; padding: 0; }
+.nav-link {
+  display: block;
+  padding: 12px 16px;
+  color: var(--white);
+  text-decoration: none;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 16px;
+  text-transform: uppercase;
+  border-radius: 6px;
+  transition: color .15s ease;
+}
+.nav-link:hover, .nav-link.active { color: var(--purple); }
+
+@media (max-width: 991px) {
+  .navbar-toggler { display: block; }
+  .navbar-collapse {
+    display: none;
+    width: 100%;
+    order: 3;
+  }
+  .navbar-collapse.show { display: block; }
+  .navbar-nav { flex-direction: column; padding: 8px 0; }
+}
+
+/* --- Masthead (hero) --- */
+.masthead {
+  background: var(--navy-dark);
+  color: var(--white);
+  text-align: center;
+  padding: 200px 0 96px;
+}
+.masthead-avatar { width: 240px; margin: 0 auto 32px; }
+.masthead-heading {
+  font-size: 64px;
+  text-transform: uppercase;
+  color: var(--white);
+  line-height: 1.1;
+}
+.masthead-subheading {
+  font-size: 24px;
+  font-weight: 300;
+  color: var(--white);
+  margin: 0;
+}
+
+@media (max-width: 767px) {
+  .masthead { padding: 140px 0 64px; }
+  .masthead-heading { font-size: 36px; }
+  .masthead-subheading { font-size: 18px; }
+}
+
+/* --- Divider (ikon-skille brukt under overskrifter) --- */
+.divider-custom { display: flex; align-items: center; justify-content: center; gap: 16px; margin: 24px 0; }
+.divider-custom-line { height: 4px; width: 112px; background: var(--navy); }
+.divider-custom.divider-light .divider-custom-line { background: var(--white); }
+.divider-custom-icon {
+  width: 48px; height: 48px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 50%;
+  border: 2px solid var(--navy);
+  color: var(--navy);
+  font-size: 20px;
+}
+.divider-custom.divider-light .divider-custom-icon { border-color: var(--white); color: var(--white); }
+
+/* --- CTA-banner (telefon) --- */
+.cta-banner { background: var(--purple-dark); color: var(--white); text-align: center; padding: 32px 24px; }
+.cta-banner h2 { font-family: var(--font-body); font-size: 20px; font-weight: 700; margin: 4px 0; }
+
+/* --- Seksjoner generelt --- */
+.page-section { padding: 96px 0; }
+.page-section-heading {
+  text-align: center;
+  text-transform: uppercase;
+  color: var(--navy);
+  font-size: 48px;
+}
+.page-section.bg-dark { background: var(--navy-dark); color: var(--white); }
+.page-section.bg-dark .page-section-heading { color: var(--white); }
+
+@media (max-width: 767px) {
+  .page-section { padding: 56px 0; }
+  .page-section-heading { font-size: 30px; }
+}
+
+/* --- Portfolio-grid (tjenestekort) --- */
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  margin-top: 16px;
+}
+@media (max-width: 991px) { .portfolio-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 575px) { .portfolio-grid { grid-template-columns: 1fr; } }
+
+.portfolio-item {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  border-radius: 4px;
+  background: none;
+}
+.portfolio-item img { width: 100%; transition: transform .3s ease; }
+.portfolio-item-caption {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(187, 112, 169, .9); /* --purple, 90% */
+  color: var(--white);
+  font-size: 2rem;
+  opacity: 0;
+  transition: opacity .25s ease;
+}
+.portfolio-item:hover .portfolio-item-caption { opacity: 1; }
+.portfolio-item:hover img { transform: scale(1.05); }
+
+/* --- Knapper --- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 28px;
+  border-radius: 8px;
+  font-family: var(--font-body);
+  font-weight: 400;
+  text-decoration: none;
+  cursor: pointer;
+  border: 2px solid transparent;
+  font-size: 16px;
+}
+.btn-outline-light { background: transparent; color: var(--white); border-color: var(--white); }
+.btn-outline-light:hover { background: var(--white); color: var(--navy-dark); }
+.btn-purple { background: var(--purple); color: var(--white); }
+.btn-purple:hover { background: var(--purple-dark); }
+
+/* --- Brosjyre-seksjon --- */
+.brochure-embed { width: 100%; height: 500px; border: none; }
+
+/* --- FAQ (native <details>/<summary> — erstatter Bootstrap-accordion) --- */
+.faq { border: 1px solid #dee2e6; border-radius: 4px; overflow: hidden; }
+.faq details { border-bottom: 1px solid #dee2e6; }
+.faq details:last-child { border-bottom: none; }
+.faq summary {
+  padding: 16px 20px;
+  cursor: pointer;
+  font-weight: 400;
+  color: var(--navy);
+  list-style: none;
+}
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::before { content: "▸ "; color: var(--purple); }
+.faq details[open] summary::before { content: "▾ "; }
+.faq details[open] summary { color: var(--purple-dark); font-weight: 700; }
+.faq .faq-body { padding: 0 20px 20px; }
+
+/* --- Footer --- */
+.site-footer { background: var(--navy); color: var(--white); text-align: center; padding: 64px 0; }
+.site-footer h4 { font-size: 15px; text-transform: uppercase; margin-bottom: 16px; letter-spacing: .05em; }
+.footer-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+@media (max-width: 767px) { .footer-grid { grid-template-columns: 1fr; } }
+.copyright { background: var(--navy-dark); color: var(--white); text-align: center; padding: 16px 24px; font-size: 13px; }
+
+/* --- Scroll-til-topp-knapp --- */
+.scroll-to-top {
+  position: fixed;
+  right: 20px; bottom: 20px;
+  width: 44px; height: 44px;
+  background: rgba(44, 62, 80, .8);
+  color: var(--white);
+  border-radius: 4px;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  z-index: 900;
+}
+.scroll-to-top.show { display: flex; }
+
+/* --- Modal (native <dialog> — erstatter Bootstrap-modal) --- */
+dialog.portfolio-modal {
+  border: none;
+  border-radius: 4px;
+  padding: 0;
+  width: min(900px, 92vw);
+  max-height: 88vh;
+  overflow-y: auto;
+}
+dialog.portfolio-modal::backdrop { background: rgba(0, 0, 0, .6); }
+.modal-inner { padding: 48px 40px; text-align: center; position: relative; }
+.modal-close {
+  position: absolute;
+  top: 16px; right: 16px;
+  background: none;
+  border: none;
+  color: var(--purple);
+  font-size: 24px;
+  cursor: pointer;
+  line-height: 1;
+}
+.modal-title { color: var(--navy); text-transform: uppercase; font-size: 32px; }
+.modal-image { border-radius: 4px; margin: 24px 0; }
+.modal-close-btn {
+  background: var(--purple);
+  color: var(--white);
+  border: none;
+  border-radius: 8px;
+  padding: 12px 24px;
+  font-family: var(--font-body);
+  cursor: pointer;
+  margin-top: 16px;
+}
+.modal-close-btn:hover { background: var(--purple-dark); }
+.info-box {
+  background: var(--navy-dark);
+  color: var(--white);
+  border: 1px solid var(--purple);
+  border-radius: 4px;
+  padding: 16px 20px;
+  margin: 20px 0;
+  text-align: left;
+}
+.info-box a { color: var(--purple); }
+.success-box { background: #d4edda; color: #155724; border: 1px solid #c3e6cb; border-radius: 4px; padding: 16px 20px; margin: 20px 0; text-align: left; }
+.task-list { list-style: none; padding: 0; margin: 0 0 20px; text-align: left; }
+.task-list li { display: flex; justify-content: space-between; align-items: center; padding: 10px 14px; border: 1px solid #dee2e6; border-top: none; }
+.task-list li:first-child { border-top: 1px solid #dee2e6; }
+.task-list .badge { background: var(--purple); color: var(--white); border-radius: 999px; padding: 3px 10px; font-size: 13px; }
+.task-list .badge-start { background: var(--navy); }
+.task-list.category li { border: none; font-weight: 700; padding: 12px 14px 4px; }
