@@ -161,6 +161,12 @@
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 
+/* Inline SVG-ikoner (r005, 2026-09-16 — erstatter Font Awesome, se § SEO/GEO-funn i
+   /wordpress-og-web_expert): en ekstern ikonfont for 7 enkle former var en unødvendig
+   ~100-150KB avhengighet. `currentColor` gjør at ikonet alltid arver tekstfargen rundt
+   seg, akkurat som en ikonfont gjorde. */
+.icon { vertical-align: -0.125em; flex: none; }
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after {
@@ -368,7 +374,7 @@ section[id], header[id] { scroll-margin-top: calc(var(--nav-height) + var(--spac
   position: relative;
   z-index: 1;
 }
-.cta-banner h2 {
+.cta-banner p {
   font-family: var(--font-text);
   font-size: 17px;
   font-weight: 400;
@@ -376,7 +382,11 @@ section[id], header[id] { scroll-margin-top: calc(var(--nav-height) + var(--spac
   margin: var(--space-1) 0;
   letter-spacing: normal;
 }
-.cta-banner h2:first-child { font-weight: 600; font-size: 19px; }
+/* r005, 2026-09-16: CTA-banneret er ren markedsføringstekst, ikke en reell
+   sideseksjon - brukte tidligere <h2><h2> (2 stk!), feil semantisk bruk av
+   overskrifter som ga et forvirrende dobbelt-H2-hierarki for skjermlesere/AI.
+   Nå <p><p>, med denne klassen for å beholde den fete "spørsmål?"-første-linjen visuelt. */
+.cta-banner-lead { font-weight: 600; font-size: 19px; }
 .cta-banner a { color: var(--accent-text); font-weight: 600; text-decoration: none; }
 .cta-banner a:hover { text-decoration: underline; }
 
@@ -520,7 +530,9 @@ section[id], header[id] { scroll-margin-top: calc(var(--nav-height) + var(--spac
 /* ===== Footer — Apples egen nedtonede juridisk-footer-stil ==================== */
 
 .site-footer { background: var(--color-bg-elevated); color: var(--color-text); text-align: center; padding: var(--space-8) 0; }
-.site-footer h4 {
+/* r005, 2026-09-16: var <h4>, hoppet rett fra sideseksjonens <h2> uten noe <h3> imellom -
+   rettet overskriftshierarkiet (funn fra SEO/GEO-revisjonen). */
+.site-footer h3 {
   font-family: var(--font-text);
   font-size: 12px;
   font-weight: 600;

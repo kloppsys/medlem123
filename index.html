@@ -3,8 +3,23 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="Medlem123 - Vi håndterer medlemmene" />
-        <meta name="author" content="Medlem123" />
+        <meta name="description" content="Medlem123 (Klopp AS) håndterer medlemsregister, kontingentfakturering, OCR-giro og medlemsservice for foreninger — profesjonelt medlemssystem (Regweb) inkludert." />
+        <meta name="author" content="Klopp AS" />
+        <link rel="canonical" href="https://medlem123.no/" />
+        <!-- SEO/GEO-revisjon r005 (2026-09-16, se /wordpress-og-web_expert sitt skill-minne for
+             full analyse) - Open Graph + Twitter Card for deling på sosiale plattformer -->
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://medlem123.no/" />
+        <meta property="og:title" content="Medlem123 – Medlemshåndtering og kontingentinnkreving for foreninger" />
+        <meta property="og:description" content="Medlem123 (Klopp AS) håndterer medlemsregister, kontingentfakturering, OCR-giro og medlemsservice for foreninger — profesjonelt medlemssystem (Regweb) inkludert." />
+        <meta property="og:image" content="https://medlem123.no/assets/img/og-image.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:locale" content="nb_NO" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Medlem123 – Medlemshåndtering og kontingentinnkreving for foreninger" />
+        <meta name="twitter:description" content="Medlem123 (Klopp AS) håndterer medlemsregister, kontingentfakturering, OCR-giro og medlemsservice for foreninger." />
+        <meta name="twitter:image" content="https://medlem123.no/assets/img/og-image.png" />
         <!-- Følger systemets lys/mørk-innstilling (native skjemaelementer, scrollbar, <dialog>
              sin ::backdrop m.m. tilpasser seg automatisk) - se css/site.css for full forklaring -->
         <meta name="color-scheme" content="light dark" />
@@ -20,18 +35,161 @@
                 }
             })();
         </script>
-        <title>Medlem123</title>
+        <title>Medlem123 – Medlemshåndtering og kontingentinnkreving for foreninger</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
-        <!-- Font Awesome icons - byttet fra use.fontawesome.com sitt "kit"-JS-script (2026-09-09) til
-             standard CDN-CSS med ekte SRI-hash. Font Awesome sine kit-loader-script støtter IKKE SRI
-             (dynamisk, kan endre innhold uten versjonsendring i URL-en) - CSS-varianten fra cdnjs gjør. -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous" />
+        <!-- Font Awesome fjernet (r005, 2026-09-16) - erstattet av 7 håndskrevne inline SVG-ikoner
+             direkte i markup-en (se css/site.css sin .icon-regel). Fjerner en ekstern ~100-150KB
+             ikonfont-avhengighet for et håndfull enkle former (måne/sol, hamburger, kryss, chevron,
+             info, ekstern lenke) - i tråd med resten av redesignets "ingen unødvendige eksterne
+             forespørsler"-linje (jf. Google Fonts fjernet i r002, se under). -->
         <!-- Google fonts fjernet (r002, 2026-09-15) - erstattet av systemfont-stacken
              (-apple-system osv.) i css/site.css, i tråd med Apple HIG-redesignet. Færre
              eksterne forespørsler, ingen FOUT/layout-shift ved fontinnlasting. -->
         <!-- Egen stilfil (Apple HIG-inspirert redesign, r002, 2026-09-15 - bygget på r001s vanilla CSS/JS)-->
         <link href="css/site.css" rel="stylesheet" />
+        <!-- Strukturert data (r005, 2026-09-16) - Organization/Service/FAQPage/WebSite. sameAs er
+             bevisst utelatt: ingen ekte LinkedIn-/Proff.no-URL er bekreftet ennå (se skill-minnet -
+             legg til her den dagen Klopp AS faktisk har en slik side, IKKE placeholder-tekst). -->
+        <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "ProfessionalService",
+            "@id": "https://medlem123.no/#organization",
+            "name": "Medlem123",
+            "alternateName": "Klopp AS",
+            "legalName": "Klopp AS",
+            "url": "https://medlem123.no/",
+            "logo": "https://medlem123.no/assets/img/logo_medlem123_800px.png",
+            "image": "https://medlem123.no/assets/img/logo_medlem123_800px.png",
+            "description": "Medlem123 er en tjeneste fra Klopp AS som håndterer medlemsadministrasjon og kontingentinnkreving for norske foreninger og lag.",
+            "vatID": "NO996385272MVA",
+            "telephone": "+4733312800",
+            "email": "kundeservice@medlem123.no",
+            "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "Farmannsveien 48",
+                "postalCode": "3125",
+                "addressLocality": "Tønsberg",
+                "addressCountry": "NO"
+            },
+            "areaServed": { "@type": "Country", "name": "Norway" },
+            "openingHoursSpecification": {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+                "opens": "09:00",
+                "closes": "15:00"
+            },
+            "contactPoint": {
+                "@type": "ContactPoint",
+                "contactType": "customer service",
+                "telephone": "+4733312800",
+                "email": "kundeservice@medlem123.no",
+                "areaServed": "NO",
+                "availableLanguage": ["Norwegian"]
+            }
+        }
+        </script>
+        <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "serviceType": "Medlemsadministrasjon og kontingentinnkreving",
+            "name": "Medlem123 – Medlemshåndtering for foreninger",
+            "description": "Komplett håndtering av medlemssystem, kontingentfakturering, inn-/utmeldinger og medlemsoppfølging for norske foreninger og lag. Basert på Regweb medlemssystem.",
+            "provider": { "@id": "https://medlem123.no/#organization" },
+            "areaServed": { "@type": "Country", "name": "Norway" },
+            "url": "https://medlem123.no/",
+            "offers": {
+                "@type": "Offer",
+                "priceCurrency": "NOK",
+                "price": "10000",
+                "description": "Oppstartskostnad kr. 10.000 (kr. 0 for eksisterende Regweb-kunder), deretter løpende timebasert eller fastpris-avtale."
+            }
+        }
+        </script>
+        <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+                {
+                    "@type": "Question",
+                    "name": "Trenger vi et medlemssystem?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Nei, dere trenger ikke å ha et medlemssystem. Vi vil sette opp et profesjonelt medlemssystem for dere (Regweb), som vi behandler. Hvis dere senere ønsker å behandle medlemmene selv, kan dere kjøpe Regweb medlemssystem, til en redusert pris. Alle medlemsdata eies av foreningen."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Hva hvis vi alt har et medlemssystem?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Hvis dere alt har et medlemssystem kan vi håndtere dette, men primært ønsker vi å bruke Regweb medlemssystem, som vi kjenner svært godt."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Hvordan får vi betalingsstatus, og oversikt over inn/-og utmeldinger?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Rapporter kan leveres på forespørsel, men det sendes full oversikt i slutten av hver måned. Vi leverer også en komplett hendelseslogg samtidig."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Hva trenger organisasjonen å gjøre?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Organisasjonen håndterer alle henvendelser vedrørende organisasjonen - vi håndterer kun medlemmene. Det bør settes opp en medlemsservice@foreningen.no e-post, som vi bruker mot medlemmene."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Hvordan settes medlemmene til betalt?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Medlemmene kan settes til betalt enten manuelt eller via OCR-giro filer. Vi anbefaler at foreningen setter opp en OCR-giro avtale med banken, og gir oss tilgang til filene. Vi vil innlese disse filene periodisk. KID-oppsett leverer vi."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Hvordan vil medlemmene oppleve vår kundeservice?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Medlemmene er den viktigste delen i alle organisasjoner og bør derfor behandles best mulig. De kan forvente å få raske svar vedrørende sitt medlemsforhold, og at de blir fulgt opp på en ryddig og skikkelig måte - primært via e-post."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Håndterer dere medlemmer som skal ha brevfaktura (Print og Porto)?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Absolutt! Primært sender vi ut kontingent pr. e-post, men til de medlemmen som ikke har e-post skriver ut faktura og sender med porto."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Svarer dere på henvendelser fra medlemmer via telefon?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Generelt ikke. Dette håndteres av en kontaktperson i foreningen. Spørsmål vedrørende medlemsskap og personalia, besvares via e-post av oss."
+                    }
+                }
+            ]
+        }
+        </script>
+        <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            "name": "Medlem123",
+            "url": "https://medlem123.no/",
+            "publisher": { "@id": "https://medlem123.no/#organization" },
+            "inLanguage": "nb-NO"
+        }
+        </script>
     </head>
     <body id="page-top">
         <!-- Navigasjon-->
@@ -40,10 +198,10 @@
                 <a class="navbar-brand" href="/">Medlem123</a>
                 <div class="navbar-right">
                     <button class="theme-toggle" id="themeToggle" type="button" aria-label="Bytt mellom lyst og mørkt utseende" aria-pressed="false">
-                        <i class="fas fa-moon" aria-hidden="true"></i>
+                        <span class="theme-toggle-icon" aria-hidden="true"><svg class="icon" viewBox="0 0 16 16" width="1em" height="1em" fill="currentColor"><path d="M9.5 1.5a6.5 6.5 0 1 0 5 10.9A7 7 0 0 1 9.5 1.5Z"/></svg></span>
                     </button>
                     <button class="navbar-toggler" type="button" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                        Menu <i class="fas fa-bars"></i>
+                        Menu <svg class="icon" viewBox="0 0 16 16" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M2 3h12v1.5H2zM2 7.25h12v1.5H2zM2 11.5h12V13H2z"/></svg>
                     </button>
                     <div class="navbar-collapse" id="navbarResponsive">
                         <ul class="navbar-nav">
@@ -56,13 +214,17 @@
             </div>
         </nav>
         <!-- Masthead-->
-        <header class="masthead" id="page-top">
+        <!-- id="page-top" fjernet herfra (r005, 2026-09-16) - duplikat av <body id="page-top">
+             over (ugyldig HTML, to elementer med samme id). Body-ID-en er den som faktisk
+             brukes av #page-top-lenken (scroll-til-topp) siden den kommer først i DOM-en -
+             denne fjerningen endrer ingen synlig oppførsel, kun retter markup-en. -->
+        <header class="masthead">
             <div class="container">
-                <img class="masthead-avatar" src="assets/img/logo_medlem123_800px.png" alt="Medlem123" />
+                <img class="masthead-avatar" src="assets/img/logo_medlem123_800px.png" alt="Medlem123" width="800" height="189" />
                 <h1 class="masthead-heading">Vi håndterer medlemmene</h1>
                 <div class="divider-custom divider-light">
                     <div class="divider-custom-line"></div>
-                    <div class="divider-custom-icon"><i class="fas fa-chevron-circle-down"></i></div>
+                    <div class="divider-custom-icon"><svg class="icon" viewBox="0 0 16 16" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M8 11.5a.75.75 0 0 1-.53-.22l-5-5a.75.75 0 1 1 1.06-1.06L8 9.69l4.47-4.47a.75.75 0 1 1 1.06 1.06l-5 5a.75.75 0 0 1-.53.22Z"/></svg></div>
                     <div class="divider-custom-line"></div>
                 </div>
                 <p class="masthead-subheading">Vi tar det daglige arbeidet med kontingentinnkreving og medlemsservice</p>
@@ -71,8 +233,8 @@
 
         <!-- CTA-banner -->
         <div class="cta-banner">
-            <h2>Har du spørsmål?</h2>
-            <h2>Ring oss på tlf. <a href="tel:+4733312800">33 31 28 00</a> for en gratis og uforpliktende gjennomgang</h2>
+            <p class="cta-banner-lead">Har du spørsmål?</p>
+            <p>Ring oss på tlf. <a href="tel:+4733312800">33 31 28 00</a> for en gratis og uforpliktende gjennomgang</p>
         </div>
 
         <!-- Portfolio-seksjon-->
@@ -81,44 +243,44 @@
                 <h2 class="page-section-heading">Tjenester og info</h2>
                 <div class="divider-custom">
                     <div class="divider-custom-line"></div>
-                    <div class="divider-custom-icon"><i class="fas fa-chevron-circle-down"></i></div>
+                    <div class="divider-custom-icon"><svg class="icon" viewBox="0 0 16 16" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M8 11.5a.75.75 0 0 1-.53-.22l-5-5a.75.75 0 1 1 1.06-1.06L8 9.69l4.47-4.47a.75.75 0 1 1 1.06 1.06l-5 5a.75.75 0 0 1-.53.22Z"/></svg></div>
                     <div class="divider-custom-line"></div>
                 </div>
                 <div class="portfolio-grid">
                     <button class="portfolio-item" type="button" data-open-modal="portfolioModal1">
                         <div class="portfolio-item-figure">
-                            <div class="portfolio-item-caption"><i class="fas fa-info-circle"></i></div>
-                            <img src="assets/img/portfolio/m123_innmelding.png" alt="Innmelding" />
+                            <div class="portfolio-item-caption"><svg class="icon" viewBox="0 0 16 16" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14ZM8 2.5a5.5 5.5 0 1 1 0 11 5.5 5.5 0 0 1 0-11ZM8 6.5a.75.75 0 0 1 .75.75v4a.75.75 0 0 1-1.5 0v-4A.75.75 0 0 1 8 6.5Zm0-3a.9.9 0 1 1 0 1.8.9.9 0 0 1 0-1.8Z"/></svg></div>
+                            <img src="assets/img/portfolio/m123_innmelding.png" alt="Innmelding" width="900" height="650" />
                         </div>
                     </button>
                     <button class="portfolio-item" type="button" data-open-modal="portfolioModal2">
                         <div class="portfolio-item-figure">
-                            <div class="portfolio-item-caption"><i class="fas fa-info-circle"></i></div>
-                            <img src="assets/img/portfolio/m123_oppfolging.png" alt="Oppfølging" />
+                            <div class="portfolio-item-caption"><svg class="icon" viewBox="0 0 16 16" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14ZM8 2.5a5.5 5.5 0 1 1 0 11 5.5 5.5 0 0 1 0-11ZM8 6.5a.75.75 0 0 1 .75.75v4a.75.75 0 0 1-1.5 0v-4A.75.75 0 0 1 8 6.5Zm0-3a.9.9 0 1 1 0 1.8.9.9 0 0 1 0-1.8Z"/></svg></div>
+                            <img src="assets/img/portfolio/m123_oppfolging.png" alt="Oppfølging" width="900" height="650" />
                         </div>
                     </button>
                     <button class="portfolio-item" type="button" data-open-modal="portfolioModal3">
                         <div class="portfolio-item-figure">
-                            <div class="portfolio-item-caption"><i class="fas fa-info-circle"></i></div>
-                            <img src="assets/img/portfolio/m123_kontingent.png" alt="Kontingent" />
+                            <div class="portfolio-item-caption"><svg class="icon" viewBox="0 0 16 16" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14ZM8 2.5a5.5 5.5 0 1 1 0 11 5.5 5.5 0 0 1 0-11ZM8 6.5a.75.75 0 0 1 .75.75v4a.75.75 0 0 1-1.5 0v-4A.75.75 0 0 1 8 6.5Zm0-3a.9.9 0 1 1 0 1.8.9.9 0 0 1 0-1.8Z"/></svg></div>
+                            <img src="assets/img/portfolio/m123_kontingent.png" alt="Kontingent" width="900" height="650" />
                         </div>
                     </button>
                     <button class="portfolio-item" type="button" data-open-modal="portfolioModal4">
                         <div class="portfolio-item-figure">
-                            <div class="portfolio-item-caption"><i class="fas fa-info-circle"></i></div>
-                            <img src="assets/img/portfolio/m123_din_side.png" alt="Din side" />
+                            <div class="portfolio-item-caption"><svg class="icon" viewBox="0 0 16 16" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14ZM8 2.5a5.5 5.5 0 1 1 0 11 5.5 5.5 0 0 1 0-11ZM8 6.5a.75.75 0 0 1 .75.75v4a.75.75 0 0 1-1.5 0v-4A.75.75 0 0 1 8 6.5Zm0-3a.9.9 0 1 1 0 1.8.9.9 0 0 1 0-1.8Z"/></svg></div>
+                            <img src="assets/img/portfolio/m123_din_side.png" alt="Din side" width="900" height="650" />
                         </div>
                     </button>
                     <button class="portfolio-item" type="button" data-open-modal="portfolioModal5">
                         <div class="portfolio-item-figure">
-                            <div class="portfolio-item-caption"><i class="fas fa-info-circle"></i></div>
-                            <img src="assets/img/portfolio/m123_pris.png" alt="Pris" />
+                            <div class="portfolio-item-caption"><svg class="icon" viewBox="0 0 16 16" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14ZM8 2.5a5.5 5.5 0 1 1 0 11 5.5 5.5 0 0 1 0-11ZM8 6.5a.75.75 0 0 1 .75.75v4a.75.75 0 0 1-1.5 0v-4A.75.75 0 0 1 8 6.5Zm0-3a.9.9 0 1 1 0 1.8.9.9 0 0 1 0-1.8Z"/></svg></div>
+                            <img src="assets/img/portfolio/m123_pris.png" alt="Pris" width="900" height="650" />
                         </div>
                     </button>
                     <button class="portfolio-item" type="button" data-open-modal="portfolioModal6">
                         <div class="portfolio-item-figure">
-                            <div class="portfolio-item-caption"><i class="fas fa-info-circle"></i></div>
-                            <img src="assets/img/portfolio/m123_kom_i_gang.png" alt="Kom i gang" />
+                            <div class="portfolio-item-caption"><svg class="icon" viewBox="0 0 16 16" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14ZM8 2.5a5.5 5.5 0 1 1 0 11 5.5 5.5 0 0 1 0-11ZM8 6.5a.75.75 0 0 1 .75.75v4a.75.75 0 0 1-1.5 0v-4A.75.75 0 0 1 8 6.5Zm0-3a.9.9 0 1 1 0 1.8.9.9 0 0 1 0-1.8Z"/></svg></div>
+                            <img src="assets/img/portfolio/m123_kom_i_gang.png" alt="Kom i gang" width="900" height="650" />
                         </div>
                     </button>
                 </div>
@@ -131,13 +293,13 @@
                 <h2 class="page-section-heading">Brosjyre</h2>
                 <div class="divider-custom divider-light">
                     <div class="divider-custom-line"></div>
-                    <div class="divider-custom-icon"><i class="fas fa-chevron-circle-down"></i></div>
+                    <div class="divider-custom-icon"><svg class="icon" viewBox="0 0 16 16" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M8 11.5a.75.75 0 0 1-.53-.22l-5-5a.75.75 0 1 1 1.06-1.06L8 9.69l4.47-4.47a.75.75 0 1 1 1.06 1.06l-5 5a.75.75 0 0 1-.53.22Z"/></svg></div>
                     <div class="divider-custom-line"></div>
                 </div>
-                <iframe class="brochure-embed" src="https://online.pubhtml5.com/ztui/myoo/" seamless="seamless" scrolling="no" frameborder="0" allowtransparency="true" allowfullscreen="true" title="Medlem123-brosjyre"></iframe>
+                <iframe class="brochure-embed" src="https://online.pubhtml5.com/ztui/myoo/" seamless="seamless" scrolling="no" frameborder="0" allowtransparency="true" allowfullscreen="true" loading="lazy" title="Medlem123-brosjyre"></iframe>
                 <div style="text-align:center; margin-top: 32px;">
                     <a class="btn btn-outline-light" href="https://medlem123.no/brochure/Medlem123_Introduksjon_Rev.1.2_web.pdf">
-                        <i class="fas fa-external-link-alt"></i> Last ned brosjyre
+                        <svg class="icon" viewBox="0 0 16 16" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M6.5 2.75A.75.75 0 0 1 7.25 2H13a.75.75 0 0 1 .75.75v5.75a.75.75 0 0 1-1.5 0V4.56L4.28 12.53a.75.75 0 0 1-1.06-1.06L11.19 3.5H7.25a.75.75 0 0 1-.75-.75Z"/><path d="M2.75 4.5A.75.75 0 0 1 3.5 3.75h3a.75.75 0 0 1 0 1.5h-2.25v7h7V10a.75.75 0 0 1 1.5 0v3a.75.75 0 0 1-.75.75h-8.5a.75.75 0 0 1-.75-.75v-8.5Z"/></svg> Last ned brosjyre
                     </a>
                 </div>
             </div>
@@ -149,7 +311,7 @@
                 <h2 class="page-section-heading">Vanlige spørsmål</h2>
                 <div class="divider-custom">
                     <div class="divider-custom-line"></div>
-                    <div class="divider-custom-icon"><i class="fas fa-chevron-circle-down"></i></div>
+                    <div class="divider-custom-icon"><svg class="icon" viewBox="0 0 16 16" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M8 11.5a.75.75 0 0 1-.53-.22l-5-5a.75.75 0 1 1 1.06-1.06L8 9.69l4.47-4.47a.75.75 0 1 1 1.06 1.06l-5 5a.75.75 0 0 1-.53.22Z"/></svg></div>
                     <div class="divider-custom-line"></div>
                 </div>
                 <div class="faq">
@@ -179,11 +341,11 @@
                     </details>
                     <details>
                         <summary>Håndterer dere medlemmer som skal ha brevfaktura (Print &amp; Porto)?</summary>
-                        <div class="faq-body">Absolutt! Primært sender vi ut kontingent pr. e-post, men til de medlemmen som ikke har e-post skriver ut faktua og sender med porto.</div>
+                        <div class="faq-body">Absolutt! Primært sender vi ut kontingent pr. e-post, men til de medlemmen som ikke har e-post skriver ut faktura og sender med porto.</div>
                     </details>
                     <details>
                         <summary>Svarer dere på henvendelser fra medlemmer via telefon?</summary>
-                        <div class="faq-body">Generelt ikke. Dette håndteres av en en kontaktperson i foreningen. Spørsmål vedrørende medlemsskap og personalia, besvares via e-post av oss.</div>
+                        <div class="faq-body">Generelt ikke. Dette håndteres av en kontaktperson i foreningen. Spørsmål vedrørende medlemsskap og personalia, besvares via e-post av oss.</div>
                     </details>
                 </div>
             </div>
@@ -194,16 +356,16 @@
             <div class="container">
                 <div class="footer-grid">
                     <div>
-                        <h4>Telefon/e-post</h4>
+                        <h3>Telefon/e-post</h3>
                         <p>Tlf. <a href="tel:+4733312800">33 31 28 00</a>, Mandag – fredag, 09.00 – 15.00 (alle hverdager).<br /><a href="mailto:kundeservice@medlem123.no">kundeservice@medlem123.no</a></p>
                     </div>
                     <div>
-                        <h4>Adresse</h4>
+                        <h3>Adresse</h3>
                         <p>Klopp AS (996 385 272 MVA), Farmannsveien 48, 3125 Tønsberg</p>
                     </div>
                     <div>
-                        <h4>Klopp AS</h4>
-                        <a href="#"><img src="assets/img/Klopp_logo_ink_R_w200.png" alt="Klopp AS logo" style="width:200px; margin: 0 auto;" /></a>
+                        <h3>Klopp AS</h3>
+                        <a href="https://klopp.no/" target="_blank" rel="noopener"><img src="assets/img/Klopp_logo_ink_R_w200.png" alt="Klopp AS logo" width="200" height="46" style="width:200px; margin: 0 auto;" /></a>
                     </div>
                 </div>
             </div>
@@ -213,34 +375,34 @@
         </div>
 
         <!-- Scroll til topp-knapp -->
-        <a class="scroll-to-top" href="#page-top" aria-label="Scroll til toppen"><i class="fa fa-chevron-up"></i></a>
+        <a class="scroll-to-top" href="#page-top" aria-label="Scroll til toppen"><svg class="icon" viewBox="0 0 16 16" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M8 4.5a.75.75 0 0 1 .53.22l5 5a.75.75 0 1 1-1.06 1.06L8 6.31l-4.47 4.47a.75.75 0 0 1-1.06-1.06l5-5A.75.75 0 0 1 8 4.5Z"/></svg></a>
 
         <!-- Portfolio-modaler (native <dialog>) -->
         <dialog class="portfolio-modal" id="portfolioModal1">
             <div class="modal-inner">
-                <button class="modal-close" type="button" data-close-modal aria-label="Lukk"><i class="fas fa-times"></i></button>
+                <button class="modal-close" type="button" data-close-modal aria-label="Lukk"><svg class="icon" viewBox="0 0 16 16" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M3.72 3.72a.75.75 0 0 1 1.06 0L8 6.94l3.22-3.22a.75.75 0 1 1 1.06 1.06L9.06 8l3.22 3.22a.75.75 0 1 1-1.06 1.06L8 9.06l-3.22 3.22a.75.75 0 0 1-1.06-1.06L6.94 8 3.72 4.78a.75.75 0 0 1 0-1.06Z"/></svg></button>
                 <h2 class="modal-title">Innmelding</h2>
-                <div class="divider-custom"><div class="divider-custom-line"></div><div class="divider-custom-icon"><i class="fas fa-info-circle"></i></div><div class="divider-custom-line"></div></div>
-                <img class="modal-image" src="assets/img/portfolio/m123_innmelding.png" alt="" />
+                <div class="divider-custom"><div class="divider-custom-line"></div><div class="divider-custom-icon"><svg class="icon" viewBox="0 0 16 16" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14ZM8 2.5a5.5 5.5 0 1 1 0 11 5.5 5.5 0 0 1 0-11ZM8 6.5a.75.75 0 0 1 .75.75v4a.75.75 0 0 1-1.5 0v-4A.75.75 0 0 1 8 6.5Zm0-3a.9.9 0 1 1 0 1.8.9.9 0 0 1 0-1.8Z"/></svg></div><div class="divider-custom-line"></div></div>
+                <img class="modal-image" src="assets/img/portfolio/m123_innmelding.png" alt="Illustrasjon av Medlem123 sin innmeldingsløsning" width="900" height="650" loading="lazy" />
                 <p>Vi designer en innmeldingsform som legges inn på foreningens nettside. Når et nytt medlem melder seg inn, vil vi sende ut kontingentfaktura og en hyggelig velkomstepost fra foreningen. Innmeldingsskjemaet vil være direkte koblet mot medlemssystemet.</p>
                 <div class="info-box">Eksempel på <a target="_blank" rel="noopener" href="https://xreg.no/innmelding/ntf">innmeldingsform (klikk her)</a></div>
-                <button class="modal-close-btn" type="button" data-close-modal><i class="fas fa-times"></i> Lukk vindu</button>
+                <button class="modal-close-btn" type="button" data-close-modal><svg class="icon" viewBox="0 0 16 16" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M3.72 3.72a.75.75 0 0 1 1.06 0L8 6.94l3.22-3.22a.75.75 0 1 1 1.06 1.06L9.06 8l3.22 3.22a.75.75 0 1 1-1.06 1.06L8 9.06l-3.22 3.22a.75.75 0 0 1-1.06-1.06L6.94 8 3.72 4.78a.75.75 0 0 1 0-1.06Z"/></svg> Lukk vindu</button>
             </div>
         </dialog>
 
         <dialog class="portfolio-modal" id="portfolioModal2">
             <div class="modal-inner">
-                <button class="modal-close" type="button" data-close-modal aria-label="Lukk"><i class="fas fa-times"></i></button>
+                <button class="modal-close" type="button" data-close-modal aria-label="Lukk"><svg class="icon" viewBox="0 0 16 16" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M3.72 3.72a.75.75 0 0 1 1.06 0L8 6.94l3.22-3.22a.75.75 0 1 1 1.06 1.06L9.06 8l3.22 3.22a.75.75 0 1 1-1.06 1.06L8 9.06l-3.22 3.22a.75.75 0 0 1-1.06-1.06L6.94 8 3.72 4.78a.75.75 0 0 1 0-1.06Z"/></svg></button>
                 <h2 class="modal-title">Oppfølging</h2>
-                <div class="divider-custom"><div class="divider-custom-line"></div><div class="divider-custom-icon"><i class="fas fa-info-circle"></i></div><div class="divider-custom-line"></div></div>
-                <img class="modal-image" src="assets/img/portfolio/m123_oppfolging.png" alt="" />
+                <div class="divider-custom"><div class="divider-custom-line"></div><div class="divider-custom-icon"><svg class="icon" viewBox="0 0 16 16" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14ZM8 2.5a5.5 5.5 0 1 1 0 11 5.5 5.5 0 0 1 0-11ZM8 6.5a.75.75 0 0 1 .75.75v4a.75.75 0 0 1-1.5 0v-4A.75.75 0 0 1 8 6.5Zm0-3a.9.9 0 1 1 0 1.8.9.9 0 0 1 0-1.8Z"/></svg></div><div class="divider-custom-line"></div></div>
+                <img class="modal-image" src="assets/img/portfolio/m123_oppfolging.png" alt="Illustrasjon av Medlem123 sin daglige medlemsoppfølging" width="900" height="650" loading="lazy" />
                 <p>Vanlige rutiner vil være inn/og utmelding, utsendelse av kontingentfaktura (pr. epost) og korrigeringen i medlemssystemet.</p>
                 <ul class="task-list">
                     <li class="category">Daglige oppgaver</li>
                     <li>Inn og utmeldinger</li>
                     <li>Fakturering, betaling og oppfølging</li>
                     <li>Korrigering av medlemsinfo</li>
-                    <li>E-posthenveldelser</li>
+                    <li>E-posthenvendelser</li>
                     <li>Daglig backup</li>
                     <li class="category">Periodiske oppgaver</li>
                     <li>Innlesning av OCR-giro filer</li>
@@ -249,42 +411,42 @@
                     <li>Levere medlemslist til styret</li>
                     <li>Levere revisorliste til regnskapsfører</li>
                 </ul>
-                <button class="modal-close-btn" type="button" data-close-modal><i class="fas fa-times"></i> Lukk vindu</button>
+                <button class="modal-close-btn" type="button" data-close-modal><svg class="icon" viewBox="0 0 16 16" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M3.72 3.72a.75.75 0 0 1 1.06 0L8 6.94l3.22-3.22a.75.75 0 1 1 1.06 1.06L9.06 8l3.22 3.22a.75.75 0 1 1-1.06 1.06L8 9.06l-3.22 3.22a.75.75 0 0 1-1.06-1.06L6.94 8 3.72 4.78a.75.75 0 0 1 0-1.06Z"/></svg> Lukk vindu</button>
             </div>
         </dialog>
 
         <dialog class="portfolio-modal" id="portfolioModal3">
             <div class="modal-inner">
-                <button class="modal-close" type="button" data-close-modal aria-label="Lukk"><i class="fas fa-times"></i></button>
+                <button class="modal-close" type="button" data-close-modal aria-label="Lukk"><svg class="icon" viewBox="0 0 16 16" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M3.72 3.72a.75.75 0 0 1 1.06 0L8 6.94l3.22-3.22a.75.75 0 1 1 1.06 1.06L9.06 8l3.22 3.22a.75.75 0 1 1-1.06 1.06L8 9.06l-3.22 3.22a.75.75 0 0 1-1.06-1.06L6.94 8 3.72 4.78a.75.75 0 0 1 0-1.06Z"/></svg></button>
                 <h2 class="modal-title">Kontingent</h2>
-                <div class="divider-custom"><div class="divider-custom-line"></div><div class="divider-custom-icon"><i class="fas fa-info-circle"></i></div><div class="divider-custom-line"></div></div>
-                <img class="modal-image" src="assets/img/portfolio/m123_kontingent.png" alt="" />
+                <div class="divider-custom"><div class="divider-custom-line"></div><div class="divider-custom-icon"><svg class="icon" viewBox="0 0 16 16" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14ZM8 2.5a5.5 5.5 0 1 1 0 11 5.5 5.5 0 0 1 0-11ZM8 6.5a.75.75 0 0 1 .75.75v4a.75.75 0 0 1-1.5 0v-4A.75.75 0 0 1 8 6.5Zm0-3a.9.9 0 1 1 0 1.8.9.9 0 0 1 0-1.8Z"/></svg></div><div class="divider-custom-line"></div></div>
+                <img class="modal-image" src="assets/img/portfolio/m123_kontingent.png" alt="Illustrasjon av Medlem123 sin kontingentfakturering" width="900" height="650" loading="lazy" />
                 <p>De fleste foreninger har masseutsending av kontingent en gang i året, og påfølgende påminnelser, og krediteringer (for de som melder seg ut). Gjennom året sendes nye kontingentfaktura fortløpende, ettersom medlemmer melder seg inn.</p>
                 <div class="info-box"><strong>Medlemstyper!</strong> Bestemmes av foreningen.</div>
-                <button class="modal-close-btn" type="button" data-close-modal><i class="fas fa-times"></i> Lukk vindu</button>
+                <button class="modal-close-btn" type="button" data-close-modal><svg class="icon" viewBox="0 0 16 16" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M3.72 3.72a.75.75 0 0 1 1.06 0L8 6.94l3.22-3.22a.75.75 0 1 1 1.06 1.06L9.06 8l3.22 3.22a.75.75 0 1 1-1.06 1.06L8 9.06l-3.22 3.22a.75.75 0 0 1-1.06-1.06L6.94 8 3.72 4.78a.75.75 0 0 1 0-1.06Z"/></svg> Lukk vindu</button>
             </div>
         </dialog>
 
         <dialog class="portfolio-modal" id="portfolioModal4">
             <div class="modal-inner">
-                <button class="modal-close" type="button" data-close-modal aria-label="Lukk"><i class="fas fa-times"></i></button>
+                <button class="modal-close" type="button" data-close-modal aria-label="Lukk"><svg class="icon" viewBox="0 0 16 16" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M3.72 3.72a.75.75 0 0 1 1.06 0L8 6.94l3.22-3.22a.75.75 0 1 1 1.06 1.06L9.06 8l3.22 3.22a.75.75 0 1 1-1.06 1.06L8 9.06l-3.22 3.22a.75.75 0 0 1-1.06-1.06L6.94 8 3.72 4.78a.75.75 0 0 1 0-1.06Z"/></svg></button>
                 <h2 class="modal-title">Din side</h2>
-                <div class="divider-custom"><div class="divider-custom-line"></div><div class="divider-custom-icon"><i class="fas fa-info-circle"></i></div><div class="divider-custom-line"></div></div>
-                <img class="modal-image" src="assets/img/portfolio/m123_din_side.png" alt="" />
+                <div class="divider-custom"><div class="divider-custom-line"></div><div class="divider-custom-icon"><svg class="icon" viewBox="0 0 16 16" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14ZM8 2.5a5.5 5.5 0 1 1 0 11 5.5 5.5 0 0 1 0-11ZM8 6.5a.75.75 0 0 1 .75.75v4a.75.75 0 0 1-1.5 0v-4A.75.75 0 0 1 8 6.5Zm0-3a.9.9 0 1 1 0 1.8.9.9 0 0 1 0-1.8Z"/></svg></div><div class="divider-custom-line"></div></div>
+                <img class="modal-image" src="assets/img/portfolio/m123_din_side.png" alt="Illustrasjon av Medlem123 sin Din side-løsning" width="900" height="650" loading="lazy" />
                 <p>Vi kan levere en spesialtilpasset <strong>Din side-løsning</strong>, som legges inn på foreningens nettside. Der kan medlemmer selv oppdatere egen medlemsinfo. Din side løsningen kan bestilles med flere moduler, f. eks. bladmodul og dokumentmodul (Årsberetning, regnskap, referater, osv.).</p>
                 <blockquote>Din side-løsningen tilpasses foreningen</blockquote>
-                <img src="assets/img/din_side_eksempel1.png" class="modal-image" alt="Eksempel på Din side" />
+                <img src="assets/img/din_side_eksempel1.png" class="modal-image" alt="Skjermbilde av Din side-løsningen, tilpasset foreningens design" width="1080" height="979" loading="lazy" />
                 <p><small>Alle data behandles i henhold til GDPR (EUs personvernforordning).</small></p>
-                <button class="modal-close-btn" type="button" data-close-modal><i class="fas fa-times"></i> Lukk vindu</button>
+                <button class="modal-close-btn" type="button" data-close-modal><svg class="icon" viewBox="0 0 16 16" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M3.72 3.72a.75.75 0 0 1 1.06 0L8 6.94l3.22-3.22a.75.75 0 1 1 1.06 1.06L9.06 8l3.22 3.22a.75.75 0 1 1-1.06 1.06L8 9.06l-3.22 3.22a.75.75 0 0 1-1.06-1.06L6.94 8 3.72 4.78a.75.75 0 0 1 0-1.06Z"/></svg> Lukk vindu</button>
             </div>
         </dialog>
 
         <dialog class="portfolio-modal" id="portfolioModal5">
             <div class="modal-inner">
-                <button class="modal-close" type="button" data-close-modal aria-label="Lukk"><i class="fas fa-times"></i></button>
+                <button class="modal-close" type="button" data-close-modal aria-label="Lukk"><svg class="icon" viewBox="0 0 16 16" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M3.72 3.72a.75.75 0 0 1 1.06 0L8 6.94l3.22-3.22a.75.75 0 1 1 1.06 1.06L9.06 8l3.22 3.22a.75.75 0 1 1-1.06 1.06L8 9.06l-3.22 3.22a.75.75 0 0 1-1.06-1.06L6.94 8 3.72 4.78a.75.75 0 0 1 0-1.06Z"/></svg></button>
                 <h2 class="modal-title">Pris</h2>
-                <div class="divider-custom"><div class="divider-custom-line"></div><div class="divider-custom-icon"><i class="fas fa-info-circle"></i></div><div class="divider-custom-line"></div></div>
-                <img class="modal-image" src="assets/img/portfolio/m123_pris.png" alt="" />
+                <div class="divider-custom"><div class="divider-custom-line"></div><div class="divider-custom-icon"><svg class="icon" viewBox="0 0 16 16" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14ZM8 2.5a5.5 5.5 0 1 1 0 11 5.5 5.5 0 0 1 0-11ZM8 6.5a.75.75 0 0 1 .75.75v4a.75.75 0 0 1-1.5 0v-4A.75.75 0 0 1 8 6.5Zm0-3a.9.9 0 1 1 0 1.8.9.9 0 0 1 0-1.8Z"/></svg></div><div class="divider-custom-line"></div></div>
+                <img class="modal-image" src="assets/img/portfolio/m123_pris.png" alt="Illustrasjon av Medlem123 sin prismodell" width="900" height="650" loading="lazy" />
                 <p>Arbeidet kan utføres pr. time eller med fastpris (fastsettes for hver organisasjon). Hvis arbeidet utføres pr. time leveres en detaljert rapport i slutten av hver måned, med alle hendelser som har blitt utført.</p>
                 <blockquote>Prisoversikt</blockquote>
                 <div class="faq">
@@ -303,16 +465,16 @@
                 </div>
                 <p style="margin-top:16px;"><small>Det leveres alltid en skriftlig oppdragsavtale. Alle priser er eks. mva.</small></p>
                 <div class="success-box">Vi leverer alltid en detaljert rapport over alle henvendelser i slutten av hver måned.</div>
-                <button class="modal-close-btn" type="button" data-close-modal><i class="fas fa-times"></i> Lukk vindu</button>
+                <button class="modal-close-btn" type="button" data-close-modal><svg class="icon" viewBox="0 0 16 16" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M3.72 3.72a.75.75 0 0 1 1.06 0L8 6.94l3.22-3.22a.75.75 0 1 1 1.06 1.06L9.06 8l3.22 3.22a.75.75 0 1 1-1.06 1.06L8 9.06l-3.22 3.22a.75.75 0 0 1-1.06-1.06L6.94 8 3.72 4.78a.75.75 0 0 1 0-1.06Z"/></svg> Lukk vindu</button>
             </div>
         </dialog>
 
         <dialog class="portfolio-modal" id="portfolioModal6">
             <div class="modal-inner">
-                <button class="modal-close" type="button" data-close-modal aria-label="Lukk"><i class="fas fa-times"></i></button>
+                <button class="modal-close" type="button" data-close-modal aria-label="Lukk"><svg class="icon" viewBox="0 0 16 16" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M3.72 3.72a.75.75 0 0 1 1.06 0L8 6.94l3.22-3.22a.75.75 0 1 1 1.06 1.06L9.06 8l3.22 3.22a.75.75 0 1 1-1.06 1.06L8 9.06l-3.22 3.22a.75.75 0 0 1-1.06-1.06L6.94 8 3.72 4.78a.75.75 0 0 1 0-1.06Z"/></svg></button>
                 <h2 class="modal-title">Kom i gang</h2>
-                <div class="divider-custom"><div class="divider-custom-line"></div><div class="divider-custom-icon"><i class="fas fa-info-circle"></i></div><div class="divider-custom-line"></div></div>
-                <img class="modal-image" src="assets/img/portfolio/m123_kom_i_gang.png" alt="" />
+                <div class="divider-custom"><div class="divider-custom-line"></div><div class="divider-custom-icon"><svg class="icon" viewBox="0 0 16 16" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14ZM8 2.5a5.5 5.5 0 1 1 0 11 5.5 5.5 0 0 1 0-11ZM8 6.5a.75.75 0 0 1 .75.75v4a.75.75 0 0 1-1.5 0v-4A.75.75 0 0 1 8 6.5Zm0-3a.9.9 0 1 1 0 1.8.9.9 0 0 1 0-1.8Z"/></svg></div><div class="divider-custom-line"></div></div>
+                <img class="modal-image" src="assets/img/portfolio/m123_kom_i_gang.png" alt="Illustrasjon av oppstartsprosessen for et nytt Medlem123-kunde" width="900" height="650" loading="lazy" />
                 <blockquote>Slik kommer du/dere i gang:</blockquote>
                 <ul class="task-list">
                     <li>Oppsett og tilpasning av medlemssystem <span class="badge">1</span></li>
@@ -324,7 +486,7 @@
                 </ul>
                 <p><small>Fri support på telefon og e-post</small></p>
                 <div class="info-box">Dere kan når som helst avslutte vårt oppdrag, og vil da få utlevert komplett medlemsliste over alle medlemmene i Excel format.</div>
-                <button class="modal-close-btn" type="button" data-close-modal><i class="fas fa-times"></i> Lukk vindu</button>
+                <button class="modal-close-btn" type="button" data-close-modal><svg class="icon" viewBox="0 0 16 16" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M3.72 3.72a.75.75 0 0 1 1.06 0L8 6.94l3.22-3.22a.75.75 0 1 1 1.06 1.06L9.06 8l3.22 3.22a.75.75 0 1 1-1.06 1.06L8 9.06l-3.22 3.22a.75.75 0 0 1-1.06-1.06L6.94 8 3.72 4.78a.75.75 0 0 1 0-1.06Z"/></svg> Lukk vindu</button>
             </div>
         </dialog>
 

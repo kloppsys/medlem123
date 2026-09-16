@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="no">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="robots" content="noindex" />
+        <meta name="color-scheme" content="light dark" />
+        <script>
+            (function () {
+                var saved = localStorage.getItem("medlem123-theme");
+                if (saved === "light" || saved === "dark") {
+                    document.documentElement.setAttribute("data-theme", saved);
+                }
+            })();
+        </script>
+        <title>Siden finnes ikke — Medlem123</title>
+        <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
+        <link href="css/site.css" rel="stylesheet" />
+        <style>
+            .error-page {
+                min-height: 60vh;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+                padding: var(--space-9) var(--space-5);
+            }
+            .error-page .error-code {
+                font-family: var(--font-display);
+                font-weight: 600;
+                font-size: clamp(3rem, 8vw, 6rem);
+                color: var(--accent-text);
+                letter-spacing: -0.02em;
+                margin: 0;
+            }
+            .error-page h1 { font-size: clamp(1.5rem, 3vw, 2rem); }
+            .error-page p {
+                color: var(--color-text-secondary);
+                font-size: 17px;
+                max-width: 480px;
+                margin: var(--space-4) 0 var(--space-6);
+            }
+        </style>
+    </head>
+    <body id="page-top">
+        <nav class="navbar" id="mainNav">
+            <div class="container">
+                <a class="navbar-brand" href="/">Medlem123</a>
+            </div>
+        </nav>
+        <main class="error-page">
+            <p class="error-code">404</p>
+            <h1>Siden finnes ikke</h1>
+            <p>Siden du leter etter finnes ikke, eller har blitt flyttet. Gå tilbake til forsiden for å finne det du trenger.</p>
+            <a class="btn btn-purple" href="/">Til forsiden</a>
+        </main>
+        <div class="copyright">
+            Alle rettigheter forbeholdes Klopp AS » Web &amp; Software Engineering.
+        </div>
+    </body>
+</html>
