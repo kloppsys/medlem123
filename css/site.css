@@ -329,9 +329,11 @@ section[id], header[id] { scroll-margin-top: calc(var(--nav-height) + var(--spac
   background: var(--navy-dark);
   color: #f5f5f7;
   text-align: center;
-  padding: calc(var(--nav-height) + var(--space-9)) 0 var(--space-9);
+  /* r007, 2026-09-16: strammet inn (var space-9/96px begge veier) - heroen tok
+     unødvendig mye skjermplass før noe innhold var synlig. */
+  padding: calc(var(--nav-height) + var(--space-7)) 0 var(--space-7);
 }
-.masthead-avatar { width: 180px; margin: 0 auto var(--space-6); }
+.masthead-avatar { width: 180px; margin: 0 auto var(--space-5); }
 .masthead-heading {
   font-size: clamp(2.25rem, 4vw + 1rem, 4rem);
   color: #ffffff;
@@ -344,7 +346,7 @@ section[id], header[id] { scroll-margin-top: calc(var(--nav-height) + var(--spac
   font-weight: 400;
   color: rgba(245, 245, 247, 0.86);
   max-width: 640px;
-  margin: var(--space-5) auto 0;
+  margin: var(--space-4) auto 0;
   line-height: 1.5;
 }
 
@@ -353,7 +355,7 @@ section[id], header[id] { scroll-margin-top: calc(var(--nav-height) + var(--spac
 /* Ornamental divider — tonet kraftig ned (HIG "simplicity": pynt uten funksjon
    fjernes eller reduseres til et minimum). Selve sirkel-ikonet skjules; kun en
    tynn aksent-strek består som visuell pause mellom overskrift og innhold. */
-.divider-custom { display: flex; align-items: center; justify-content: center; margin: var(--space-6) auto 0; }
+.divider-custom { display: flex; align-items: center; justify-content: center; margin: var(--space-5) auto 0; }
 .divider-custom-line { height: 3px; width: 56px; background: var(--accent-soft); border-radius: var(--radius-full); }
 .divider-custom.divider-light .divider-custom-line { background: rgba(255, 255, 255, 0.5); }
 .divider-custom-icon { display: none; }
@@ -362,7 +364,9 @@ section[id], header[id] { scroll-margin-top: calc(var(--nav-height) + var(--spac
 
 .cta-banner {
   max-width: 760px;
-  margin: calc(-1 * var(--space-7)) auto var(--space-9);
+  /* r007: bunnmargin senket fra space-9 (96px) til space-7 (48px) - del av hero-
+     innstrammingen, mindre tomt rom før "Tjenester og info" starter. */
+  margin: calc(-1 * var(--space-7)) auto var(--space-7);
   padding: var(--space-6) var(--space-6);
   background: var(--color-glass-bg);
   -webkit-backdrop-filter: saturate(180%) blur(20px);
@@ -456,6 +460,22 @@ section[id], header[id] { scroll-margin-top: calc(var(--nav-height) + var(--spac
 }
 .portfolio-item:hover .portfolio-item-caption,
 .portfolio-item:focus-visible .portfolio-item-caption { opacity: 1; }
+
+/* r007, 2026-09-16: ett konkret utbytte-setning per kort, under bildet - kortene
+   viste før kun bilde (tittel+generisk tekst er allerede innbakt grafisk i selve
+   PNG-en, se css-kommentaren i portfolio-item-figure sin historikk) uten noe som
+   faktisk skilte dem fra hverandre. Hver linje er hentet fra det ekte innholdet i
+   tilhørende modal, ikke oppspinnet. */
+.portfolio-item-benefit {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-2);
+  padding: var(--space-4) var(--space-5);
+  font-size: 14px;
+  line-height: 1.4;
+  color: var(--color-text-secondary);
+}
+.portfolio-item-benefit .icon { color: var(--accent-text); flex: none; margin-top: 0.15em; }
 
 /* ===== Knapper — pill-form, Apples egen 980px-radius ========================== */
 
@@ -552,6 +572,11 @@ section[id], header[id] { scroll-margin-top: calc(var(--nav-height) + var(--spac
   padding: var(--space-4) var(--space-5);
   font-size: 12px;
   border-top: 1px solid var(--color-border);
+}
+
+.copyright-link {
+  display: inline-block;
+  margin-top: var(--space-2);
 }
 
 /* ===== Scroll-til-topp — glass-knapp ============================================ */
