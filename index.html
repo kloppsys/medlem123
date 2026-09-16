@@ -6,8 +6,7 @@
         <meta name="description" content="Medlem123 (Klopp AS) håndterer medlemsregister, kontingentfakturering, OCR-giro og medlemsservice for foreninger — profesjonelt medlemssystem (Regweb) inkludert." />
         <meta name="author" content="Klopp AS" />
         <link rel="canonical" href="https://medlem123.no/" />
-        <!-- SEO/GEO-revisjon r005 (2026-09-16, se /wordpress-og-web_expert sitt skill-minne for
-             full analyse) - Open Graph + Twitter Card for deling på sosiale plattformer -->
+
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://medlem123.no/" />
         <meta property="og:title" content="Medlem123 – Medlemshåndtering og kontingentinnkreving for foreninger" />
@@ -20,13 +19,9 @@
         <meta name="twitter:title" content="Medlem123 – Medlemshåndtering og kontingentinnkreving for foreninger" />
         <meta name="twitter:description" content="Medlem123 (Klopp AS) håndterer medlemsregister, kontingentfakturering, OCR-giro og medlemsservice for foreninger." />
         <meta name="twitter:image" content="https://medlem123.no/assets/img/og-image.png" />
-        <!-- Følger systemets lys/mørk-innstilling (native skjemaelementer, scrollbar, <dialog>
-             sin ::backdrop m.m. tilpasser seg automatisk) - se css/site.css for full forklaring -->
+
         <meta name="color-scheme" content="light dark" />
-        <!-- Setter et evt. lagret manuelt lys/mørk-valg FØR CSS-en males (r003, 2026-09-15)
-             - unngår et synlig "blink" til feil tema ved sideinnlasting. Selve
-             bryterknappen og klikk-logikken ligger i js/site.js, lastet nederst som vanlig -
-             denne ene linjen MÅ kjøre tidlig/blokkerende i <head>, derfor egen liten inline-script. -->
+
         <script>
             (function () {
                 var saved = localStorage.getItem("medlem123-theme");
@@ -36,21 +31,11 @@
             })();
         </script>
         <title>Medlem123 – Medlemshåndtering og kontingentinnkreving for foreninger</title>
-        <!-- Favicon-->
+
         <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
-        <!-- Font Awesome fjernet (r005, 2026-09-16) - erstattet av 7 håndskrevne inline SVG-ikoner
-             direkte i markup-en (se css/site.css sin .icon-regel). Fjerner en ekstern ~100-150KB
-             ikonfont-avhengighet for et håndfull enkle former (måne/sol, hamburger, kryss, chevron,
-             info, ekstern lenke) - i tråd med resten av redesignets "ingen unødvendige eksterne
-             forespørsler"-linje (jf. Google Fonts fjernet i r002, se under). -->
-        <!-- Google fonts fjernet (r002, 2026-09-15) - erstattet av systemfont-stacken
-             (-apple-system osv.) i css/site.css, i tråd med Apple HIG-redesignet. Færre
-             eksterne forespørsler, ingen FOUT/layout-shift ved fontinnlasting. -->
-        <!-- Egen stilfil (Apple HIG-inspirert redesign, r002, 2026-09-15 - bygget på r001s vanilla CSS/JS)-->
+
         <link href="css/site.css" rel="stylesheet" />
-        <!-- Strukturert data (r005, 2026-09-16) - Organization/Service/FAQPage/WebSite. sameAs er
-             bevisst utelatt: ingen ekte LinkedIn-/Proff.no-URL er bekreftet ennå (se skill-minnet -
-             legg til her den dagen Klopp AS faktisk har en slik side, IKKE placeholder-tekst). -->
+
         <script type="application/ld+json">
         {
             "@context": "https://schema.org",
@@ -192,7 +177,7 @@
         </script>
     </head>
     <body id="page-top">
-        <!-- Navigasjon-->
+
         <nav class="navbar" id="mainNav">
             <div class="container">
                 <a class="navbar-brand" href="/">Medlem123</a>
@@ -213,11 +198,7 @@
                 </div>
             </div>
         </nav>
-        <!-- Masthead-->
-        <!-- id="page-top" fjernet herfra (r005, 2026-09-16) - duplikat av <body id="page-top">
-             over (ugyldig HTML, to elementer med samme id). Body-ID-en er den som faktisk
-             brukes av #page-top-lenken (scroll-til-topp) siden den kommer først i DOM-en -
-             denne fjerningen endrer ingen synlig oppførsel, kun retter markup-en. -->
+
         <header class="masthead">
             <div class="container">
                 <img class="masthead-avatar" src="assets/img/logo_medlem123_800px.png" alt="Medlem123" width="800" height="189" />
@@ -231,13 +212,11 @@
             </div>
         </header>
 
-        <!-- CTA-banner -->
         <div class="cta-banner">
             <p class="cta-banner-lead">Har du spørsmål?</p>
             <p>Ring oss på tlf. <a href="tel:+4733312800">33 31 28 00</a> for en gratis og uforpliktende gjennomgang</p>
         </div>
 
-        <!-- Portfolio-seksjon-->
         <section class="page-section" id="portfolio">
             <div class="container">
                 <h2 class="page-section-heading">Tjenester og info</h2>
@@ -293,7 +272,6 @@
             </div>
         </section>
 
-        <!-- Brosjyre-seksjon-->
         <section class="page-section bg-dark" id="brochure">
             <div class="container">
                 <h2 class="page-section-heading">Brosjyre</h2>
@@ -311,7 +289,6 @@
             </div>
         </section>
 
-        <!-- Spørsmål/FAQ-seksjon-->
         <section class="page-section" id="contact">
             <div class="container">
                 <h2 class="page-section-heading">Vanlige spørsmål</h2>
@@ -357,7 +334,6 @@
             </div>
         </section>
 
-        <!-- Footer-->
         <footer class="site-footer">
             <div class="container">
                 <div class="footer-grid">
@@ -382,10 +358,8 @@
             <a href="personvern.html" class="copyright-link">Personvernerklæring</a>
         </div>
 
-        <!-- Scroll til topp-knapp -->
         <a class="scroll-to-top" href="#page-top" aria-label="Scroll til toppen"><svg class="icon" viewBox="0 0 16 16" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M8 4.5a.75.75 0 0 1 .53.22l5 5a.75.75 0 1 1-1.06 1.06L8 6.31l-4.47 4.47a.75.75 0 0 1-1.06-1.06l5-5A.75.75 0 0 1 8 4.5Z"/></svg></a>
 
-        <!-- Portfolio-modaler (native <dialog>) -->
         <dialog class="portfolio-modal" id="portfolioModal1">
             <div class="modal-inner">
                 <button class="modal-close" type="button" data-close-modal aria-label="Lukk"><svg class="icon" viewBox="0 0 16 16" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M3.72 3.72a.75.75 0 0 1 1.06 0L8 6.94l3.22-3.22a.75.75 0 1 1 1.06 1.06L9.06 8l3.22 3.22a.75.75 0 1 1-1.06 1.06L8 9.06l-3.22 3.22a.75.75 0 0 1-1.06-1.06L6.94 8 3.72 4.78a.75.75 0 0 1 0-1.06Z"/></svg></button>
@@ -498,7 +472,6 @@
             </div>
         </dialog>
 
-        <!-- Egen JS (erstatter jQuery/Bootstrap-JS/jqBootstrapValidation, 2026-09-09) -->
         <script src="js/site.js"></script>
     </body>
 </html>
