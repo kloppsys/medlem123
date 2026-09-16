@@ -1,46 +1,3 @@
-/*!
- * medlem123.no — Apple HIG-inspirert redesign (r002, 2026-09-15) + Inter-font (r003, 2026-09-15)
- * Bygget på egen, håndskrevet vanilla CSS (r001, 2026-09-09). Ingen rammeverk.
- *
- * Designgrunnlag: Apples Human Interface Guidelines (design-principles.md,
- * accessibility.md, typography.md, color.md, layout.md, dark-mode.md, materials.md/
- * liquid-glass.md — se Details/EXT-239 i kunnskapsbasen for full kildevurdering).
- * Farge-/systemfont-vokabularet er OVERSATT fra Apples app-terminologi til ren CSS,
- * ikke kopiert fra noe rammeverk: SF Pro → -apple-system-stacken, Liquid Glass →
- * backdrop-filter, semantiske farger → CSS custom properties som bytter i dark mode.
- *
- * Apples 8 designprinsipper (design-principles.md, gjeninnført juni 2026), brukt som
- * sjekkliste under hele redesignet:
- *  1. Purpose      — hver seksjon har ett tydelig formål, ingen dekorasjon uten grunn
- *  2. Agency        — brukeren styrer (ekte <dialog>/<details>, ingen påtvunget autoplay)
- *  3. Responsibility — ekte kontaktinfo, ekte telefonlenke, ingen villedende UI
- *  4. Familiarity   — vanlige mønstre (fast nav, kort-grid, FAQ-liste) beholdt
- *  5. Flexibility   — responsivt fra 320px, respekterer prefers-reduced-motion/color-scheme
- *  6. Simplicity    — ornamentelle divider-ikoner fjernet, uppercase-støy fjernet
- *  7. Craft         — kontrastforhold beregnet og kommentert, presis spacing-/radius-skala
- *  8. Delight       — subtil, avbrytbar bevegelse (press-feedback, glass-nav, myk hover)
- */
-
-/* ===== Font — Inter, selv-hostet ============================================== */
-
-/* Erstatter den OS-avhengige -apple-system-stacken (r002) med én ekte, selv-hostet
-   web-font (r003, 2026-09-15, Richards ønske om "samme font på alle steder" —
-   -apple-system viser San Francisco på Mac, Segoe UI på Windows, Roboto på Android:
-   konsistent LOGIKK, men ALDRI samme faktiske skrift for to besøkende på ulikt utstyr).
- *
- * Valg: Inter (SIL Open Font License 1.1, fri kommersiell bruk). Samme font som
- * allerede brukt på klopp.no sin hero-redesign (se /wordpress-og-web_expert sitt
- * skill-minne, 2026-09-10: "Inter Regular — Google-fonten nærmest SF Pro/Apple") —
- * gir merkevarekonsistens med morselskapet i tillegg til å treffe Apple-designets
- * egen estetikk godt (tegnet spesifikt for skjermlesing, nøytral/geometrisk stil).
- *
- * Selv-hostet (2 statiske woff2-filer, kun latin-delmengden — dekker norsk æøå/ÆØÅ,
- * som ligger i Unicode Latin-1 U+0000–00FF) i stedet for Google Fonts-<link>, samme
- * begrunnelse som å fjerne Montserrat/Lato i r002: ingen ekstern forespørsel ved
- * hver sidevisning, ingen FOUT/layout-hopp, ingen tredjeparts-sporing via Google.
- * Hentet via Google Fonts sitt eget css2-API (garanterer offisielt hintede/optimerte
- * filer), lagret lokalt i assets/fonts/. `font-display: swap` unngår usynlig tekst
- * mens fonten laster (viser systemfont først, bytter sømløst når Inter er klar). */
 @font-face {
   font-family: "Inter";
   font-style: normal;
@@ -60,79 +17,48 @@
     U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
-/* ===== Fundament: tokens ===================================================== */
-
 :root {
   color-scheme: light dark;
 
-  /* Inter først, med den forrige -apple-system-stacken som fallback (tegnes momentant
-     mens Inter laster, og dekker den usannsynlige situasjonen at fontfilen feiler). */
   --font-display: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
     Roboto, Helvetica, Arial, sans-serif;
   --font-text: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
     Roboto, Helvetica, Arial, sans-serif;
 
-  /* Spacing — 8px-rutenett (samme konvensjon som er brukt for klopp.no/regweb.no-
-     redesignarbeidet i denne skillen, se REDESIGN-VERKTØY-tabellen) */
   --space-1: 4px;  --space-2: 8px;  --space-3: 12px; --space-4: 16px;
   --space-5: 24px; --space-6: 32px; --space-7: 48px; --space-8: 64px;
   --space-9: 96px; --space-10: 128px;
 
-  /* Corner radius — 980px er Apples egen verdi for pill-knapper (apple.com bruker
-     nøyaktig dette tallet), ikke en tilfeldig stor verdi */
   --radius-sm: 10px; --radius-md: 14px; --radius-lg: 20px; --radius-full: 980px;
 
-  --nav-height: 52px; /* Apples egen navbar-høyde på apple.com er 44–52px, ikke 104px */
+  --nav-height: 52px;
   --container-max: 1100px;
 
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
   --duration-fast: 120ms;
   --duration-base: 300ms;
 
-  /* --- Lys modus (standard) --- */
   --color-bg: #ffffff;
-  --color-bg-elevated: #f5f5f7;      /* Apples eget "secondary system background"-grått */
-  --color-text: #1d1d1f;             /* Apples eget "label"-nærsvart */
-  --color-text-secondary: #6e6e73;   /* Apples eget "secondaryLabel"-grått.
-                                         Kontrast mot #ffffff: 5.07:1 — bestått WCAG AA
-                                         normaltekst (krav 4.5:1), beregnet manuelt. */
+  --color-bg-elevated: #f5f5f7;
+  --color-text: #1d1d1f;
+  --color-text-secondary: #6e6e73;
   --color-border: rgba(0, 0, 0, 0.08);
   --color-glass-bg: rgba(255, 255, 255, 0.72);
   --shadow-color: rgba(0, 0, 0, 0.10);
 
-  /* Merkevarens lilla (uendret hex fra r001/original design), men brukt presist:
-     --accent-fill  = alltid #5c4461, ENESTE farge brukt som knapp-BAKGRUNN med hvit
-                       tekst — kontrast hvit-mot-#5c4461 = 8.56:1, bestått i alle kontekster.
-     --accent-text  = farge brukt DIREKTE på sidebakgrunn (lenker/ikoner). Lys modus:
-                       #5c4461 mot hvit bakgrunn = 8.55:1. RÅ #bb70a9 mot hvit er kun
-                       3.50:1 — bestått for STOR tekst (≥3:1), IKKE for normal tekst
-                       (krever 4.5:1) — derfor aldri brukt som liten lenketekst på hvitt. */
   --accent-fill: #5c4461;
   --accent-text: #5c4461;
-  --accent-soft: #bb70a9;   /* kun til store, dekorative flater/glow — aldri liten tekst */
+  --accent-soft: #bb70a9;
 
-  --navy-dark: #1a252f;     /* bevisst mørk seksjon (masthead) — uendret i begge modus,
-                                samme mønster som Apple selv bruker på mørke hero-seksjoner
-                                uavhengig av systemtema */
+  --navy-dark: #1a252f;
 }
 
-/* Manuell lys/mørk-bryter (r003, 2026-09-15) — tre lag, i prioritert rekkefølge:
-   1. `:root` over = lys modus, alltid utgangspunktet.
-   2. `@media (prefers-color-scheme: dark)` — automatisk mørk NÅR systemet ber om det
-      OG brukeren ikke har valgt noe manuelt (`:not([data-theme="light"])`-vakten).
-   3. `:root[data-theme="dark"]` — brukerens EKSPLISITTE valg (bryter-knappen, lagret i
-      `localStorage`), vinner uansett systeminnstilling. `data-theme="light"` går motsatt
-      vei: blokkerer punkt 2 og faller tilbake til de vanlige `:root`-verdiene over.
-   Samme mønster brukt av bl.a. Apples egne nettsider og standard for enhver side som
-   både følger systemet OG tilbyr en egen bryter. De to mørke tokene-blokkene under må
-   holdes i synk manuelt — begge er identiske med vilje, kun selektoren skiller dem. */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --color-bg: #000000;             /* Apples eget rene svarte dark-mode-lerret */
+    --color-bg: #000000;
     --color-bg-elevated: #1d1d1f;
     --color-text: #f5f5f7;
-    --color-text-secondary: #86868b; /* Apples eget "secondaryLabel" i dark mode.
-                                         Kontrast mot #000000: 6.14:1 — bestått AA. */
+    --color-text-secondary: #86868b;
     --color-border: rgba(255, 255, 255, 0.12);
     --color-glass-bg: rgba(29, 29, 31, 0.72);
     --shadow-color: rgba(0, 0, 0, 0.5);
@@ -148,23 +74,12 @@
     --color-glass-bg: rgba(29, 29, 31, 0.72);
     --shadow-color: rgba(0, 0, 0, 0.5);
 
-    /* Lysere lilla for tekst DIREKTE på svart bakgrunn — #5c4461 mot svart er kun
-       2.45:1 (stryker AA), derfor egen lysere variant her. Kontrast #d9a8cd mot
-       #000000 = 10.43:1 — godt over kravet. --accent-fill (knappebakgrunn) endres
-       IKKE — dens kontrast er selvstendig (hvit tekst mot knappen selv), uavhengig
-       av sidens bakgrunnsfarge. */
     --accent-text: #d9a8cd;
 }
-
-/* ===== Reset / fundament ====================================================== */
 
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 
-/* Inline SVG-ikoner (r005, 2026-09-16 — erstatter Font Awesome, se § SEO/GEO-funn i
-   /wordpress-og-web_expert): en ekstern ikonfont for 7 enkle former var en unødvendig
-   ~100-150KB avhengighet. `currentColor` gjør at ikonet alltid arver tekstfargen rundt
-   seg, akkurat som en ikonfont gjorde. */
 .icon { vertical-align: -0.125em; flex: none; }
 
 @media (prefers-reduced-motion: reduce) {
@@ -180,7 +95,7 @@ html { scroll-behavior: smooth; }
 body {
   margin: 0;
   font-family: var(--font-text);
-  font-size: 17px;               /* Apples egen "Body"-tekststørrelse (SF Pro Text 17pt) */
+  font-size: 17px;
   line-height: 1.5;
   color: var(--color-text);
   background: var(--color-bg);
@@ -198,29 +113,21 @@ img { max-width: 100%; height: auto; display: block; }
 
 h1, h2, h3 {
   font-family: var(--font-display);
-  font-weight: 600;              /* SF Pro Display "Semibold" — Apples egen
-                                     overskrift-vekt, ikke maksimal 700-fetthet */
+  font-weight: 600;
   margin: 0;
-  letter-spacing: -0.015em;      /* tett tracking på store overskrifter, HIG-typografi */
+  letter-spacing: -0.015em;
 }
 
 a { color: var(--accent-text); }
 
-/* Synlig, tydelig fokusring — WCAG 2.4.7. Farge alene brukes aldri alene et sted i
-   denne filen for å formidle tilstand (divider/FAQ-chevron bruker også form/posisjon). */
 :focus-visible {
   outline: 2px solid var(--accent-text);
   outline-offset: 3px;
   border-radius: var(--radius-sm);
 }
 
-/* Sømløs anker-scroll under fast nav */
 section[id], header[id] { scroll-margin-top: calc(var(--nav-height) + var(--space-4)); }
 
-/* Ekte trykk-feedback — "respond on pointer-down, not release" (Apple WWDC 2018
-   "Designing Fluid Interfaces", oversatt til web av den installerte emilkowalski
-   apple-design-skillen: umiddelbar, kontinuerlig feedback slår en animasjon som
-   kun vises ved slipp). Gjelder alt interaktivt. */
 .btn:active, .nav-link:active, .portfolio-item:active,
 .scroll-to-top:active, .faq summary:active, .theme-toggle:active { transform: scale(0.97); }
 @media (prefers-reduced-motion: reduce) {
@@ -228,11 +135,6 @@ section[id], header[id] { scroll-margin-top: calc(var(--nav-height) + var(--spac
   .scroll-to-top:active, .faq summary:active, .theme-toggle:active { transform: none; }
 }
 
-/* ===== Navigasjon — Liquid Glass ============================================= */
-
-/* Oversettelse av Apples "Liquid Glass"-materiale til CSS: et frostet, delvis
-   gjennomsiktig lag som lar innhold skimte gjennom idet siden scroller under det —
-   nøyaktig samme mekanikk som apple.com sin egen faste navigasjonslinje. */
 .navbar {
   position: fixed;
   top: 0; left: 0; right: 0;
@@ -256,18 +158,13 @@ section[id], header[id] { scroll-margin-top: calc(var(--nav-height) + var(--spac
   letter-spacing: -0.01em;
 }
 
-/* Grupperer bryter-knapp + hamburger-knapp + selve nav-lenkene i én høyrejustert
-   blokk (r003, 2026-09-15) — holder dem visuelt "ved siden av menyen" i alle
-   bredder: på desktop står bryteren rett til venstre for lenkene; på mobil står
-   den ved siden av "Menu"-knappen, mens selve lenke-dropdownen (.navbar-collapse,
-   order:3 under) fortsatt slippes ned som en egen full-bredde rad ved behov. */
 .navbar-right { display: flex; align-items: center; flex-wrap: wrap; gap: var(--space-2); }
 
 .theme-toggle {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 44px; height: 44px;        /* HIG tap-target-minimum */
+  width: 44px; height: 44px;
   background: transparent;
   color: var(--color-text);
   border: none;
@@ -285,7 +182,7 @@ section[id], header[id] { scroll-margin-top: calc(var(--nav-height) + var(--spac
   border: none;
   border-radius: var(--radius-sm);
   padding: var(--space-3) var(--space-4);
-  min-height: 44px;                 /* HIG-minimum for et trykkbart mål */
+  min-height: 44px;
   font-family: var(--font-text);
   font-weight: 400;
   font-size: 14px;
@@ -297,7 +194,7 @@ section[id], header[id] { scroll-margin-top: calc(var(--nav-height) + var(--spac
 .nav-link {
   display: flex;
   align-items: center;
-  min-height: 44px;                 /* HIG tap-target-minimum, alle plattformer */
+  min-height: 44px;
   padding: 0 var(--space-4);
   color: var(--color-text-secondary);
   text-decoration: none;
@@ -310,11 +207,6 @@ section[id], header[id] { scroll-margin-top: calc(var(--nav-height) + var(--spac
 .nav-link:hover { color: var(--color-text); background: var(--color-bg-elevated); }
 .nav-link.active { color: var(--accent-text); font-weight: 600; }
 
-/* 639px, ikke 991px (r001s opprinnelige Bootstrap-arvede grense): de 3 nav-lenkene +
-   merke trenger kun ~435px totalt (målt), så et nettbrett i BÅDE portrett og liggende
-   (768–1024px) har rikelig plass til å vise dem direkte — en unødvendig hamburger-meny
-   på et nettbrett med god plass er nettopp den typen unødvendig UI-pynt Apples HIG
-   "simplicity"-prinsipp advarer mot. Kun ekte telefon-portrettbredder (<640px) kollapser. */
 @media (max-width: 639px) {
   .navbar-toggler { display: block; }
   .navbar-collapse { display: none; width: 100%; order: 3; }
@@ -323,14 +215,11 @@ section[id], header[id] { scroll-margin-top: calc(var(--nav-height) + var(--spac
   .nav-link { min-height: 48px; }
 }
 
-/* ===== Masthead (hero) — bevisst mørk seksjon, uavhengig av systemtema ======== */
-
 .masthead {
   background: var(--navy-dark);
   color: #f5f5f7;
   text-align: center;
-  /* r007, 2026-09-16: strammet inn (var space-9/96px begge veier) - heroen tok
-     unødvendig mye skjermplass før noe innhold var synlig. */
+
   padding: calc(var(--nav-height) + var(--space-7)) 0 var(--space-7);
 }
 .masthead-avatar { width: 180px; margin: 0 auto var(--space-5); }
@@ -352,20 +241,14 @@ section[id], header[id] { scroll-margin-top: calc(var(--nav-height) + var(--spac
 
 @media (max-width: 767px) { .masthead-avatar { width: 130px; } }
 
-/* Ornamental divider — tonet kraftig ned (HIG "simplicity": pynt uten funksjon
-   fjernes eller reduseres til et minimum). Selve sirkel-ikonet skjules; kun en
-   tynn aksent-strek består som visuell pause mellom overskrift og innhold. */
 .divider-custom { display: flex; align-items: center; justify-content: center; margin: var(--space-5) auto 0; }
 .divider-custom-line { height: 3px; width: 56px; background: var(--accent-soft); border-radius: var(--radius-full); }
 .divider-custom.divider-light .divider-custom-line { background: rgba(255, 255, 255, 0.5); }
 .divider-custom-icon { display: none; }
 
-/* ===== CTA-banner — glass-kort, ikke heldekkende blokk ======================== */
-
 .cta-banner {
   max-width: 760px;
-  /* r007: bunnmargin senket fra space-9 (96px) til space-7 (48px) - del av hero-
-     innstrammingen, mindre tomt rom før "Tjenester og info" starter. */
+
   margin: calc(-1 * var(--space-7)) auto var(--space-7);
   padding: var(--space-6) var(--space-6);
   background: var(--color-glass-bg);
@@ -386,10 +269,7 @@ section[id], header[id] { scroll-margin-top: calc(var(--nav-height) + var(--spac
   margin: var(--space-1) 0;
   letter-spacing: normal;
 }
-/* r005, 2026-09-16: CTA-banneret er ren markedsføringstekst, ikke en reell
-   sideseksjon - brukte tidligere <h2><h2> (2 stk!), feil semantisk bruk av
-   overskrifter som ga et forvirrende dobbelt-H2-hierarki for skjermlesere/AI.
-   Nå <p><p>, med denne klassen for å beholde den fete "spørsmål?"-første-linjen visuelt. */
+
 .cta-banner-lead { font-weight: 600; font-size: 19px; }
 .cta-banner a { color: var(--accent-text); font-weight: 600; text-decoration: none; }
 .cta-banner a:hover { text-decoration: underline; }
@@ -397,8 +277,6 @@ section[id], header[id] { scroll-margin-top: calc(var(--nav-height) + var(--spac
 @media (max-width: 767px) {
   .cta-banner { margin-top: calc(-1 * var(--space-6)); padding: var(--space-5); }
 }
-
-/* ===== Seksjoner generelt ====================================================== */
 
 .page-section { padding: var(--space-9) 0; }
 .page-section-heading {
@@ -410,8 +288,6 @@ section[id], header[id] { scroll-margin-top: calc(var(--nav-height) + var(--spac
 .page-section.bg-dark .page-section-heading { color: #ffffff; }
 
 @media (max-width: 767px) { .page-section { padding: var(--space-7) 0; } }
-
-/* ===== Portfolio-grid — Apple-stil kort ======================================== */
 
 .portfolio-grid {
   display: grid;
@@ -461,11 +337,6 @@ section[id], header[id] { scroll-margin-top: calc(var(--nav-height) + var(--spac
 .portfolio-item:hover .portfolio-item-caption,
 .portfolio-item:focus-visible .portfolio-item-caption { opacity: 1; }
 
-/* r007, 2026-09-16: ett konkret utbytte-setning per kort, under bildet - kortene
-   viste før kun bilde (tittel+generisk tekst er allerede innbakt grafisk i selve
-   PNG-en, se css-kommentaren i portfolio-item-figure sin historikk) uten noe som
-   faktisk skilte dem fra hverandre. Hver linje er hentet fra det ekte innholdet i
-   tilhørende modal, ikke oppspinnet. */
 .portfolio-item-benefit {
   display: flex;
   align-items: flex-start;
@@ -477,13 +348,11 @@ section[id], header[id] { scroll-margin-top: calc(var(--nav-height) + var(--spac
 }
 .portfolio-item-benefit .icon { color: var(--accent-text); flex: none; margin-top: 0.15em; }
 
-/* ===== Knapper — pill-form, Apples egen 980px-radius ========================== */
-
 .btn {
   display: inline-flex;
   align-items: center;
   gap: var(--space-2);
-  min-height: 44px;                 /* HIG tap-target-minimum */
+  min-height: 44px;
   padding: 0 var(--space-6);
   border-radius: var(--radius-full);
   font-family: var(--font-text);
@@ -501,16 +370,12 @@ section[id], header[id] { scroll-margin-top: calc(var(--nav-height) + var(--spac
 .btn-purple { background: var(--accent-fill); color: #ffffff; }
 .btn-purple:hover { background: #4a3750; }
 
-/* ===== Brosjyre-seksjon ========================================================= */
-
 .brochure-embed {
   width: 100%;
   height: 500px;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
 }
-
-/* ===== FAQ — Apple "grouped list"-stil ========================================= */
 
 .faq {
   border: 1px solid var(--color-border);
@@ -547,11 +412,8 @@ section[id], header[id] { scroll-margin-top: calc(var(--nav-height) + var(--spac
 .faq details[open] summary { font-weight: 600; }
 .faq .faq-body { padding: 0 var(--space-5) var(--space-5); color: var(--color-text-secondary); }
 
-/* ===== Footer — Apples egen nedtonede juridisk-footer-stil ==================== */
-
 .site-footer { background: var(--color-bg-elevated); color: var(--color-text); text-align: center; padding: var(--space-8) 0; }
-/* r005, 2026-09-16: var <h4>, hoppet rett fra sideseksjonens <h2> uten noe <h3> imellom -
-   rettet overskriftshierarkiet (funn fra SEO/GEO-revisjonen). */
+
 .site-footer h3 {
   font-family: var(--font-text);
   font-size: 12px;
@@ -579,12 +441,10 @@ section[id], header[id] { scroll-margin-top: calc(var(--nav-height) + var(--spac
   margin-top: var(--space-2);
 }
 
-/* ===== Scroll-til-topp — glass-knapp ============================================ */
-
 .scroll-to-top {
   position: fixed;
   right: var(--space-5); bottom: var(--space-5);
-  width: 44px; height: 44px;        /* HIG tap-target-minimum */
+  width: 44px; height: 44px;
   background: var(--color-glass-bg);
   -webkit-backdrop-filter: saturate(180%) blur(20px);
   backdrop-filter: saturate(180%) blur(20px);
@@ -601,8 +461,6 @@ section[id], header[id] { scroll-margin-top: calc(var(--nav-height) + var(--spac
 }
 .scroll-to-top.show { display: flex; }
 .scroll-to-top:hover { transform: translateY(-2px); }
-
-/* ===== Modal (native <dialog>) — glass-kort ==================================== */
 
 dialog.portfolio-modal {
   border: 1px solid var(--color-border);
@@ -672,7 +530,7 @@ dialog.portfolio-modal::backdrop {
 }
 .info-box a { color: var(--accent-text); }
 .success-box {
-  background: rgba(52, 199, 89, 0.12);   /* Apples semantiske systemGreen, tonet ned */
+  background: rgba(52, 199, 89, 0.12);
   color: #1d1d1f;
   border: 1px solid rgba(52, 199, 89, 0.3);
   border-left: 3px solid #34c759;
