@@ -320,7 +320,7 @@ section[id], header[id] { scroll-margin-top: calc(var(--nav-height) + var(--spac
   .cta-banner { padding: var(--space-5); }
 }
 
-.page-section { padding: var(--space-8) 0; }
+.page-section { padding: var(--space-7) 0; }
 .page-section-heading {
   text-align: center;
   color: var(--color-text);
