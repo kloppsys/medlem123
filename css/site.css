@@ -320,7 +320,7 @@ section[id], header[id] { scroll-margin-top: calc(var(--nav-height) + var(--spac
   .cta-banner { padding: var(--space-5); }
 }
 
-.page-section { padding: var(--space-7) 0; }
+.page-section { padding: var(--space-6) 0; }
 .page-section-heading {
   text-align: center;
   color: var(--color-text);
@@ -329,7 +329,7 @@ section[id], header[id] { scroll-margin-top: calc(var(--nav-height) + var(--spac
 .page-section.bg-dark { background: var(--navy-dark); color: #f5f5f7; }
 .page-section.bg-dark .page-section-heading { color: #ffffff; }
 
-@media (max-width: 767px) { .page-section { padding: var(--space-7) 0; } }
+@media (max-width: 767px) { .page-section { padding: var(--space-6) 0; } }
 
 .portfolio-grid {
   display: grid;
