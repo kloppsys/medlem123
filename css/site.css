@@ -217,46 +217,73 @@ section[id], header[id] { scroll-margin-top: calc(var(--nav-height) + var(--spac
 
 .masthead {
   position: relative;
+  background: var(--color-bg);
+  padding: calc(var(--nav-height) + var(--space-7)) 0 var(--space-6);
+}
+.masthead-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: stretch;
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
   overflow: hidden;
-  background: var(--navy-dark);
-  color: #f5f5f7;
-  text-align: center;
+  min-height: 440px;
+}
+.masthead-content {
+  padding: var(--space-8) var(--space-7);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+}
+.masthead-media { position: relative; min-height: 320px; }
+.masthead-media img {
+  position: absolute;
+  inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+}
 
-  padding: calc(var(--nav-height) + var(--space-7)) 0 var(--space-7);
+.eyebrow-dot {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-text);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent-text);
 }
-.masthead::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: url("../assets/img/topbanner.jpg") center 32% / cover no-repeat;
-  filter: saturate(0.9) brightness(0.6) blur(1px);
-  transform: scale(1.04);
-}
-.masthead::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(26, 37, 47, 0.45) 0%, rgba(26, 37, 47, 0.72) 55%, rgba(26, 37, 47, 0.94) 100%);
-}
-.masthead .container { position: relative; z-index: 1; }
-.masthead-avatar { width: 180px; margin: 0 auto var(--space-5); }
+.eyebrow-dot .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent-text); flex: none; }
+
 .masthead-heading {
-  font-size: clamp(2.25rem, 4vw + 1rem, 4rem);
-  color: #ffffff;
-  line-height: 1.05;
+  font-family: var(--font-display);
+  font-size: clamp(2.25rem, 3.5vw + 1rem, 3rem);
+  font-weight: 600;
+  color: var(--color-text);
+  line-height: 1.12;
   letter-spacing: -0.02em;
+  margin-top: var(--space-4);
 }
 .masthead-subheading {
   font-family: var(--font-text);
-  font-size: clamp(1.0625rem, 1vw + 0.9rem, 1.375rem);
+  font-size: clamp(1.0625rem, 1vw + 0.9rem, 1.1875rem);
   font-weight: 400;
-  color: rgba(245, 245, 247, 0.86);
-  max-width: 640px;
-  margin: var(--space-4) auto 0;
-  line-height: 1.5;
+  color: var(--color-text-secondary);
+  margin: var(--space-4) 0 0;
+  line-height: 1.6;
 }
+.masthead-cta { display: flex; flex-wrap: wrap; gap: var(--space-4); margin-top: var(--space-6); }
 
-@media (max-width: 767px) { .masthead-avatar { width: 130px; } }
+@media (max-width: 900px) {
+  .masthead-card { grid-template-columns: 1fr; min-height: 0; }
+  .masthead-media { min-height: 260px; order: -1; }
+  .masthead-content { padding: var(--space-6) var(--space-5); text-align: center; align-items: center; }
+  .masthead-cta { justify-content: center; }
+}
 
 .divider-custom { display: flex; align-items: center; justify-content: center; margin: var(--space-5) auto 0; }
 .divider-custom-line { height: 3px; width: 56px; background: var(--accent-soft); border-radius: var(--radius-full); }
@@ -266,7 +293,7 @@ section[id], header[id] { scroll-margin-top: calc(var(--nav-height) + var(--spac
 .cta-banner {
   max-width: 760px;
 
-  margin: calc(-1 * var(--space-7)) auto var(--space-7);
+  margin: 0 auto var(--space-7);
   padding: var(--space-6) var(--space-6);
   background: var(--color-glass-bg);
   -webkit-backdrop-filter: saturate(180%) blur(20px);
@@ -292,7 +319,7 @@ section[id], header[id] { scroll-margin-top: calc(var(--nav-height) + var(--spac
 .cta-banner a:hover { text-decoration: underline; }
 
 @media (max-width: 767px) {
-  .cta-banner { margin-top: calc(-1 * var(--space-6)); padding: var(--space-5); }
+  .cta-banner { padding: var(--space-5); }
 }
 
 .page-section { padding: var(--space-9) 0; }
