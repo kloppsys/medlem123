@@ -154,7 +154,7 @@ section[id], header[id] { scroll-margin-top: calc(var(--nav-height) + var(--spac
   align-items: center;
   text-decoration: none;
 }
-.navbar-logo { display: block; height: 28px; width: auto; }
+.navbar-logo { display: block; height: 40px; width: auto; }
 
 .navbar-right { display: flex; align-items: center; flex-wrap: wrap; gap: var(--space-2); }
 
