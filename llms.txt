@@ -1,0 +1,28 @@
+# Medlem123
+
+> Fullservice medlemshåndtering fra Klopp AS (Tønsberg, Norge, org.nr. 996 385 272, etablert 2011): Klopp AS drifter medlemsregister og kontingentinnkreving for foreningen, på samme medlemssystem som Regweb.
+
+## Tjenesten
+
+Medlem123 er ikke et eget system, men en driftstjeneste oppå Regweb-plattformen. Foreningen slipper å administrere medlemssystemet selv — Klopp AS håndterer kun det som gjelder medlemmene (kontingent, betalingsstatus, medlemskap); foreningen håndterer fortsatt alle henvendelser som gjelder selve organisasjonen.
+
+- Oppstart (system, import og opplæring): kr 2 500, engangsgebyr
+- Abonnement: kr 299/mnd, inkl. nettinnmelding på foreningens nettside med Vipps eller kortbetaling
+- Medlemssystem: kr 2/medlem/mnd
+- Kontingentinnkreving: kr 10 pr. faktura (+ betalingsservicegebyr)
+- Purring: kr 10/stk (+ betalingsservicegebyr)
+- Din side (valgfritt): kr 99/mnd
+
+## Andre produkter fra Klopp AS
+
+- [Regweb](https://regweb.no/): Samme medlemssystem som Medlem123 bruker, men foreningen drifter det selv. Grunnlisens kr 9 990 (kampanje, ordinær kr 24 990), serviceavtale fra kr 990/mnd.
+- [Likepersonslogg](https://likepersonslogg.com/): Registrering og Bufdir-rapportering av likepersonsarbeid, utviklet med Norsk Revmatikerforbund, Brystkreftforeningen og Norilco.
+
+## Ressurser
+
+- [Hva koster et medlemssystem i 2026?](https://medlemssystem.no/artikler/hva-koster-medlemssystem-2026.html): Full prisoversikt og begrunnelse for Regweb/Medlem123-modellen.
+- [Personvernerklæring](https://medlem123.no/personvern.html)
+
+## Målgruppe
+
+Norske foreninger og forbund som ønsker medlemsadministrasjonen utkontraktert, uten selv å drifte systemet.
