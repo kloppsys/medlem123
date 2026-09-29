@@ -85,6 +85,19 @@
                 margin: 0 0 var(--space-6);
             }
             .legal-page .quick-contact a { color: var(--accent-text); text-decoration: underline; text-underline-offset: 3px; }
+            .legal-page .section-heading-row {
+                display: flex;
+                align-items: center;
+                gap: var(--space-4);
+                flex-wrap: wrap;
+            }
+            .legal-page .section-heading-row h1 { margin: 0; }
+            .legal-page .section-heading-logo {
+                height: 36px;
+                width: auto;
+                display: block;
+                border-radius: var(--radius-sm);
+            }
             .legal-page .required-note {
                 font-size: 13px;
                 color: var(--color-text-secondary);
@@ -194,7 +207,12 @@
         </nav>
 
         <main class="legal-page">
-            <h1>Kontakt oss</h1>
+            <div class="section-heading-row">
+                <h1>Kontakt oss</h1>
+                <a href="https://klopp.no/" target="_blank" rel="noopener" aria-label="Besøk klopp.no">
+                    <img class="section-heading-logo" src="assets/img/Klopp_logo_ink_R_w200.png" alt="Klopp AS" loading="lazy" />
+                </a>
+            </div>
             <p class="contact-lead">Medlem123 svarer på spørsmål om medlemsregister, kontingentinnkreving eller et tilbud til foreningen deres.</p>
 
             <p class="quick-contact">Tlf. <a href="tel:+4733312800">33 31 28 00</a> · <a href="mailto:kundeservice@medlem123.no">kundeservice@medlem123.no</a> · man–fre 09–15</p>
