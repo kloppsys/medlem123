@@ -111,13 +111,13 @@
 
         <nav class="navbar" id="mainNav">
             <div class="container">
-                <a class="navbar-brand" href="/"><img class="navbar-logo" src="assets/img/logo_medlem123_navbar.png" alt="Medlem123" width="480" height="117" /></a>
+                <a class="navbar-brand" href="/"><picture><source srcset="assets/img/logo_medlem123_navbar.webp" type="image/webp" /><img class="navbar-logo" src="assets/img/logo_medlem123_navbar.png" alt="Medlem123" width="480" height="117" /></picture></a>
                 <div class="navbar-right">
                     <button class="theme-toggle" id="themeToggle" type="button" aria-label="Bytt mellom lyst og mørkt utseende" aria-pressed="false">
                         <span class="theme-toggle-icon" aria-hidden="true"><svg class="icon" viewBox="0 0 16 16" width="1em" height="1em" fill="currentColor"><path d="M9.5 1.5a6.5 6.5 0 1 0 5 10.9A7 7 0 0 1 9.5 1.5Z"/></svg></span>
                     </button>
-                    <button class="navbar-toggler" type="button" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                        Menu <svg class="icon" viewBox="0 0 16 16" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M2 3h12v1.5H2zM2 7.25h12v1.5H2zM2 11.5h12V13H2z"/></svg>
+                    <button class="navbar-toggler" type="button" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Meny">
+                        Meny <svg class="icon" viewBox="0 0 16 16" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M2 3h12v1.5H2zM2 7.25h12v1.5H2zM2 11.5h12V13H2z"/></svg>
                     </button>
                     <div class="navbar-collapse" id="navbarResponsive">
                         <ul class="navbar-nav">
@@ -144,8 +144,8 @@
                     </div>
                     <div class="masthead-media">
                         <picture>
-                            <source srcset="assets/img/topbanner.webp" type="image/webp" />
-                            <img src="assets/img/topbanner.jpg" alt="Mann som reagerer overrasket foran en vegg med Medlem123-logoen" width="1680" height="1184" fetchpriority="high" />
+                            <source srcset="assets/img/topbanner-800.webp 800w, assets/img/topbanner-1200.webp 1200w, assets/img/topbanner.webp 1680w" sizes="(max-width: 1023px) 100vw, 525px" type="image/webp" />
+                            <img src="assets/img/topbanner.jpg" srcset="assets/img/topbanner-800.jpg 800w, assets/img/topbanner-1200.jpg 1200w, assets/img/topbanner.jpg 1680w" sizes="(max-width: 1023px) 100vw, 525px" alt="Mann som reagerer overrasket foran en vegg med Medlem123-logoen" width="1680" height="1184" fetchpriority="high" />
                         </picture>
                     </div>
                 </div>
@@ -168,8 +168,8 @@
                 <p class="section-lead">Vi drifter medlemsregisteret og kontingentinnkrevingen for dere — bygget på <a href="https://regweb.no" target="_blank" rel="noopener">Regweb</a>, men uten at foreningen selv trenger å administrere noe.</p>
                 <div class="section-figure">
                     <picture>
-                        <source srcset="assets/img/products/medlem123-visual.webp" type="image/webp" />
-                        <img src="assets/img/products/medlem123-visual.jpg" alt="Mann i dress med Medlem123-mappe — fullservice medlemsadministrasjon fra Klopp AS" width="1600" height="1128" style="object-position: center top;" loading="lazy" />
+                        <source srcset="assets/img/products/medlem123-visual-800.webp 800w, assets/img/products/medlem123-visual.webp 1600w" sizes="(max-width: 767px) 100vw, 718px" type="image/webp" />
+                        <img src="assets/img/products/medlem123-visual.jpg" srcset="assets/img/products/medlem123-visual-800.jpg 800w, assets/img/products/medlem123-visual.jpg 1600w" sizes="(max-width: 767px) 100vw, 718px" alt="Mann i dress med Medlem123-mappe — fullservice medlemsadministrasjon fra Klopp AS" width="1600" height="1128" style="object-position: center top;" loading="lazy" />
                     </picture>
                 </div>
                 <div class="feature-grid">
@@ -240,12 +240,12 @@
                         <p class="price-example-label">Eksempel — 200 medlemmer, én årlig kontingent</p>
                         <div class="price-example-grid">
                             <div class="price-example-case">
-                                <h4>Måned med kontingentutsendelse</h4>
+                                <h3>Måned med kontingentutsendelse</h3>
                                 <p class="price-example-total">ca. kr 2.700</p>
                                 <p class="price-example-sum">299 (abonnement) + 400 (medlemssystem) + 2.000 (kontingentinnkreving)</p>
                             </div>
                             <div class="price-example-case">
-                                <h4>Måned uten kontingentinnkreving</h4>
+                                <h3>Måned uten kontingentinnkreving</h3>
                                 <p class="price-example-total">ca. kr 700</p>
                                 <p class="price-example-sum">299 (abonnement) + 400 (medlemssystem)</p>
                             </div>

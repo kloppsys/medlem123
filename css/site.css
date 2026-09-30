@@ -560,7 +560,7 @@ section[id], header[id] { scroll-margin-top: calc(var(--nav-height) + var(--spac
   border: 1px solid var(--color-border);
   text-align: center;
 }
-.price-example-case h4 {
+.price-example-case h3 {
   font-family: var(--font-text);
   font-size: 13px;
   font-weight: 600;
@@ -768,3 +768,8 @@ dialog.portfolio-modal::backdrop {
 }
 .task-list .badge-start { background: #34c759; }
 .task-list.category li { border: none; font-weight: 600; padding: var(--space-4) var(--space-4) var(--space-1); min-height: auto; }
+
+/* hCaptcha renders a fixed 303px iframe — scale it down so it fits the smallest phones. */
+@media (max-width: 360px) {
+  .h-captcha { transform: scale(0.86); transform-origin: left top; height: 68px; }
+}
