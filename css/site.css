@@ -528,13 +528,15 @@ section[id], header[id] { scroll-margin-top: calc(var(--nav-height) + var(--spac
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-  gap: var(--space-4);
+  flex-wrap: wrap;
+  column-gap: var(--space-4);
+  row-gap: var(--space-1);
   padding: var(--space-3) 0;
   border-bottom: 1px solid var(--color-border);
 }
 .price-table > div:last-child { border-bottom: none; }
 .price-table dt { margin: 0; font-weight: 400; font-size: 15px; color: var(--color-text); }
-.price-table dd { margin: 0; font-weight: 600; font-size: 15px; color: var(--color-text); text-align: right; white-space: nowrap; }
+.price-table dd { margin: 0 0 0 auto; min-width: 0; font-weight: 600; font-size: 15px; color: var(--color-text); text-align: right; }
 
 .price-example {
   margin-top: var(--space-6);
