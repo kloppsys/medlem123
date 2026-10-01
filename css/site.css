@@ -451,6 +451,7 @@ section[id], header[id] { scroll-margin-top: calc(var(--nav-height) + var(--spac
 }
 @media (max-width: 991px) { .feature-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 575px) { .feature-grid { grid-template-columns: 1fr; } }
+@media (min-width: 992px) { .feature-card:last-child:nth-child(3n) { grid-column: span 2; } }
 
 .feature-card {
   display: flex;
@@ -472,14 +473,6 @@ section[id], header[id] { scroll-margin-top: calc(var(--nav-height) + var(--spac
   flex-direction: row;
   align-items: flex-start;
   gap: var(--space-4);
-}
-.feature-num {
-  font-family: var(--font-display);
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--accent-text);
-  letter-spacing: 0.04em;
-  flex: none;
 }
 .feature-card h3 {
   font-family: var(--font-display);
@@ -577,7 +570,7 @@ section[id], header[id] { scroll-margin-top: calc(var(--nav-height) + var(--spac
 .price-example-sum { font-size: 12px; color: var(--color-text-secondary); margin: var(--space-1) 0 0; }
 
 .price-fineprint {
-  max-width: 640px;
+  max-width: 480px;
   margin: var(--space-5) auto 0;
   text-align: center;
   font-size: 12px;
@@ -728,8 +721,7 @@ dialog.portfolio-modal::backdrop {
 .info-box {
   background: var(--color-bg-elevated);
   color: var(--color-text);
-  border: 1px solid var(--color-border);
-  border-left: 3px solid var(--accent-soft);
+  border: 1px solid var(--accent-soft);
   border-radius: var(--radius-md);
   padding: var(--space-4) var(--space-5);
   margin: var(--space-5) 0;
@@ -740,8 +732,7 @@ dialog.portfolio-modal::backdrop {
 .success-box {
   background: rgba(52, 199, 89, 0.12);
   color: #1d1d1f;
-  border: 1px solid rgba(52, 199, 89, 0.3);
-  border-left: 3px solid #34c759;
+  border: 1px solid #34c759;
   border-radius: var(--radius-md);
   padding: var(--space-4) var(--space-5);
   margin: var(--space-5) 0;
