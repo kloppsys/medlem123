@@ -764,3 +764,6 @@ dialog.portfolio-modal::backdrop {
 @media (max-width: 360px) {
   .h-captcha { transform: scale(0.86); transform-origin: left top; height: 68px; }
 }
+
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+.copyright .icon { font-size: 0.85em; }
