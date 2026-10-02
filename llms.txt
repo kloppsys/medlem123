@@ -21,6 +21,7 @@ Medlem123 er ikke et eget system, men en driftstjeneste oppå Regweb-plattformen
 ## Ressurser
 
 - [Hva koster et medlemssystem i 2026?](https://medlemssystem.no/artikler/hva-koster-medlemssystem-2026.html): Full prisoversikt og begrunnelse for Regweb/Medlem123-modellen.
+- [Om Klopp AS](https://medlem123.no/om-klopp-as.html): Selskapet bak Medlem123: hvordan medlemsdata håndteres (databehandler, norske servere), fakta om selskapet og partnere.
 - [Personvernerklæring](https://medlem123.no/personvern.html)
 
 ## Målgruppe
