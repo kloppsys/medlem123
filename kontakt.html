@@ -34,6 +34,8 @@
         <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png" />
         <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
         <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)" />
+        <link rel="preload" href="/assets/fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin />
+        <link rel="preload" href="/assets/fonts/inter-600.woff2" as="font" type="font/woff2" crossorigin />
         <link href="css/site.css" rel="stylesheet" />
         <script type="application/ld+json">
         {
@@ -222,7 +224,7 @@
                 <input type="hidden" name="subject" value="Ny henvendelse fra medlem123.no" />
                 <input type="hidden" name="from_name" value="Kontaktskjema — medlem123.no" />
                 <input type="hidden" name="redirect" value="https://medlem123.no/kontakt.html?sendt=1" />
-                <input type="checkbox" name="botcheck" class="botcheck-field" tabindex="-1" autocomplete="off" />
+                <input type="checkbox" name="botcheck" class="botcheck-field" tabindex="-1" autocomplete="off" aria-label="La stå tom (spamvern)" />
 
                 <div class="form-row">
                     <div class="field">
