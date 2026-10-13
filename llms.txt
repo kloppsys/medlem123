@@ -9,7 +9,7 @@ Medlem123 er ikke et eget system, men en driftstjeneste oppå Regweb-plattformen
 - Oppstart (system, import og opplæring): kr 2 500, engangsgebyr
 - Abonnement: kr 299/mnd, inkl. nettinnmelding på foreningens nettside med Vipps eller kortbetaling
 - Medlemssystem: kr 2/medlem/mnd
-- Kontingentinnkreving: kr 10 pr. faktura (+ betalingsservicegebyr)
+- Kontingentinnkreving: kr 10 per faktura (+ betalingsservicegebyr)
 - Purring: kr 10/stk (+ betalingsservicegebyr)
 - Din side (valgfritt): kr 99/mnd
 
