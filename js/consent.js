@@ -1,8 +1,8 @@
 (function () {
     "use strict";
 
-    var GA_ID = "";
-    var ADS_ID = "";
+    var GA_ID = "G-E6CDS03XD2";
+    var ADS_ID = "AW-1069157336";
     var PRIVACY_URL = "/personvern.html";
     var COOKIE = "cookie_notice_accepted";
 
