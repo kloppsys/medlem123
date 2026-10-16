@@ -4,7 +4,7 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="referrer" content="strict-origin-when-cross-origin" />
-        <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-94A4rumaaMvX7jcdSdWNOgPjygC/VywaOMlHrEqL6dM='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self' data:; connect-src 'self'; base-uri 'self'; form-action 'self'; object-src 'none'" />
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-94A4rumaaMvX7jcdSdWNOgPjygC/VywaOMlHrEqL6dM=' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://www.google-analytics.com https://www.googletagmanager.com https://www.google.com https://googleads.g.doubleclick.net https://www.googleadservices.com; font-src 'self' data:; connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com https://www.google.com https://googleads.g.doubleclick.net https://www.googleadservices.com; frame-src https://td.doubleclick.net https://www.googletagmanager.com; base-uri 'self'; form-action 'self'; object-src 'none'" />
         <meta name="description" content="Personvernerklæring for Medlem123 (Klopp AS) — hvordan vi behandler medlemsdata på vegne av foreninger, og hvordan medlem123.no selv bruker data." />
         <meta name="author" content="Klopp AS" />
         <link rel="canonical" href="https://medlem123.no/personvern.html" />
@@ -88,7 +88,7 @@
 
         <main class="legal-page">
             <h1>Personvernerklæring</h1>
-            <p class="legal-updated">Sist oppdatert: 16. september 2026</p>
+            <p class="legal-updated">Sist oppdatert: 16. oktober 2026</p>
 
             <p>Denne erklæringen gjelder to ulike ting, som er verdt å skille tydelig fra hverandre: (1) hvordan <strong>Klopp AS</strong> (tjenesten Medlem123) behandler medlemsdata <em>på vegne av</em> foreningen dere er medlem av, og (2) hvordan selve nettstedet <strong>medlem123.no</strong> behandler data om deg som besøkende.</p>
 
@@ -112,7 +112,8 @@
             <p>Medlemsdata deles ikke med andre enn det som er nødvendig for å levere tjenesten — typisk foreningens egen bank (for OCR-giro-avstemming) og, der foreningen har bestilt dette, den tekniske driften av innmeldingsskjema/«Din side»-løsningen. Data selges eller brukes aldri til markedsføring overfor medlemmene.</p>
 
             <h2>Nettstedet medlem123.no</h2>
-            <p>Denne siden i seg selv samler ikke inn personopplysninger om besøkende. Vi bruker ingen analyseverktøy, ingen sporingscookies og ingen tredjeparts annonsenettverk. Det eneste som lagres lokalt i din nettleser er ditt valg av lys eller mørk fargetema (<code>localStorage</code>, nøkkelen <code>medlem123-theme</code>) — denne opplysningen forlater aldri din enhet og slettes automatisk hvis du tømmer nettleserens lagring.</p>
+            <p>Uten ditt samtykke samler denne siden ikke inn personopplysninger om besøkende. Det eneste som lagres lokalt i din nettleser uten samtykke er ditt valg av lys eller mørk fargetema (<code>localStorage</code>, nøkkelen <code>medlem123-theme</code>) — denne opplysningen forlater aldri din enhet og slettes automatisk hvis du tømmer nettleserens lagring.</p>
+            <p>Nettstedet bruker <strong>Google Analytics</strong> og <strong>Google Ads</strong> (Google LLC) til statistikk om besøk og til å måle om annonser fører til henvendelser. Dette settes <strong>bare opp etter at du har samtykket</strong> i informasjonskapsel-banneret, med rettslig grunnlag samtykke (GDPR art. 6 nr. 1 bokstav a). Da kan Google sette informasjonskapslene <code>_ga</code> og <code>_ga_&lt;id&gt;</code> (skiller besøkende fra hverandre, inntil to år) og <code>_gcl_*</code> (kobler et annonseklikk til en henvendelse, inntil 90 dager). Vi måler sidevisninger, klikk på telefon- og e-postlenker, klikk på brosjyrer og innsendte kontaktskjemaer. Uten samtykke lastes ingen Google-skript, og ingenting sendes til Google. Du kan trekke tilbake samtykket når som helst med «Cookie-innstillinger» nederst på siden, eller ved å slette informasjonskapslene i nettleseren. Google LLC er selvsertifisert under EU-U.S. Data Privacy Framework (DPF), EU-kommisjonens rammeverk for overføring av personopplysninger til USA.</p>
             <p>Kontaktskjema på denne siden sender informasjonen direkte til <a href="mailto:kundeservice@medlem123.no">kundeservice@medlem123.no</a> for å besvare din henvendelse, og brukes ikke til noe annet formål.</p>
 
             <h2>Dine rettigheter</h2>
@@ -147,5 +148,6 @@
         <a class="scroll-to-top" href="#page-top" aria-label="Scroll til toppen"><svg class="icon" viewBox="0 0 16 16" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M8 4.5a.75.75 0 0 1 .53.22l5 5a.75.75 0 1 1-1.06 1.06L8 6.31l-4.47 4.47a.75.75 0 0 1-1.06-1.06l5-5A.75.75 0 0 1 8 4.5Z"/></svg></a>
 
         <script src="js/site.js"></script>
+        <script src="js/consent.js" defer></script>
     </body>
 </html>

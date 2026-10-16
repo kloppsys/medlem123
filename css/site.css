@@ -874,3 +874,15 @@ p a[target="_blank"]:not(:has(img)):not(.chevron-link):not(.teaser-card-btn):not
   .leader-picture { min-height: 0; height: clamp(360px, 110vw, 520px); }
   .leader-cta { width: 100%; justify-content: center; white-space: normal; text-align: center; }
 }
+
+/* Samtykke (cookie-banner) */
+.consent-banner { position: fixed; left: 0; right: 0; bottom: 0; z-index: 1000; background: var(--color-bg-elevated, #f5f5f7); color: var(--color-text, #1d1d1f); border-top: 1px solid var(--color-border, rgba(0, 0, 0, 0.12)); box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.08); }
+.consent-banner[hidden] { display: none; }
+.consent-banner-inner { max-width: 1100px; margin: 0 auto; padding: 14px 20px; display: flex; flex-wrap: wrap; gap: 12px 20px; align-items: center; justify-content: space-between; }
+.consent-banner-text { margin: 0; flex: 1 1 360px; font-size: 0.9375rem; line-height: 1.5; }
+.consent-banner-text a { color: var(--accent-text, inherit); text-decoration: underline; }
+.consent-banner-actions { display: flex; gap: 10px; }
+.consent-btn { min-height: 44px; min-width: 96px; padding: 0 20px; border: 1px solid var(--color-text, #1d1d1f); border-radius: var(--radius-full, 8px); background: var(--color-text, #1d1d1f); color: var(--color-bg, #fff); font: inherit; font-weight: 600; cursor: pointer; }
+.consent-btn:focus-visible, .consent-reopen:focus-visible { outline: 3px solid var(--accent-text, currentColor); outline-offset: 2px; }
+.consent-reopen { background: none; border: 0; padding: 0; margin: 0; font: inherit; color: inherit; text-decoration: underline; cursor: pointer; min-height: 24px; }
+@media (max-width: 560px) { .consent-banner-actions { width: 100%; } .consent-btn { flex: 1; } }

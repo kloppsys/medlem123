@@ -4,7 +4,7 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="referrer" content="strict-origin-when-cross-origin" />
-        <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-94A4rumaaMvX7jcdSdWNOgPjygC/VywaOMlHrEqL6dM='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self' data:; connect-src 'self'; base-uri 'self'; form-action 'self'; object-src 'none'" />
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-94A4rumaaMvX7jcdSdWNOgPjygC/VywaOMlHrEqL6dM=' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://www.google-analytics.com https://www.googletagmanager.com https://www.google.com https://googleads.g.doubleclick.net https://www.googleadservices.com; font-src 'self' data:; connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com https://www.google.com https://googleads.g.doubleclick.net https://www.googleadservices.com; frame-src https://td.doubleclick.net https://www.googletagmanager.com; base-uri 'self'; form-action 'self'; object-src 'none'" />
         <meta name="description" content="Lei av manuelt arbeid med kontingenter og purringer? Vi gjør hele medlemsjobben for foreningen deres, fra ca. kr 4,30 per medlem i måneden. Les mer!" />
         <meta name="author" content="Klopp AS" />
         <link rel="canonical" href="https://medlem123.no/" />
@@ -59,6 +59,7 @@
             "image": "https://medlem123.no/assets/img/logo_medlem123_800px.png",
             "description": "Medlem123 er en tjeneste fra Klopp AS som håndterer medlemsadministrasjon og kontingentinnkreving for norske foreninger og lag.",
             "parentOrganization": {
+                "@id": "https://klopp.no/#organization",
                 "@type": "Organization",
                 "name": "Klopp AS",
                 "url": "https://klopp.no/",
@@ -74,10 +75,19 @@
                 "addressLocality": "Tønsberg",
                 "addressCountry": "NO"
             },
-            "areaServed": { "@type": "Country", "name": "Norway" },
+            "areaServed": {
+                "@type": "Country",
+                "name": "Norway"
+            },
             "openingHoursSpecification": {
                 "@type": "OpeningHoursSpecification",
-                "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+                "dayOfWeek": [
+                    "Monday",
+                    "Tuesday",
+                    "Wednesday",
+                    "Thursday",
+                    "Friday"
+                ],
                 "opens": "09:00",
                 "closes": "15:00"
             },
@@ -87,8 +97,47 @@
                 "telephone": "+4733312800",
                 "email": "kundeservice@medlem123.no",
                 "areaServed": "NO",
-                "availableLanguage": ["Norwegian"]
+                "availableLanguage": [
+                    "Norwegian"
+                ]
             }
+        }
+        </script>
+        <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "@id": "https://klopp.no/#organization",
+            "name": "Klopp AS",
+            "description": "Klopp AS er et norsk IT-selskap i Tønsberg, etablert i 2011. Selskapet utvikler og drifter Regweb (medlemssystem), Medlem123 (medlemsdrift), Likepersonslogg (oppdragslogg) og XReg (verktøykasse) for foreninger og organisasjoner. I tillegg leverer de skreddersydde webapplikasjoner, AI-agenter og systemintegrasjoner til bedrifter og offentlig sektor. Klopp AS har et tett utviklingssamarbeid med Vipps og Mastercard. All utvikling, drift og support skjer internt, og alle data lagres på norske servere.",
+            "url": "https://klopp.no/",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://klopp.no/assets/img/Klopp_logo_ink_R_w600.png",
+                "width": 600,
+                "height": 138
+            },
+            "foundingDate": "2011-01-14",
+            "vatID": "NO996385272MVA",
+            "taxID": "996385272",
+            "telephone": "+4733312800",
+            "email": "post@klopp.no",
+            "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "Farmannsveien 48",
+                "postalCode": "3125",
+                "addressLocality": "Tønsberg",
+                "addressCountry": "NO"
+            },
+            "sameAs": [
+                "https://www.proff.no/selskap/klopp-as/t%C3%B8nsberg/dataprogramvare-og-utvikling/IGH7ZSO009O",
+                "https://virksomhet.brreg.no/nb/oppslag/enheter/996385272",
+                "https://klopp.no/",
+                "https://regweb.no/",
+                "https://medlem123.no/",
+                "https://likepersonslogg.com/",
+                "https://medlemssystem.no/om-klopp-as.html"
+            ]
         }
         </script>
         <script type="application/ld+json">
@@ -338,5 +387,6 @@
         <a class="scroll-to-top" href="#page-top" aria-label="Scroll til toppen"><svg class="icon" viewBox="0 0 16 16" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M8 4.5a.75.75 0 0 1 .53.22l5 5a.75.75 0 1 1-1.06 1.06L8 6.31l-4.47 4.47a.75.75 0 0 1-1.06-1.06l5-5A.75.75 0 0 1 8 4.5Z"/></svg></a>
 
         <script src="js/site.js"></script>
+        <script src="js/consent.js" defer></script>
     </body>
 </html>
