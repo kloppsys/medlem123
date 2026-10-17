@@ -622,6 +622,21 @@ section[id], header[id] { scroll-margin-top: calc(var(--nav-height) + var(--spac
 .faq details[open] summary { font-weight: 600; }
 .faq .faq-body { padding: 0 var(--space-5) var(--space-5); color: var(--color-text-secondary); }
 
+.skip-link {
+  position: absolute;
+  top: -48px;
+  left: var(--space-4);
+  z-index: 1000;
+  padding: var(--space-2) var(--space-4);
+  background: var(--accent-fill);
+  color: #ffffff;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+}
+.skip-link:focus { top: var(--space-2); }
+
 .site-footer { background: var(--color-bg-elevated); color: var(--color-text); text-align: center; padding: var(--space-8) 0; }
 
 .site-footer h3 {
